@@ -1,10 +1,11 @@
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 
-class App extends React.Component {
-  render () {
+export default class App extends React.Component {
+  render() {
     return <p> Hello React!</p>;
   }
 }
 
-render(<App/>, document.getElementById('app'));
+// eslint-disable-next-line no-undef
+render(<App />, document.getElementById('app'));

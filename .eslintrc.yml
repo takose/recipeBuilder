@@ -1,0 +1,9 @@
+env:
+  es6: true;
+extends:
+- airbnb
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+rules:
+  react/prefer-stateless-function: off
