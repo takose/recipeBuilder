@@ -1,11 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import recipeBuilder from './reducers';
+import App from './components/App';
 
-export default class App extends React.Component {
-  render() {
-    return <p> Hello React!</p>;
-  }
-}
+const store = createStore(recipeBuilder);
 
-// eslint-disable-next-line no-undef
-render(<App />, document.getElementById('app'));
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'), // eslint-disable-line no-undef
+);
