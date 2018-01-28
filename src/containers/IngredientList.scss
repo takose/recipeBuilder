@@ -9,8 +9,13 @@
   align-items: center;
 }
 
+.ingredientImage {
+  height: 100%;
+}
+
 .ingredient {
   height: 45%;
+  width: 150px;
   img {
     height: 100%;
   }

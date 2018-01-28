@@ -7,6 +7,12 @@ export const addStep = () => {
   });
 };
 
+export const updateIngredientState = (currentIngredientId, currentActionId) => ({
+  ingredientId: currentIngredientId,
+  actionId: currentActionId,
+  type: 'UPDATE_INGREDIENT_STATE',
+});
+
 export const incrementCurrentStepId = () => ({
   type: 'INCREMENT_CURRENT_STEP_ID',
 });
@@ -20,5 +26,6 @@ export const addIngredient = ingredient => ({
 export const addTool = tool => ({
   type: 'ADD_TOOL',
   toolId: tool.id,
+  actionId: tool.actionId,
   currentStepId,
 });

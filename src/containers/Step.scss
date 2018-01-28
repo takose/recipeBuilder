@@ -12,6 +12,10 @@
   top: 15%;
   left: 32%;
   width: 10%;
+  height: 30%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
   position: absolute;
 }
 
@@ -26,6 +30,10 @@
   top: 37%;
   left: 45%;
   width: 10%;
+  height: 10%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
   position: absolute;
 }
 
@@ -34,4 +42,15 @@
   left: 35%;
   width: 30%;
   position: absolute;
+}
+
+.ingredient {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100%;
+}
+
+.actionImage {
+  height: 100%;
 }

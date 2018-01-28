@@ -6,7 +6,6 @@ import styles from './ToolList.scss';
 const ImageButton = ({ tool, onToolClick }) => (
   <button
     className={styles.tool}
-    key={tool.id}
     onClick={() => onToolClick(tool)}
   >
     <img
@@ -22,7 +21,13 @@ class ToolList extends React.Component {
     const tools = this.props.tools.map((tool) => {
       const isEquipment = !this.props.equipments.hasOwnProperty(tool.id);
       if (isEquipment) {
-        return <ImageButton tool={tool} onToolClick={this.props.onToolClick} />;
+        return (
+          <ImageButton
+            key={tool.id}
+            tool={tool}
+            onToolClick={this.props.onToolClick}
+          />
+        );
       }
       return null;
     });

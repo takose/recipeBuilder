@@ -26,6 +26,7 @@ const steps = (state = initialState, action) => {
         [action.currentStepId]: {
           ...state[action.currentStepId],
           toolId: action.toolId,
+          actionId: action.actionId,
         },
       };
     default:

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addIngredient } from '../actions';
+import Ingredient from './Ingredient';
 import styles from './IngredientList.scss';
 
 class IngredientList extends React.Component {
@@ -11,7 +12,10 @@ class IngredientList extends React.Component {
         key={ingredient.id}
         onClick={() => this.props.onIngredientClick(ingredient)}
       >
-        <img src={ingredient.image_url} alt={ingredient.name} />
+        <Ingredient
+          ingredient={ingredient}
+          equipment={{}}
+        />
       </button>
     ));
     return (

@@ -1,48 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Ingredient from './Ingredient';
 import styles from './Step.scss';
-
-const IngredientImage = ({ ingredient, equipmentName }) => (
-  <img
-    className={styles[`${equipmentName}Ingredient`]}
-    src={ingredient.image_url}
-    alt="ingredient"
-  />
-);
-
-const ToolImage = ({ tool, equipmentName }) => (
-  <img
-    className={styles[`${equipmentName}Tool`]}
-    src={tool.image_url}
-    alt="tool"
-  />
-);
 
 class Step extends React.Component {
   render() {
-    const { steps, ingredients, tools, currentStepId, equipments, equipmentId } = this.props;
-    const currentStep = steps[currentStepId];
-    const currentStepToolId = () => {
-      if (currentStep.toolId != null) {
-        return currentStep.toolId;
-      }
-      return 0;
-    };
+    const { ingredients, tools, currentStep, equipments, equipmentId } = this.props;
     const { puttableToolIds, name } = equipments[equipmentId];
-    if (puttableToolIds.includes(currentStepToolId())) {
-      const { ingredientId, toolId } = steps[currentStepId];
+    if (puttableToolIds.includes(currentStep.toolId) ||
+      (currentStep.toolId === undefined && name === 'table')) {
+      const tool = tools.find(t => t.id === currentStep.toolId);
+      const ingredient = ingredients.find(i => i.id === currentStep.ingredientId);
       return (
         <div className={styles[`${name}Step`]}>
-          {toolId != null &&
-            <ToolImage
-              tool={tools[toolId]}
-              equipmentName={name}
+          {tool != null &&
+            <img
+              className={styles[`${name}Tool`]}
+              src={tool.image_url}
+              alt="tool"
             />
           }
-          {ingredientId != null &&
-            <IngredientImage
-              ingredient={ingredients[ingredientId]}
-              equipmentName={name}
+          {ingredient != null &&
+            <Ingredient
+              ingredient={ingredient}
+              equipment={equipments[equipmentId]}
             />
           }
         </div>
@@ -52,10 +33,12 @@ class Step extends React.Component {
   }
 }
 
-export default connect(state => ({
-  steps: state.steps,
-  ingredients: state.ingredients,
-  tools: state.tools,
-  currentStepId: state.currentStepId,
-  equipments: state.equipments,
-}))(Step);
+export default connect((state) => {
+  const currentStep = state.steps[state.currentStepId];
+  return {
+    ingredients: state.ingredients,
+    tools: state.tools,
+    currentStep,
+    equipments: state.equipments,
+  };
+})(Step);
