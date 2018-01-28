@@ -7,14 +7,33 @@ class StepList extends React.Component {
   render() {
     const steps = this.props.steps.map((step) => {
       const ingredients = step.ingredients.map(ingredient => (
-        <img src={ingredient.image_url} alt={ingredient.name} />
+        <div className={styles.element}>
+          <img src={ingredient.image_url} alt={ingredient.name} />
+        </div>
       ));
-      return (<div className="step">{ingredients}</div>);
+      const tools = step.tools.map(tool => (
+        <div className={styles.element}>
+          <img src={tool.image_url} alt={tool.name} />
+        </div>
+      ));
+      return (
+        <div className={styles.step}>
+          <div className={styles.ingredients}>
+            {ingredients}
+          </div>
+          <div className={styles.tools}>
+            {tools}
+          </div>
+        </div>
+      );
     });
     return (
       <div className={styles.stepList}>
         {steps}
-        <button onClick={() => this.props.onStepAddClick()}>
+        <button
+          className={styles.stepAdder}
+          onClick={() => this.props.onStepAddClick()}
+        >
           +
         </button>
       </div>

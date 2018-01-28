@@ -1,3 +1,21 @@
 .stepList {
   display: flex;
+  border-top: solid 1px #ccc;
+}
+.element {
+  width: 70px;
+  img {
+    width: 100%;
+  }
+}
+.step {
+  padding: 5px;
+  width: 170px;
+  height: 170px;
+  display: flex;
+}
+
+.stepAdder {
+  text-align: center;
+  font-size: 40px;
 }

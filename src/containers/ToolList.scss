@@ -1,16 +1,15 @@
-.ingredientList {
+.toolList {
   padding: 20px;
-  width: 60%;
+  width: 40%;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  border-right: solid 1px #ccc;
   align-items: center;
 }
 
-.ingredient {
-  height: 45%;
+.tool {
+  height: 50%;
   img {
     height: 100%;
   }

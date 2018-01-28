@@ -5,7 +5,12 @@ import { createStore } from 'redux';
 import recipeBuilder from './reducers';
 import App from './components/App';
 
-const store = createStore(recipeBuilder);
+/* eslint-disable no-underscore-dangle */
+const store = createStore(
+  recipeBuilder,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+/* eslint-enable */
 
 render(
   <Provider store={store}>

@@ -1,27 +1,34 @@
-const initialState = [
-  {
-    id: 0,
-    ingredients: [],
+const initialState = {
+  0: {
   },
-];
+};
 
 const steps = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_STEP':
-      return [
-        ...state,
+      state.steps = [
+        ...state.steps,
         {
           id: action.id,
-          ingredients: [],
         },
       ];
+      return state;
     case 'ADD_INGREDIENT':
-      return state.map((step) => {
-        if (step.id === action.id) {
-          step.ingredients = [...step.ingredients, action.ingredient];
-        }
-        return step;
-      });
+      return {
+        ...state,
+        [action.currentStepId]: {
+          ...state[action.currentStepId],
+          ingredientId: action.ingredientId,
+        },
+      };
+    case 'ADD_TOOL':
+      return {
+        ...state,
+        [action.currentStepId]: {
+          ...state[action.currentStepId],
+          toolId: action.toolId,
+        },
+      };
     default:
       return state;
   }

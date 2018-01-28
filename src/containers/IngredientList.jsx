@@ -15,7 +15,7 @@ class IngredientList extends React.Component {
       </button>
     ));
     return (
-      <div className={styles.inngredientList}>
+      <div className={styles.ingredientList}>
         {ingredients}
       </div>
     );
