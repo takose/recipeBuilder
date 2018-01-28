@@ -7,6 +7,10 @@ export const addStep = () => {
   });
 };
 
+export const incrementCurrentStepId = () => ({
+  type: 'INCREMENT_CURRENT_STEP_ID',
+});
+
 export const addIngredient = ingredient => ({
   type: 'ADD_INGREDIENT',
   ingredientId: ingredient.id,

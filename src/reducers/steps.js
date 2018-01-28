@@ -6,12 +6,11 @@ const initialState = {
 const steps = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_STEP':
-      state.steps = [
-        ...state.steps,
-        {
-          id: action.id,
+      state = {
+        ...state,
+        [action.id]: {
         },
-      ];
+      };
       return state;
     case 'ADD_INGREDIENT':
       return {
