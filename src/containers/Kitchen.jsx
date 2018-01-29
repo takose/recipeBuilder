@@ -11,10 +11,10 @@ export default class Kitchen extends React.Component {
         <StepNavigation />
         <div className={styles.kitchen}>
           <div className={styles.stove}>
-            <Step equipmentId={4} />
+            <Step equipmentId="ff" />
           </div>
           <div className={styles.table}>
-            <Step equipmentId={5} />
+            <Step equipmentId="table" />
           </div>
         </div>
       </div>

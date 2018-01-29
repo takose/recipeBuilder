@@ -3,7 +3,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faCoffee from '@fortawesome/fontawesome-free-solid/faHandPointRight';
 import { connect } from 'react-redux';
 import styles from './StepNavigation.scss';
-import { addStep, incrementCurrentStepId, updateIngredientState } from '../actions';
+import { addStep, incrementCurrentStepId, updateIngredientState, addMiddleState } from '../actions';
 
 class StepNavigation extends React.Component {
   render() {
@@ -14,7 +14,11 @@ class StepNavigation extends React.Component {
       null;
     return (
       <div className={styles.stepNavigation}>
-        <button onClick={() => this.props.onNextStepClick(currentIngredientId, currentActionId)}>
+        <button
+          onClick={() => (
+            this.props.onNextStepClick(currentIngredientId, currentToolId, currentActionId)
+          )}
+        >
           Next <FontAwesomeIcon icon={faCoffee} />
         </button>
       </div>
@@ -30,9 +34,13 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onNextStepClick: (currentIngredientId, currentActionId) => {
+  onNextStepClick: (currentIngredientId, currentToolId, currentActionId) => {
     if (currentIngredientId !== undefined && currentActionId !== null) {
       dispatch(updateIngredientState(currentIngredientId, currentActionId));
+    }
+    const WILL_HAVE_MIDDLE_STATE_TOOL_IDS = ['pot'];
+    if (WILL_HAVE_MIDDLE_STATE_TOOL_IDS.includes(currentToolId)) {
+      dispatch(addMiddleState(currentToolId));
     }
     dispatch(addStep());
     dispatch(incrementCurrentStepId());

@@ -5,6 +5,9 @@ import steps from './steps';
 import currentStepId from './currentStepId';
 import equipments from './equipments';
 import actions from './actions';
+import stepPlace from './stepPlace';
+import toolPlace from './toolPlace';
+import middleStates from './middleStates';
 
 const recipeBulder = combineReducers({
   ingredients,
@@ -13,6 +16,9 @@ const recipeBulder = combineReducers({
   currentStepId,
   equipments,
   actions,
+  stepPlace,
+  toolPlace,
+  middleStates,
 });
 
 export default recipeBulder;

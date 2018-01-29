@@ -29,3 +29,8 @@ export const addTool = tool => ({
   actionId: tool.actionId,
   currentStepId,
 });
+
+export const addMiddleState = toolId => ({
+  type: 'ADD_MIDDLE_STATE',
+  toolId,
+});

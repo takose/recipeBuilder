@@ -1,12 +1,8 @@
 const initialState = {
-  ff: {
-    name: 'ff',
-    puttableToolIds: [0, 3],
-  },
-  table: {
-    name: 'table',
-    puttableToolIds: [1, 2],
-  },
+  pot: 'ff',
+  puta: 'table',
+  knife: 'table',
+  hera: 'ff',
 };
 
 const equipments = (state = initialState, action) => {
@@ -17,4 +13,3 @@ const equipments = (state = initialState, action) => {
 };
 
 export default equipments;
-
