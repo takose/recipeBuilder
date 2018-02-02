@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import ingredients from './ingredients';
 import tools from './tools';
 import steps from './steps';
-import currentStepId from './currentStepId';
+import currentStep from './currentStep';
 import equipments from './equipments';
 import actions from './actions';
 import stepPlace from './stepPlace';
@@ -13,7 +13,7 @@ const recipeBulder = combineReducers({
   ingredients,
   tools,
   steps,
-  currentStepId,
+  currentStep,
   equipments,
   actions,
   stepPlace,

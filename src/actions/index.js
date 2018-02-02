@@ -23,11 +23,16 @@ export const addIngredient = ingredient => ({
   currentStepId,
 });
 
-export const addTool = tool => ({
-  type: 'ADD_TOOL',
-  toolId: tool.id,
-  actionId: tool.actionId,
+export const updateTool = (toolIds, actionId) => ({
+  type: 'UPDATE_TOOL',
+  toolIds,
+  actionId,
   currentStepId,
+});
+
+export const updateAction = actionIds => ({
+  type: 'UPDATE_ACTION',
+  actionIds,
 });
 
 export const addMiddleState = toolId => ({
