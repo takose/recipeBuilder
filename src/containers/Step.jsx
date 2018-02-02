@@ -5,44 +5,42 @@ import styles from './Step.scss';
 
 class Step extends React.Component {
   render() {
-    const { ingredients, tools, currentStep, equipments, equipmentId, toolPlace } = this.props;
-    if (toolPlace[currentStep.toolIds[0]] === equipmentId ||
-      (currentStep.toolIds[0] === undefined && equipmentId === 'table')) {
-      const currentTools = tools.map((t) => {
-        if (currentStep.toolIds.includes(t.id)) {
-          return (
-            <img
-              className={styles[`${equipmentId}Tool`]}
-              src={t.image_url}
-              alt="tool"
-            />
-          );
-        }
-        return null;
-      });
-      const ingredient = ingredients.find(i => i.id === currentStep.ingredientId);
-      return (
-        <div className={styles[`${equipmentId}Step`]}>
-          {currentTools}
-          {ingredient != null &&
+    const { ingredients, tools, stepId, steps, equipments, toolPlace, showAction } = this.props;
+    const currentStep = steps[stepId];
+    const currentTools = tools.map((t) => {
+      if (currentStep.toolIds.includes(t.id)) {
+        return (
+          <img
+            className={styles.tool}
+            src={t.image_url}
+            alt="tool"
+          />
+        );
+      }
+      return null;
+    });
+    const ingredient = ingredients.find(i => i.id === currentStep.ingredientId);
+    return (
+      <div className={styles.step}>
+        {currentTools}
+        {ingredient != null &&
+          <div className={styles.ingredient}>
             <Ingredient
               ingredient={ingredient}
-              equipment={equipments[equipmentId]}
+              showAction={showAction}
             />
-          }
-        </div>
-      );
-    }
-    return null;
+          </div>
+        }
+      </div>
+    );
   }
 }
 
 export default connect((state) => {
-  const currentStep = state.steps[state.currentStep.stepId];
   return {
     ingredients: state.ingredients,
     tools: state.tools,
-    currentStep,
+    steps: state.steps,
     equipments: state.equipments,
     toolPlace: state.toolPlace,
   };

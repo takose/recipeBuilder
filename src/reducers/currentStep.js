@@ -1,6 +1,7 @@
 const initialState = {
   stepId: 0,
   actionIds: [],
+  equipmentId: 'ff',
 };
 
 const currentStepId = (state = initialState, action) => {
@@ -14,6 +15,11 @@ const currentStepId = (state = initialState, action) => {
       return {
         ...state,
         actionIds: action.actionIds,
+      };
+    case 'UPDATE_EQUIPMENT_ID':
+      return {
+        ...state,
+        equipmentId: action.equipmentId,
       };
     default:
       return state;

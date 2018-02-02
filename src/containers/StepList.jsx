@@ -1,41 +1,24 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { addStep } from '../actions';
 import styles from './StepList.scss';
+import Step from './Step';
 
 class StepList extends React.Component {
   render() {
-    const steps = this.props.steps.map((step) => {
-      const ingredients = step.ingredients.map(ingredient => (
-        <div className={styles.element}>
-          <img src={ingredient.image_url} alt={ingredient.name} />
-        </div>
-      ));
-      const tools = step.tools.map(tool => (
-        <div className={styles.element}>
-          <img src={tool.image_url} alt={tool.name} />
-        </div>
-      ));
-      return (
+    const { steps } = this.props;
+    const stepList = [];
+    const stepKeys = Object.keys(steps);
+    stepKeys.pop();
+    stepKeys.forEach((key) => {
+      stepList.push(
         <div className={styles.step}>
-          <div className={styles.ingredients}>
-            {ingredients}
-          </div>
-          <div className={styles.tools}>
-            {tools}
-          </div>
+          <Step stepId={key} showAction={false} />
         </div>
       );
     });
     return (
       <div className={styles.stepList}>
-        {steps}
-        <button
-          className={styles.stepAdder}
-          onClick={() => this.props.onStepAddClick()}
-        >
-          +
-        </button>
+        {stepList}
       </div>
     );
   }
@@ -43,6 +26,4 @@ class StepList extends React.Component {
 
 export default connect(state => ({
   steps: state.steps,
-}), {
-  onStepAddClick: addStep,
-})(StepList);
+}))(StepList);

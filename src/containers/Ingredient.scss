@@ -1,39 +1,12 @@
-.stepImageBase {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-}
 .imageBase {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
 }
-.stepIngredientSize {
-  width: 15%;
-  height: 15%;
-}
-
-.ffIngredient {
-  top: 15%;
-  left: 30%;
-  composes: imageBase;
-  composes: stepIngredientSize;
-  composes: stepImageBase;
-}
-
-.tableIngredient {
-  top: 37%;
-  left: 42%;
-  composes: imageBase;
-  composes: stepIngredientSize;
-  composes: stepImageBase;
-}
-
 .ingredient {
   composes: imageBase;
   height: 100%;
 }
-
 .actionImage {
   height: 100%;
 }

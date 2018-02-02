@@ -3,7 +3,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faNext from '@fortawesome/fontawesome-free-solid/faHandPointRight';
 import { connect } from 'react-redux';
 import styles from './StepNavigation.scss';
-import { addStep, incrementCurrentStepId, updateIngredientState, addMiddleState } from '../actions';
+import { addStep, incrementCurrentStepId, updateIngredientState, addMiddleState, updateMergedIngredientState } from '../actions';
 
 class StepNavigation extends React.Component {
   render() {
@@ -42,9 +42,10 @@ const mapDispatchToProps = dispatch => ({
     if (currentIngredientId !== undefined && currentActionId !== null) {
       dispatch(updateIngredientState(currentIngredientId, currentActionId));
     }
-    const WILL_HAVE_MIDDLE_STATE_TOOL_IDS = ['pot'];
-    if (WILL_HAVE_MIDDLE_STATE_TOOL_IDS.includes(currentToolId)) {
+    const WILL_HAVE_MIDDLE_STATE_ACTION_IDS = ['stew', 'stir_fly'];
+    if (WILL_HAVE_MIDDLE_STATE_ACTION_IDS.includes(currentActionId)) {
       dispatch(addMiddleState(currentToolId));
+      dispatch(updateMergedIngredientState(currentIngredientId));
     }
     dispatch(addStep());
     dispatch(incrementCurrentStepId());

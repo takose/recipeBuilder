@@ -35,6 +35,16 @@ export const updateAction = actionIds => ({
   actionIds,
 });
 
+export const updateEquipmentId = equipmentId => ({
+  type: 'UPDATE_EQUIPMENT_ID',
+  equipmentId,
+});
+
+export const updateMergedIngredientState = ingredientId => ({
+  type: 'UPDATE_MERGED_INGREDIENT_STATE',
+  ingredientId,
+});
+
 export const addMiddleState = toolId => ({
   type: 'ADD_MIDDLE_STATE',
   toolId,

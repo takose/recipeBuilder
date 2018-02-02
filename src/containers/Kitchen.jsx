@@ -1,23 +1,33 @@
 import React from 'react';
-import { addStep } from '../actions';
+import { connect } from 'react-redux';
 import styles from './Kitchen.scss';
 import Step from './Step';
 import StepNavigation from '../containers/StepNavigation';
 
-export default class Kitchen extends React.Component {
+class Kitchen extends React.Component {
   render() {
+    const { currentEquipmentId, stepId } = this.props;
     return (
       <div className={styles.kitchenWrapper}>
         <StepNavigation />
         <div className={styles.kitchen}>
           <div className={styles.stove}>
-            <Step equipmentId="ff" />
+            <div className={styles.stoveStep}>
+              { (currentEquipmentId === 'ff') ? <Step stepId={stepId} /> : null }
+            </div>
           </div>
           <div className={styles.table}>
-            <Step equipmentId="table" />
+            <div className={styles.tableStep}>
+              { (currentEquipmentId === 'table') ? <Step stepId={stepId} /> : null }
+            </div>
           </div>
         </div>
       </div>
     );
   }
 }
+
+export default connect(state => ({
+  currentEquipmentId: state.currentStep.equipmentId,
+  stepId: state.currentStep.stepId,
+}))(Kitchen);

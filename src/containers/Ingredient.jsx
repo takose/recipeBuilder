@@ -4,26 +4,31 @@ import styles from './Ingredient.scss';
 
 class Ingredient extends React.Component {
   render() {
-    const { ingredient, equipment, actions } = this.props;
-    const { name } = equipment;
-    const actionImgs = ingredient.addedActionIds.map((actionId) => {
-      const VIEW_ACTION_IDS = [2];
-      if (VIEW_ACTION_IDS.includes(actionId)) {
-        const action = actions.find(a => a.id === actionId);
-        return (
-          <img
-            src={action.imageUrl}
-            className={styles.actionImage}
-            alt="actionImage"
-          />
-        );
-      }
-      return null;
-    });
+    const { ingredient, actions, showAction } = this.props;
+    let actionImgs;
+    if (showAction !== false) {
+      actionImgs = ingredient.addedActionIds.map((actionId) => {
+        const VIEW_ACTION_IDS = ['cut'];
+        if (VIEW_ACTION_IDS.includes(actionId)) {
+          const action = actions.find(a => a.id === actionId);
+          return (
+            <img
+              src={action.imageUrl}
+              className={styles.actionImage}
+              alt="actionImage"
+            />
+          );
+        }
+        return null;
+      });
+    }
     return (
       <div
-        className={name === undefined ? styles.ingredient : styles[`${name}Ingredient`]}
-        style={{ backgroundImage: `url(${ingredient.image_url})` }}
+        className={styles.ingredient}
+        style={{
+          backgroundImage: `url(${ingredient.image_url})`,
+          opacity: (ingredient.merged && showAction !== false) ? 0.5 : 1
+        }}
       >
         {actionImgs}
       </div>

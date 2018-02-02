@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'underscore';
 import { connect } from 'react-redux';
-import { updateTool, updateAction } from '../actions';
+import { updateTool, updateAction, updateEquipmentId } from '../actions';
 import styles from './ToolList.scss';
 
 const ImageButton = ({ tool, onToolClick }) => (
@@ -19,7 +19,7 @@ const ImageButton = ({ tool, onToolClick }) => (
 
 class ToolList extends React.Component {
   render() {
-    const { currentActionIds, currentTools } = this.props;
+    const { currentActionIds, currentTools, toolPlace } = this.props;
     const tools = this.props.tools.map((tool) => {
       const actionIds = currentActionIds.filter((actionId) => {
         return tool.actionIdsToCombine.includes(actionId);
@@ -35,7 +35,7 @@ class ToolList extends React.Component {
         <ImageButton
           key={tool.id}
           tool={tool}
-          onToolClick={() => this.props.onToolClick(newCurrentToolIds, actionId, actionIds)}
+          onToolClick={() => this.props.onToolClick(newCurrentToolIds, actionId, actionIds, toolPlace)}
         />
       );
     });
@@ -51,6 +51,7 @@ const mapStateToProps = (state) => {
   const tools = state.tools.filter(tool => !state.equipments.hasOwnProperty(tool.id));
   return {
     tools,
+    toolPlace: state.toolPlace,
     equipments: state.equipments,
     currentActionIds: state.currentStep.actionIds,
     currentTools: tools.filter((tool) => {
@@ -60,8 +61,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  onToolClick: (toolIds, actionId, actionIds) => {
+  onToolClick: (toolIds, actionId, actionIds, toolPlace) => {
     dispatch(updateAction(actionIds));
+    dispatch(updateEquipmentId(toolPlace[toolIds[0]]));
     dispatch(updateTool(toolIds, actionId));
   },
 });

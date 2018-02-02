@@ -1,5 +1,5 @@
 .kitchenWrapper {
-  height: 70%;
+  height: 50%;
   width: 100%;
 }
 .kitchen {
@@ -24,4 +24,21 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-image: url('http://1.bp.blogspot.com/-5s3fbqTCgCA/Uf8znVbtBqI/AAAAAAAAWto/Ga4uo7-YF7k/s400/ih_konro.png');
+}
+.step {
+  position: relative;
+  height: 50%;
+  width: 50%;
+}
+.tableStep {
+  top: 20%;
+  left: 35%;
+  width: 30%;
+  composes: step;
+}
+.stoveStep {
+  composes: step;
+  bottom: 20%;
+  left: 22%;
+  width: 30%;
 }

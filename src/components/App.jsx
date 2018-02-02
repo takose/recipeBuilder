@@ -3,6 +3,7 @@ import React from 'react';
 import IngredientList from '../containers/IngredientList';
 import ToolList from '../containers/ToolList';
 import Kitchen from '../containers/Kitchen';
+import StepList from '../containers/StepList';
 import styles from './App.scss';
 
 export default class App extends React.Component {
@@ -14,6 +15,7 @@ export default class App extends React.Component {
           <ToolList />
         </div>
         <Kitchen />
+        <StepList className={styles.stepList} />
       </div>
     );
   }

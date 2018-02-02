@@ -79,6 +79,16 @@ const ingredients = (state = initialState, action) => {
         }
         return i;
       });
+    case 'UPDATE_MERGED_INGREDIENT_STATE':
+      return state.map((i) => {
+        if (action.ingredientId === i.id) {
+          return {
+            ...i,
+            merged: true,
+          };
+        }
+        return i;
+      });
     default:
       return state;
   }
