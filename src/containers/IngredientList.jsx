@@ -10,7 +10,11 @@ class IngredientList extends React.Component {
       <button
         className={styles.ingredient}
         key={ingredient.id}
-        onClick={() => this.props.onIngredientClick(ingredient)}
+        onClick={() => {
+          if (ingredient.merged === false) {
+            this.props.onIngredientClick(ingredient);
+          }
+        }}
       >
         <Ingredient
           ingredient={ingredient}
