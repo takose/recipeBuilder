@@ -1,3 +1,4 @@
+import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
 import ingredients from './ingredients';
 import tools from './tools';
@@ -19,6 +20,7 @@ const recipeBulder = combineReducers({
   stepPlace,
   toolPlace,
   middleStates,
+  router: routerReducer,
 });
 
 export default recipeBulder;
