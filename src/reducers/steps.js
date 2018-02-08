@@ -30,6 +30,17 @@ const steps = (state = initialState, action) => {
           actionId: action.actionId,
         },
       };
+    case 'UPDATE_PUTA_OPTION':
+      return {
+        ...state,
+        [action.currentStepId]: {
+          ...state[action.currentStepId],
+          options: {
+            ...state[action.currentStepId].options,
+            puta: action.putaOption,
+          },
+        },
+      };
     default:
       return state;
   }

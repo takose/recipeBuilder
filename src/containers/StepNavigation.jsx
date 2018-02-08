@@ -42,7 +42,7 @@ const mapDispatchToProps = dispatch => ({
     if (currentIngredientId !== undefined && currentActionId !== null) {
       dispatch(updateIngredientState(currentIngredientId, currentActionId));
     }
-    const WILL_HAVE_MIDDLE_STATE_ACTION_IDS = ['stew', 'stir_fly'];
+    const WILL_HAVE_MIDDLE_STATE_ACTION_IDS = ['stew', 'stir_fly', 'put_in', 'measure', 'mix'];
     if (WILL_HAVE_MIDDLE_STATE_ACTION_IDS.includes(currentActionId)) {
       dispatch(addMiddleState(currentToolId));
       dispatch(updateMergedIngredientState(currentIngredientId));

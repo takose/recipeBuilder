@@ -3,6 +3,7 @@ const initialState = {
   puta: 'table',
   knife: 'table',
   hera: 'ff',
+  spoon: 'table',
 };
 
 const equipments = (state = initialState, action) => {

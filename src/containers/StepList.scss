@@ -1,6 +1,7 @@
 .stepList {
   display: flex;
   border-top: solid 1px #ccc;
+  flex-wrap: wrap;
 }
 .element {
   width: 70px;

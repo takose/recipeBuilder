@@ -5,7 +5,7 @@ const initialState = [
     image_url: 'https://i.gyazo.com/9c105ae402046ec683345937b2bd0e9c.png',
     priority: 2,
     actionIds: ['stew', 'stir_fly'],
-    actionIdsToCombine: ['heat', 'put_in', 'mix'],
+    actionIdsToCombine: ['heat', 'put_in', 'mix', 'measure'],
   },
   {
     id: 'puta',
@@ -13,7 +13,7 @@ const initialState = [
     image_url: 'https://i.gyazo.com/687daff4a11f143626c88be14c0d830f.png',
     priority: 1,
     actionIds: ['put_in', 'mix'],
-    actionIdsToCombine: ['stew', 'stir_fly'],
+    actionIdsToCombine: ['stew', 'stir_fly', 'measure'],
   },
   {
     id: 'knife',
@@ -38,6 +38,14 @@ const initialState = [
     priority: 3,
     actionIds: ['heat'],
     toolIdsToCombine: ['put_in', 'mix', 'stew', 'stir_fly'],
+  },
+  {
+    id: 'spoon',
+    name: 'spoon',
+    image_url: 'https://i.gyazo.com/b2c64b9febd54559b4517074d0843686.png',
+    priority: 0,
+    actionIds: ['measure', 'put_in'],
+    actionIdsToCombine: ['heat', 'stew', 'stir_fly', 'mix', 'put_in'],
   },
 ];
 

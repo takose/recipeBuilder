@@ -12,13 +12,13 @@ import App from './components/App';
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
 /* eslint-disable no-underscore-dangle */
-const store = createStore(
-  recipeBuilder,
-  applyMiddleware(middleware),
-);
+const store = createStore(recipeBuilder, composeEnhancers(
+  applyMiddleware(...middleware)
+));
 /* eslint-enable */
 
 const ConnectedSwitch = connect(state => ({

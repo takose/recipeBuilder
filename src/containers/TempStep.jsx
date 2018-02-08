@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Ingredient from './Ingredient';
-import styles from './Step.scss';
+import styles from './TempStep.scss';
 
-class Step extends React.Component {
+class TempStep extends React.Component {
   render() {
     const { ingredients, tools, stepId, steps, equipments, toolPlace } = this.props;
     const currentStep = steps[stepId];
@@ -27,7 +27,6 @@ class Step extends React.Component {
           <div className={styles.ingredient}>
             <Ingredient
               ingredient={ingredient}
-              showAction={false}
             />
           </div>
         }
@@ -44,4 +43,4 @@ export default connect((state) => {
     equipments: state.equipments,
     toolPlace: state.toolPlace,
   };
-})(Step);
+})(TempStep);
