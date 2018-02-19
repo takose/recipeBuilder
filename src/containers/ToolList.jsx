@@ -34,6 +34,11 @@ class ToolList extends React.Component {
     });
     return (
       <div className={styles.toolList}>
+        <img
+          src="https://i.gyazo.com/3ab14d24c3eb95e93518cff1eeac34ef.png"
+          alt=""
+          className={styles.toolImage}
+        />
         {tools}
       </div>
     );

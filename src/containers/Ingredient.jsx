@@ -8,8 +8,8 @@ class Ingredient extends React.Component {
     let actionImgs;
     if (showAction !== false) {
       actionImgs = ingredient.addedActionIds.map((actionId) => {
-        const VIEW_ACTION_IDS = ['cut'];
-        if (VIEW_ACTION_IDS.includes(actionId)) {
+        const SHOW_ACTION_IDS = ['cut'];
+        if (SHOW_ACTION_IDS.includes(actionId)) {
           const action = actions.find(a => a.id === actionId);
           return (
             <img

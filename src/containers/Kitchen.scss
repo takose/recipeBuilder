@@ -23,11 +23,11 @@
   background-size: 70% auto;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url('http://1.bp.blogspot.com/-5s3fbqTCgCA/Uf8znVbtBqI/AAAAAAAAWto/Ga4uo7-YF7k/s400/ih_konro.png');
+  background-image: url('https://i.gyazo.com/e385648bd7cfbf0cea6fb27a911e7fef.png');
 }
 .step {
   position: relative;
-  height: 50%;
+  height: 60%;
   width: 50%;
 }
 .tableStep {
@@ -38,7 +38,7 @@
 }
 .stoveStep {
   composes: step;
-  bottom: 16%;
-  left: 22.5%;
-  width: 60%;
+  bottom: 0;
+  left: 17.5%;
+  width: 70%;
 }

@@ -4,18 +4,21 @@
   height: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  border-right: solid 1px #ccc;
+  border-bottom: solid 1px #ccc;
   align-items: center;
-}
-
-.ingredientImage {
-  height: 100%;
+  background-color: #A15E49;
 }
 
 .ingredient {
-  border: solid 1px #EECB6D;
-  border-radius: 3px;
-  height: 40%;
-  width: 150px;
+  margin-right: 10px;
+  border: solid 1px #fff;
+  border-radius: 2px;
+  background-color: #fcfcfc;
+  height: 50px;
+  width: 50px;
+}
+
+.ingredientImage {
+  width: 60px;
+  margin-right: 20px;
 }
