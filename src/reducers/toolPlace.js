@@ -2,7 +2,7 @@ const initialState = {
   pot: 'ff',
   puta: 'table',
   knife: 'table',
-  hera: 'ff',
+  hashi: 'ff',
   spoon: 'table',
 };
 

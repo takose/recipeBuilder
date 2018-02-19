@@ -22,7 +22,7 @@ const initialState = [
   {
     id: 'cut',
     name: 'cut',
-    imageUrl: 'https://i.gyazo.com/31e4f1afcfcb9ea472b5ab0ab58b5f7e.png',
+    imageUrl: 'https://i.gyazo.com/f8b49fdd173db15a29af39a83ec4b6be.png',
   },
   {
     id: 'mix',

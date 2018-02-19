@@ -2,7 +2,7 @@ const initialState = [
   {
     id: 'pot',
     name: 'pot',
-    image_url: 'https://i.gyazo.com/9c105ae402046ec683345937b2bd0e9c.png',
+    image_url: 'https://i.gyazo.com/47ef16ca91d585281fcbeebc815d5b63.png',
     priority: 2,
     actionIds: ['stew', 'stir_fly'],
     actionIdsToCombine: ['heat', 'put_in', 'mix', 'measure'],
@@ -10,7 +10,7 @@ const initialState = [
   {
     id: 'puta',
     name: 'puta',
-    image_url: 'https://i.gyazo.com/687daff4a11f143626c88be14c0d830f.png',
+    image_url: 'https://i.gyazo.com/d4adde7c55946e18265f187bf1d0ac57.png',
     priority: 1,
     actionIds: ['put_in', 'mix'],
     actionIdsToCombine: ['stew', 'stir_fly', 'measure'],
@@ -18,15 +18,15 @@ const initialState = [
   {
     id: 'knife',
     name: 'knife',
-    image_url: 'https://i.gyazo.com/320f48fe6f67a2c84a1a318b3781b704.png',
+    image_url: 'https://i.gyazo.com/bcec541a644661450688c5c4d7113d6f.png',
     priority: 1,
     actionIds: ['cut'],
     actionIdsToCombine: [],
   },
   {
-    id: 'hera',
-    name: 'hera',
-    image_url: 'https://i.gyazo.com/48cf56673614ab7c1db71f1a3ef2920e.png',
+    id: 'hashi',
+    name: 'hashi',
+    image_url: 'https://i.gyazo.com/b248adbf5ea3b9e60be5845fba27c560.png',
     priority: 1,
     actionIds: ['mix'],
     actionIdsToCombine: ['stew', 'stir_fly'],
@@ -42,7 +42,7 @@ const initialState = [
   {
     id: 'spoon',
     name: 'spoon',
-    image_url: 'https://i.gyazo.com/b2c64b9febd54559b4517074d0843686.png',
+    image_url: 'https://i.gyazo.com/02aace8e39487667f4ac90aa8858f690.png',
     priority: 0,
     actionIds: ['measure', 'put_in'],
     actionIdsToCombine: ['heat', 'stew', 'stir_fly', 'mix', 'put_in'],

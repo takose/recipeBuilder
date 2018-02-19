@@ -1,22 +1,22 @@
 const initialState = [
   {
-    id: 'cauliflower',
-    name: 'cauliflower',
-    image_url: 'http://4.bp.blogspot.com/-A5NNn8q2w28/UkJMp4-YKgI/AAAAAAAAYQ8/YR5TvsY3POg/s400/cauliflower.png',
+    id: 'potato',
+    name: 'potato',
+    image_url: 'https://i.gyazo.com/8b5ab3529147603b25b5320266daed8b.png',
     merged: false,
     addedActionIds: [],
   },
   {
     id: 'onion',
     name: 'onion',
-    image_url: 'http://3.bp.blogspot.com/-SDkR2b5YQec/UkJNENH-daI/AAAAAAAAYYE/fZCzG5KG9I4/s400/tamanegi_onion.png',
+    image_url: 'https://i.gyazo.com/7b16d7abbe17437a993bfa73783ba111.png',
     merged: false,
     addedActionIds: [],
   },
   {
     id: 'chicken',
     name: 'chicken',
-    image_url: 'https://2.bp.blogspot.com/-OPMQ6Nodeao/U2srxvijNNI/AAAAAAAAf4I/OPmSGh_x_nA/s400/niku_tori.png',
+    image_url: 'https://i.gyazo.com/8dd77c1de414a5a2598cfb420b90c00d.png',
     merged: false,
     addedActionIds: [],
   },
