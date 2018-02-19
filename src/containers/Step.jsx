@@ -7,30 +7,38 @@ class Step extends React.Component {
   render() {
     const { ingredients, tools, stepId, steps, equipments, toolPlace } = this.props;
     const currentStep = steps[stepId];
-    const currentTools = tools.map((t) => {
-      if (currentStep.toolIds.includes(t.id)) {
-        return (
-          <img
-            className={styles.tool}
-            src={t.image_url}
-            alt="tool"
-          />
-        );
-      }
-      return null;
-    });
+    const currentTools = currentStep.toolIds.length > 0 &&
+      tools.map((t) => {
+        if (currentStep.toolIds.includes(t.id)) {
+          return (
+            <div
+              className={styles.tool}
+              style={{
+                backgroundImage: `url(${t.image_url})`,
+              }}
+              src={t.image_url}
+              alt="tool"
+            />
+          );
+        }
+        return null;
+      });
     const ingredient = ingredients.find(i => i.id === currentStep.ingredientId);
     return (
       <div className={styles.step}>
-        {currentTools}
-        {ingredient != null &&
-          <div className={styles.ingredient}>
-            <Ingredient
-              ingredient={ingredient}
-              showAction={false}
-            />
-          </div>
-        }
+        <div className={styles.tools}>
+          {currentTools}
+        </div>
+        <div className={styles.ingredients}>
+          {ingredient != null &&
+            <div className={styles.ingredient}>
+              <Ingredient
+                ingredient={ingredient}
+                showAction={false}
+              />
+            </div>
+          }
+        </div>
       </div>
     );
   }

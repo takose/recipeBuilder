@@ -25,7 +25,7 @@ class IngredientList extends React.Component {
     return (
       <div className={styles.ingredientList}>
         <img
-          src="https://i.gyazo.com/703b9a16e0c72bc292c3b0fbb95e3a8a.png"
+          src="https://i.gyazo.com/eb9fe663c24ef82dcf05ebd910ae1b78.png"
           alt=""
           className={styles.ingredientImage}
         />

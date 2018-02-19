@@ -1,15 +1,15 @@
 import React from 'react';
 import _ from 'underscore';
 import { connect } from 'react-redux';
-import { updateTool, updateAction, updateEquipmentId } from '../actions';
+import { updateTool, updateAction } from '../actions';
 import styles from './ToolList.scss';
 import Tool from './Tool';
 
 
 class ToolList extends React.Component {
   render() {
-    const { currentActionIds, currentTools, toolPlace } = this.props;
-    const tools = this.props.tools.map((tool) => {
+    const { currentActionIds, currentTools, toolPlace, tools } = this.props;
+    const toolList = tools.map((tool) => {
       const actionIds = currentActionIds.filter((actionId) => {
         return tool.actionIdsToCombine.includes(actionId);
       });
@@ -39,29 +39,26 @@ class ToolList extends React.Component {
           alt=""
           className={styles.toolImage}
         />
-        {tools}
+        {toolList}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  const tools = state.tools.filter(tool => !state.equipments.hasOwnProperty(tool.id));
   return {
-    tools,
-    toolPlace: state.toolPlace,
+    tools: state.tools,
     equipments: state.equipments,
     currentActionIds: state.currentStep.actionIds,
-    currentTools: tools.filter((tool) => {
+    currentTools: state.tools.filter((tool) => {
       return state.steps[state.currentStep.stepId].toolIds.includes(tool.id);
     }),
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  onToolClick: (toolIds, actionId, actionIds, toolPlace) => {
+  onToolClick: (toolIds, actionId, actionIds) => {
     dispatch(updateAction(actionIds));
-    dispatch(updateEquipmentId(toolPlace[toolIds[0]]));
     dispatch(updateTool(toolIds, actionId));
   },
 });

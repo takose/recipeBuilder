@@ -2,8 +2,9 @@ import 'normalize.css';
 import React from 'react';
 import IngredientList from '../containers/IngredientList';
 import ToolList from '../containers/ToolList';
-import Kitchen from '../containers/Kitchen';
+import StepWrapper from '../containers/StepWrapper';
 import StepList from '../containers/StepList';
+import StepNavigation from '../containers/StepNavigation';
 import styles from './App.scss';
 
 export default class App extends React.Component {
@@ -12,10 +13,11 @@ export default class App extends React.Component {
       <div className={styles.root}>
         <div className={styles.workspace}>
           <div className={styles.toolBar}>
-            <IngredientList />
             <ToolList />
+            <IngredientList />
           </div>
-          <Kitchen />
+          <StepNavigation />
+          <StepWrapper />
         </div>
         <StepList className={styles.stepList} />
       </div>

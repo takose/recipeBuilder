@@ -16,6 +16,10 @@
   background-color: #fcfcfc;
   height: 50px;
   width: 50px;
+  transition: all 300ms 0s ease;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .ingredientImage {

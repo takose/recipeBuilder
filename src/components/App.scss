@@ -18,12 +18,10 @@ button {
 .workspace {
   width: 50%;
   border-right: solid 1px #ccc;
+  display: flex;
+  flex-direction: column;
 }
 
 .toolBar {
   width: 100%;
-}
-
-.stepList {
-  height: 20%;
 }
