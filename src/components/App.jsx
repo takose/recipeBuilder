@@ -10,11 +10,13 @@ export default class App extends React.Component {
   render() {
     return (
       <div className={styles.root}>
-        <div className={styles.toolBar}>
-          <IngredientList />
-          <ToolList />
+        <div className={styles.workspace}>
+          <div className={styles.toolBar}>
+            <IngredientList />
+            <ToolList />
+          </div>
+          <Kitchen />
         </div>
-        <Kitchen />
         <StepList className={styles.stepList} />
       </div>
     );

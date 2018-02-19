@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faNext from '@fortawesome/fontawesome-free-solid/faHandPointRight';
+import faCheck from '@fortawesome/fontawesome-free-solid/faCheck';
 import { connect } from 'react-redux';
 import styles from './StepNavigation.scss';
 import { addStep, incrementCurrentStepId, updateIngredientState, addMiddleState, updateMergedIngredientState } from '../actions';
@@ -22,7 +22,7 @@ class StepNavigation extends React.Component {
             this.props.onNextStepClick(currentIngredientId, currentToolId, currentActionId)
           )}
         >
-          Next <FontAwesomeIcon icon={faNext} />
+          <FontAwesomeIcon icon={faCheck} /> Next Step
         </button>
       </div>
     );
