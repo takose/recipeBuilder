@@ -3,19 +3,8 @@ import _ from 'underscore';
 import { connect } from 'react-redux';
 import { updateTool, updateAction, updateEquipmentId } from '../actions';
 import styles from './ToolList.scss';
+import Tool from './Tool';
 
-const ImageButton = ({ tool, onToolClick }) => (
-  <button
-    className={styles.tool}
-    onClick={() => onToolClick(tool)}
-  >
-    <img
-      className={styles.toolImage}
-      src={tool.image_url}
-      alt={tool.name}
-    />
-  </button>
-);
 
 class ToolList extends React.Component {
   render() {
@@ -32,11 +21,15 @@ class ToolList extends React.Component {
       newCurrentToolIds.push(tool.id);
       const actionId = actionIds[0];
       return (
-        <ImageButton
-          key={tool.id}
-          tool={tool}
-          onToolClick={() => this.props.onToolClick(newCurrentToolIds, actionId, actionIds, toolPlace)}
-        />
+        <button
+          className={styles.toolButton}
+          onClick={() => this.props.onToolClick(newCurrentToolIds, actionId, actionIds, toolPlace)}
+        >
+          <Tool
+            key={tool.id}
+            toolId={tool.id}
+          />
+        </button>
       );
     });
     return (
