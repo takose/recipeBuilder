@@ -1,6 +1,7 @@
 const initialState = {
   0: {
     toolIds: [],
+    actionId: '',
   },
 };
 
@@ -11,6 +12,7 @@ const steps = (state = initialState, action) => {
         ...state,
         [action.id]: {
           toolIds: [],
+          actionId: '',
         },
       };
     case 'ADD_INGREDIENT':

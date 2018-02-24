@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'underscore';
 import Ingredient from './Ingredient';
 import styles from './TempStep.scss';
-import OptionPuta from './OptionPuta';
-import OptionSmoon from './OptionSmoon';
+import Description from './Description';
 
 class TempStep extends React.Component {
   render() {
@@ -35,6 +34,7 @@ class TempStep extends React.Component {
           <Ingredient ingredient={ingredient} showAction={false} />
         </div>
       ) : <div className={styles.emptyIngredient} />;
+
     return (
       <div className={styles.step}>
         <div className={styles.tools}>
@@ -43,18 +43,7 @@ class TempStep extends React.Component {
         <div className={styles.ingredients}>
           {ingredientDom}
         </div>
-        {_.isEqual(currentStep.toolIds, ['pot', 'puta']) ?
-          <div className={styles.options}>
-            <OptionPuta stepId={stepId} />
-          </div>
-          : null
-        }
-        {currentStep.toolIds.includes('spoon') ?
-          <div className={styles.options}>
-            <OptionSmoon stepId={stepId} />
-          </div>
-          : null
-        }
+        <Description />
       </div>
     );
   }

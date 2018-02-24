@@ -1,13 +1,15 @@
-.optionPuta {
-  width: 210px;
-  background-color: cornsilk;
-  border: solid 1px bisque;
+.option {
+  width: fit-content;
   border-radius: 3px;
   padding: 10px;
 }
-.label input {
+input[type=text] {
   width: 50px;
   margin: 0 5px 10px;
+}
+.form {
+  margin: 0 auto;
+  width: fit-content;
 }
 .submit {
   background: none;

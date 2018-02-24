@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updatePutaOption } from '../actions';
-import styles from './OptionPuta.scss';
+import styles from './Option.scss';
 
 class OptionPuta extends React.Component {
   render() {
     const { onSubmit } = this.props;
     return (
-      <div className={styles.optionPuta}>
+      <div className={styles.option}>
         <form onSubmit={onSubmit}>
           <label className={styles.label}>
             1つめ:

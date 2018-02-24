@@ -1,7 +1,7 @@
 const initialState = [
   {
-    id: 'spoon',
-    name: 'spoon',
+    id: 'smoon',
+    name: 'smoon',
     image_url: 'https://i.gyazo.com/d64e335c472a6fb59842f36f012c1293.png',
     priority: 0,
     actionIds: ['measure', 'put_in'],
