@@ -32,6 +32,7 @@ class TempStep extends React.Component {
           style={{
             backgroundImage: "url('https://i.gyazo.com/5491ce24a2df9e79f48f5bab25f0a082.png')",
             height: '50%',
+            width: '100%',
           }}
         />
       );
@@ -54,6 +55,7 @@ class TempStep extends React.Component {
               style={{
                 backgroundImage: "url('https://i.gyazo.com/8d2105d58afc3c850accb43630c7c63f.png')",
                 height: '50%',
+                width: '100%',
               }}
             />
           }

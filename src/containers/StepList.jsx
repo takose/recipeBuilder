@@ -15,8 +15,11 @@ class StepList extends React.Component {
       );
     });
     return (
-      <div className={styles.stepList}>
-        {stepList}
+      <div className={styles.stepListWrapper}>
+        <h1>Directions</h1>
+        <div className={styles.stepList}>
+          {stepList}
+        </div>
       </div>
     );
   }
