@@ -22,11 +22,11 @@ class ToolList extends React.Component {
       const actionId = actionIds[0];
       return (
         <button
+          key={tool.id}
           className={styles.toolButton}
           onClick={() => this.props.onToolClick(newCurrentToolIds, actionId, actionIds, toolPlace)}
         >
           <Tool
-            key={tool.id}
             toolId={tool.id}
           />
         </button>

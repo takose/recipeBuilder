@@ -15,10 +15,9 @@ class TempStep extends React.Component {
         if (currentStep.toolIds.includes(t.id)) {
           return (
             <div
+              key={t.id}
               className={styles.tool}
-              style={{
-                backgroundImage: `url(${t.image_url})`,
-              }}
+              style={{ backgroundImage: `url(${t.image_url})`, }}
               src={t.image_url}
               alt="tool"
             />
@@ -27,38 +26,22 @@ class TempStep extends React.Component {
         return null;
       }) :
       (
-        <div
-          className={styles.tool}
-          style={{
-            backgroundImage: "url('https://i.gyazo.com/5491ce24a2df9e79f48f5bab25f0a082.png')",
-            height: '50%',
-            width: '100%',
-          }}
-        />
+        <div className={styles.emptyTool} />
       );
     const ingredient = ingredients.find(i => i.id === currentStep.ingredientId);
+    const ingredientDom = ingredient !== undefined ?
+      (
+        <div className={styles.ingredient}>
+          <Ingredient ingredient={ingredient} showAction={false} />
+        </div>
+      ) : <div className={styles.emptyIngredient} />;
     return (
       <div className={styles.step}>
         <div className={styles.tools}>
           {currentTools}
         </div>
         <div className={styles.ingredients}>
-          {ingredient !== undefined ?
-            <div className={styles.ingredient}>
-              <Ingredient
-                ingredient={ingredient}
-                showAction={false}
-              />
-            </div> :
-            <div
-              className={styles.ingredient}
-              style={{
-                backgroundImage: "url('https://i.gyazo.com/8d2105d58afc3c850accb43630c7c63f.png')",
-                height: '50%',
-                width: '100%',
-              }}
-            />
-          }
+          {ingredientDom}
         </div>
         {_.isEqual(currentStep.toolIds, ['pot', 'puta']) ?
           <div className={styles.options}>

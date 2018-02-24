@@ -13,6 +13,7 @@ class Step extends React.Component {
           return (
             <div
               className={styles.tool}
+              key={t.id}
               style={{
                 backgroundImage: `url(${t.image_url})`,
               }}
@@ -33,6 +34,7 @@ class Step extends React.Component {
           {ingredient != null &&
             <div className={styles.ingredient}>
               <Ingredient
+                key={ingredient.id}
                 ingredient={ingredient}
                 showAction={false}
               />

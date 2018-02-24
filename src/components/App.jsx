@@ -19,7 +19,7 @@ export default class App extends React.Component {
           <StepNavigation />
           <StepWrapper />
         </div>
-        <StepList className={styles.stepList} />
+        <StepList />
       </div>
     );
   }

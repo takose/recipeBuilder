@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faCheck from '@fortawesome/fontawesome-free-solid/faCheck';
 import { connect } from 'react-redux';
@@ -10,9 +11,7 @@ class StepNavigation extends React.Component {
     const {
       currentIngredientId,
       currentToolId,
-      actions,
-      tools,
-      currentActionId
+      currentActionId,
     } = this.props;
 
     return (
@@ -29,11 +28,22 @@ class StepNavigation extends React.Component {
   }
 }
 
+StepNavigation.propTypes = {
+  currentToolId: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onNextStepClick: PropTypes.func.isRequired,
+  currentActionId: PropTypes.string,
+  currentIngredientId: PropTypes.string,
+};
+
+StepNavigation.defaultProps = {
+  currentActionId: undefined,
+  currentIngredientId: undefined,
+}
+
 const mapStateToProps = state => ({
   currentIngredientId: state.steps[state.currentStep.stepId].ingredientId,
   currentToolId: state.steps[state.currentStep.stepId].toolIds,
   currentActionId: state.steps[state.currentStep.stepId].actionId,
-  tools: state.tools,
   actions: state.actions,
 });
 

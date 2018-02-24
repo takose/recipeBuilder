@@ -10,9 +10,7 @@ class StepList extends React.Component {
     const stepKeys = Object.keys(steps);
     stepKeys.pop();
     stepKeys.forEach((key) => {
-      stepList.push(
-        <Step stepId={key} showAction={false} />
-      );
+      stepList.push(<Step key={key} stepId={key} showAction={false} />);
     });
     return (
       <div className={styles.stepListWrapper}>
