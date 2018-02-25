@@ -1,36 +1,8 @@
-import React from 'react';
-import _ from 'underscore';
 import { connect } from 'react-redux';
 import { updateTool, updateAction } from '../actions';
 import styles from './ToolList.scss';
 import Tool from './Tool';
-
-function ListFactory(ItemComponent, { listClassName, imageClassName, imageUrl }) {
-  return ({ currentActionIds, currentItemIds, items, actions, onClick }) => {
-    const listItems = items.map(item => (
-      <ItemComponent
-        {...{
-          item,
-          currentActionIds,
-          currentItemIds,
-          actions,
-          onClick,
-        }}
-      />
-    ));
-
-    return (
-      <div className={listClassName}>
-        <img
-          src={imageUrl}
-          alt=""
-          className={imageClassName}
-        />
-        {listItems}
-      </div>
-    );
-  };
-}
+import ListFactory from './ListFactory';
 
 const mapStateToProps = state => ({
   items: state.tools,
@@ -45,7 +17,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(updateTool(toolIds));
   },
 });
-
 
 const ToolList = ListFactory(
   Tool,
