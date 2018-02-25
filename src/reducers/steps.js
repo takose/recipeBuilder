@@ -1,6 +1,7 @@
 const initialState = {
   0: {
     toolIds: [],
+    ingredientIds: [],
     actionId: '',
   },
 };
@@ -12,15 +13,16 @@ const steps = (state = initialState, action) => {
         ...state,
         [action.id]: {
           toolIds: [],
+          ingredientIds: [],
           actionId: '',
         },
       };
-    case 'ADD_INGREDIENT':
+    case 'UPDATE_INGREDIENT':
       return {
         ...state,
         [action.currentStepId]: {
           ...state[action.currentStepId],
-          ingredientId: action.ingredientId,
+          ingredientIds: action.ingredientIds,
         },
       };
     case 'UPDATE_TOOL':

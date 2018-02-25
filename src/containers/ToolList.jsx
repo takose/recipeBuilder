@@ -5,93 +5,54 @@ import { updateTool, updateAction } from '../actions';
 import styles from './ToolList.scss';
 import Tool from './Tool';
 
-
-class ToolList extends React.Component {
-  render() {
-    const { currentActionIds, currentTools, tools, actions } = this.props;
-
-    const toolList = tools.map((tool) => {
-      const isUsed = currentTools.find(cTool => cTool.id === tool.id) !== undefined;
-      const currentToolIds = _.pluck(currentTools, 'id');
-      if (isUsed) {
-        const newCurrentToolIds = currentToolIds.filter(id => id !== tool.id);
-        const newActionIds = actions.filter((action) => {
-          return _.intersection(action.toolIds, newCurrentToolIds).length === newCurrentToolIds;
-        });
-        return (
-          <button
-            key={tool.id}
-            className={styles.toolButtonUsed}
-            onClick={() => this.props.onToolClick(newCurrentToolIds, newActionIds)}
-          >
-            <Tool
-              toolId={tool.id}
-            />
-          </button>
-        );
-      }
-
-      const newCurrentToolIds = [...currentToolIds, tool.id];
-      const newActionIds = actions.filter((action) => {
-        return _.intersection(action.toolIds, newCurrentToolIds).length === newCurrentToolIds.length;
-      });
-
-      if (currentTools.length !== 0 && newActionIds.length === 0) {
-        return (
-          <button
-            key={tool.id}
-            className={styles.toolButtonInactive}
-          >
-            <Tool
-              toolId={tool.id}
-            />
-          </button>
-        );
-      }
-
-      return (
-        <button
-          key={tool.id}
-          className={styles.toolButton}
-          onClick={() => this.props.onToolClick(newCurrentToolIds, newActionIds)}
-        >
-          <Tool
-            toolId={tool.id}
-          />
-        </button>
-      );
-    });
+function ListFactory(ItemComponent, { listClassName, imageClassName, imageUrl }) {
+  return ({ currentActionIds, currentItemIds, items, actions, onClick }) => {
+    const listItems = items.map(item => (
+      <ItemComponent
+        {...{
+          item,
+          currentActionIds,
+          currentItemIds,
+          actions,
+          onClick,
+        }}
+      />
+    ));
 
     return (
-      <div className={styles.toolList}>
+      <div className={listClassName}>
         <img
-          src="https://i.gyazo.com/3ab14d24c3eb95e93518cff1eeac34ef.png"
+          src={imageUrl}
           alt=""
-          className={styles.toolImage}
+          className={imageClassName}
         />
-        {toolList}
+        {listItems}
       </div>
     );
-  }
+  };
 }
 
-const mapStateToProps = (state) => {
-  return {
-    tools: state.tools,
-    actions: state.actions,
-    equipments: state.equipments,
-    currentActionIds: state.currentStep.actionIds,
-    currentTools: state.tools.filter((tool) => {
-      return state.steps[state.currentStep.stepId].toolIds.includes(tool.id);
-    }),
-  };
-};
+const mapStateToProps = state => ({
+  items: state.tools,
+  actions: state.actions,
+  currentActionIds: state.currentStep.actionIds,
+  currentItemIds: state.steps[state.currentStep.stepId].toolIds,
+});
 
 const mapDispatchToProps = dispatch => ({
-  onToolClick: (toolIds, actionIds) => {
+  onClick: (toolIds, actionIds) => {
     dispatch(updateAction(actionIds));
     dispatch(updateTool(toolIds));
   },
 });
 
+
+const ToolList = ListFactory(
+  Tool,
+  {
+    listClassName: styles.toolList,
+    imageClassName: styles.toolImage,
+    imageUrl: 'https://i.gyazo.com/3ab14d24c3eb95e93518cff1eeac34ef.png',
+  },
+);
 export default connect(mapStateToProps, mapDispatchToProps)(ToolList);

@@ -21,6 +21,17 @@
   }
 }
 
+.ingredientButtonInactive {
+  composes: ingredient;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.ingredientButtonUsed {
+  composes: ingredient;
+  background-color: #ccc;
+}
+
 .ingredientImage {
   width: 60px;
   margin-right: 20px;

@@ -27,13 +27,20 @@ class TempStep extends React.Component {
       (
         <div className={styles.emptyTool} />
       );
-    const ingredient = ingredients.find(i => i.id === currentStep.ingredientId);
-    const ingredientDom = ingredient !== undefined ?
+    const currentIngredients = currentStep.ingredientIds.length > 0 ?
+      ingredients.map((i) => {
+        if (currentStep.ingredientIds.includes(i.id)) {
+          return (
+            <div className={styles.ingredient} key={i.id}>
+              <Ingredient ingredient={i} showAction={false} />
+            </div>
+          );
+        }
+        return null;
+      }) :
       (
-        <div className={styles.ingredient}>
-          <Ingredient ingredient={ingredient} showAction={false} />
-        </div>
-      ) : <div className={styles.emptyIngredient} />;
+        <div className={styles.emptyIngredient} />
+      );
 
     return (
       <div className={styles.stepWrapper}>
@@ -45,7 +52,7 @@ class TempStep extends React.Component {
             {currentTools}
           </div>
           <div className={styles.ingredients}>
-            {ingredientDom}
+            {currentIngredients}
           </div>
           <Description />
         </div>

@@ -17,16 +17,15 @@ export const incrementCurrentStepId = () => ({
   type: 'INCREMENT_CURRENT_STEP_ID',
 });
 
-export const addIngredient = ingredient => ({
-  type: 'ADD_INGREDIENT',
-  ingredientId: ingredient.id,
+export const updateIngredient = ingredientIds => ({
+  type: 'UPDATE_INGREDIENT',
+  ingredientIds,
   currentStepId,
 });
 
-export const updateTool = (toolIds, actionId) => ({
+export const updateTool = toolIds => ({
   type: 'UPDATE_TOOL',
   toolIds,
-  actionId,
   currentStepId,
 });
 
