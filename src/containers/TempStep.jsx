@@ -7,7 +7,7 @@ import Description from './Description';
 
 class TempStep extends React.Component {
   render() {
-    const { ingredients, tools, stepId, steps, equipments, toolPlace } = this.props;
+    const { ingredients, tools, stepId, steps, equipments, toolPlace, currentActionNames } = this.props;
     const currentStep = steps[stepId];
     const currentTools = currentStep.toolIds.length > 0 ?
       tools.map((t) => {
@@ -36,14 +36,19 @@ class TempStep extends React.Component {
       ) : <div className={styles.emptyIngredient} />;
 
     return (
-      <div className={styles.step}>
-        <div className={styles.tools}>
-          {currentTools}
+      <div className={styles.stepWrapper}>
+        <div className={styles.actionName}>
+          {currentActionNames}
         </div>
-        <div className={styles.ingredients}>
-          {ingredientDom}
+        <div className={styles.step}>
+          <div className={styles.tools}>
+            {currentTools}
+          </div>
+          <div className={styles.ingredients}>
+            {ingredientDom}
+          </div>
+          <Description />
         </div>
-        <Description />
       </div>
     );
   }
@@ -51,6 +56,7 @@ class TempStep extends React.Component {
 
 export default connect((state) => {
   return {
+    currentActionNames: _.pluck(state.currentStep.actionIds, 'name_ja'),
     ingredients: state.ingredients,
     tools: state.tools,
     steps: state.steps,

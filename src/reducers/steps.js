@@ -29,7 +29,6 @@ const steps = (state = initialState, action) => {
         [action.currentStepId]: {
           ...state[action.currentStepId],
           toolIds: action.toolIds,
-          actionId: action.actionId,
         },
       };
     case 'UPDATE_PUTA_OPTION':

@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faCheck from '@fortawesome/fontawesome-free-solid/faCheck';
 import { updatePutaOption } from '../actions';
 import styles from './Option.scss';
 
@@ -11,8 +13,6 @@ class OptionPuta extends React.Component {
         <form onSubmit={onSubmit} className={styles.form}>
           <input type="text" name="name" />
           CC
-          <br />
-          <input className={styles.submit} type="submit" value="けってい" />
         </form>
       </div>
     );

@@ -8,23 +8,52 @@ import Tool from './Tool';
 
 class ToolList extends React.Component {
   render() {
-    const { currentActionIds, currentTools, toolPlace, tools } = this.props;
+    const { currentActionIds, currentTools, tools, actions } = this.props;
+
     const toolList = tools.map((tool) => {
-      const actionIds = currentActionIds.filter((actionId) => {
-        return tool.actionIdsToCombine.includes(actionId);
+      const isUsed = currentTools.find(cTool => cTool.id === tool.id) !== undefined;
+      const currentToolIds = _.pluck(currentTools, 'id');
+      if (isUsed) {
+        const newCurrentToolIds = currentToolIds.filter(id => id !== tool.id);
+        const newActionIds = actions.filter((action) => {
+          return _.intersection(action.toolIds, newCurrentToolIds).length === newCurrentToolIds;
+        });
+        return (
+          <button
+            key={tool.id}
+            className={styles.toolButtonUsed}
+            onClick={() => this.props.onToolClick(newCurrentToolIds, newActionIds)}
+          >
+            <Tool
+              toolId={tool.id}
+            />
+          </button>
+        );
+      }
+
+      const newCurrentToolIds = [...currentToolIds, tool.id];
+      const newActionIds = actions.filter((action) => {
+        return _.intersection(action.toolIds, newCurrentToolIds).length === newCurrentToolIds.length;
       });
-      actionIds.push(tool.actionIds[0]);
-      const newCurrentToolIds = _.pluck(currentTools.filter((t) => {
-        return _.intersection(t.actionIds, actionIds).length > 0 &&
-        t.priority !== tool.priority;
-      }), 'id');
-      newCurrentToolIds.push(tool.id);
-      const actionId = actionIds[0];
+
+      if (currentTools.length !== 0 && newActionIds.length === 0) {
+        return (
+          <button
+            key={tool.id}
+            className={styles.toolButtonInactive}
+          >
+            <Tool
+              toolId={tool.id}
+            />
+          </button>
+        );
+      }
+
       return (
         <button
           key={tool.id}
           className={styles.toolButton}
-          onClick={() => this.props.onToolClick(newCurrentToolIds, actionId, actionIds, toolPlace)}
+          onClick={() => this.props.onToolClick(newCurrentToolIds, newActionIds)}
         >
           <Tool
             toolId={tool.id}
@@ -32,6 +61,7 @@ class ToolList extends React.Component {
         </button>
       );
     });
+
     return (
       <div className={styles.toolList}>
         <img
@@ -48,6 +78,7 @@ class ToolList extends React.Component {
 const mapStateToProps = (state) => {
   return {
     tools: state.tools,
+    actions: state.actions,
     equipments: state.equipments,
     currentActionIds: state.currentStep.actionIds,
     currentTools: state.tools.filter((tool) => {
@@ -57,9 +88,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  onToolClick: (toolIds, actionId, actionIds) => {
+  onToolClick: (toolIds, actionIds) => {
     dispatch(updateAction(actionIds));
-    dispatch(updateTool(toolIds, actionId));
+    dispatch(updateTool(toolIds));
   },
 });
 

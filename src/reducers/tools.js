@@ -20,7 +20,7 @@ const initialState = [
     name: 'puta',
     image_url: 'https://i.gyazo.com/ec6a135068bd17d1d6131c0e5e426dbc.png',
     priority: 1,
-    actionIds: ['put_in', 'mix'],
+    actionIds: ['pour', 'mix'],
     actionIdsToCombine: ['stew', 'stir_fly', 'measure'],
   },
   {
