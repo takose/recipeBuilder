@@ -26,4 +26,3 @@ export default function ListFactory(ItemComponent, { listClassName, imageClassNa
     );
   };
 }
-

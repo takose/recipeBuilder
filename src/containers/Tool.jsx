@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'underscore';
-import styles from './ToolList.scss';
+import styles from './Tool.scss';
 import ToolImage from './ToolImage';
 
 
@@ -23,44 +23,34 @@ class Tool extends React.Component {
       actions,
     } = this.props;
     const isUsed = currentItemIds.find(id => id === item.id) !== undefined;
+    let newCurrentToolIds;
+    let newActionIds;
+    let className;
+    let onClick;
     if (isUsed) {
-      const newCurrentToolIds = currentItemIds.filter(id => id !== item.id);
-      const newActionIds = _.pluck(actions.filter(action => (
+      newCurrentToolIds = currentItemIds.filter(id => id !== item.id);
+      newActionIds = _.pluck(actions.filter(action => (
         _.intersection(action.toolIds, newCurrentToolIds).length === newCurrentToolIds.length
       )), 'id');
-      return (
-        <button
-          key={item.id}
-          className={styles.toolButtonUsed}
-          onClick={() => this.props.onClick(newCurrentToolIds, newActionIds)}
-        >
-          <ToolImage tool={item} />
-        </button>
-      );
+      className = styles.toolButtonUsed;
+      onClick = () => this.props.onClick(newCurrentToolIds, newActionIds);
+    } else {
+      newCurrentToolIds = [...currentItemIds, item.id];
+      newActionIds = currentActionIds.filter((actionId) => {
+        const action = actions.find(a => actionId === a.id);
+        return _.intersection(action.toolIds, newCurrentToolIds).length === newCurrentToolIds.length;
+      });
+      if (currentActionIds.length !== 0 && newActionIds.length === 0) {
+        className = styles.toolButtonInactive;
+      } else {
+        onClick = () => this.props.onClick(newCurrentToolIds, newActionIds);
+        className = styles.toolButton;
+      }
     }
-
-    const newCurrentToolIds = [...currentItemIds, item.id];
-    const newActionIds = currentActionIds.filter((actionId) => {
-      const action = actions.find(a => actionId === a.id);
-      return _.intersection(action.toolIds, newCurrentToolIds).length === newCurrentToolIds.length;
-    });
-
-    if (currentActionIds.length !== 0 && newActionIds.length === 0) {
-      return (
-        <button
-          key={item.id}
-          className={styles.toolButtonInactive}
-        >
-          <ToolImage tool={item} />
-        </button>
-      );
-    }
-
     return (
       <button
         key={item.id}
-        className={styles.toolButton}
-        onClick={() => this.props.onClick(newCurrentToolIds, newActionIds)}
+        {...{ className, onClick }}
       >
         <ToolImage tool={item} />
       </button>

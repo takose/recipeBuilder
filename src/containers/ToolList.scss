@@ -8,33 +8,6 @@
   background-color: #CA895F;
 }
 
-.toolButton {
-  margin-right: 10px;
-  border: solid 1px #fff;
-  border-radius: 3px;
-  height: 65px;
-  width: 65px;
-  background-color: #fcfcfc;
-  img {
-    height: 100%;
-  }
-  transition: all 300ms 0s ease;
-  &:hover {
-    opacity: 0.8;
-  }
-}
-
-.toolButtonInactive {
-  composes: toolButton;
-  opacity: 0.5;
-  cursor: pointer;
-}
-
-.toolButtonUsed {
-  composes: toolButton;
-  background-color: #ccc;
-}
-
 .toolImage {
   position: relative;
   top: -20px;
