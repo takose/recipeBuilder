@@ -4,6 +4,7 @@ export default function ListFactory(ItemComponent, { listClassName, imageClassNa
   return ({ currentActionIds, currentItemIds, items, actions, onClick }) => {
     const listItems = items.map(item => (
       <ItemComponent
+        key={item.id}
         {...{
           item,
           currentActionIds,

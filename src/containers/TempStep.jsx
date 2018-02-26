@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import _ from 'underscore';
-import Ingredient from './Ingredient';
+import IngredientImage from './IngredientImage';
 import styles from './TempStep.scss';
 import Description from './Description';
 
@@ -32,7 +32,7 @@ class TempStep extends React.Component {
         if (currentStep.ingredientIds.includes(i.id)) {
           return (
             <div className={styles.ingredient} key={i.id}>
-              <Ingredient ingredient={i} showAction={false} />
+              <IngredientImage ingredient={i} showAction={false} />
             </div>
           );
         }

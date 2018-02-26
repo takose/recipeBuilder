@@ -4,7 +4,6 @@ import _ from 'underscore';
 import styles from './Tool.scss';
 import ToolImage from './ToolImage';
 
-
 class Tool extends React.Component {
   static propTypes = {
     // eslint-disable-next-line react/forbid-prop-types
@@ -17,10 +16,7 @@ class Tool extends React.Component {
 
   render() {
     const {
-      item,
-      currentItemIds,
-      currentActionIds,
-      actions,
+      item, currentItemIds, currentActionIds, actions,
     } = this.props;
     const isUsed = currentItemIds.find(id => id === item.id) !== undefined;
     let newCurrentToolIds;
