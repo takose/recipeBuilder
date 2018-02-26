@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function ListFactory(ItemComponent, { listClassName, imageClassName, imageUrl }) {
-  return ({ currentActionIds, currentItemIds, items, actions, onItemClick }) => {
+const ListFactory = (ItemComponent, { listClassName, imageClassName, imageUrl }) => (
+  ({
+    currentActionIds, currentItemIds, items, actions, onItemClick,
+  }) => {
     const listItems = items.map(item => (
       <ItemComponent
         key={item.id}
@@ -25,5 +28,7 @@ export default function ListFactory(ItemComponent, { listClassName, imageClassNa
         {listItems}
       </div>
     );
-  };
-}
+  }
+);
+
+export default ListFactory;

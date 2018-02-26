@@ -2,7 +2,9 @@ import React from 'react';
 import _ from 'underscore';
 
 export default function ItemFactory(ItemComponent, styles) {
-  return ({ currentActionIds, currentItemIds, item, actions, onItemClick }) => {
+  return ({
+    currentActionIds, currentItemIds, item, actions, onItemClick,
+  }) => {
     const isUsed = currentItemIds.find(id => id === item.id) !== undefined;
     let newCurrentItemIds;
     let newActionIds;

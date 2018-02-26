@@ -14,7 +14,10 @@
 .itemButtonInactive {
   composes: itemButton;
   opacity: 0.5;
-  cursor: pointer;
+  cursor: default;
+  &:hover {
+    opacity: 0.5;
+  }
 }
 
 .itemButtonUsed {

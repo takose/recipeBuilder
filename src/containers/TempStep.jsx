@@ -1,13 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import _ from 'underscore';
 import IngredientImage from './IngredientImage';
 import styles from './TempStep.scss';
 import Description from './Description';
 
 class TempStep extends React.Component {
+  static propTypes = {
+    ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
+    tools: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // eslint-disable-next-line react/forbid-prop-types
+    steps: PropTypes.PropTypes.object.isRequired,
+    stepId: PropTypes.number.isRequired,
+    currentActionNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }
   render() {
-    const { ingredients, tools, stepId, steps, equipments, toolPlace, currentActionNames } = this.props;
+    const {
+      ingredients, tools, stepId, steps, currentActionNames,
+    } = this.props;
     const currentStep = steps[stepId];
     const currentTools = currentStep.toolIds.length > 0 ?
       tools.map((t) => {
@@ -16,7 +27,7 @@ class TempStep extends React.Component {
             <div
               key={t.id}
               className={styles.tool}
-              style={{ backgroundImage: `url(${t.image_url})`, }}
+              style={{ backgroundImage: `url(${t.image_url})` }}
               src={t.image_url}
               alt="tool"
             />
@@ -61,13 +72,9 @@ class TempStep extends React.Component {
   }
 }
 
-export default connect((state) => {
-  return {
-    currentActionNames: _.pluck(state.currentStep.actionIds, 'name_ja'),
-    ingredients: state.ingredients,
-    tools: state.tools,
-    steps: state.steps,
-    equipments: state.equipments,
-    toolPlace: state.toolPlace,
-  };
-})(TempStep);
+export default connect(state => ({
+  currentActionNames: _.pluck(state.currentStep.actionIds, 'name_ja'),
+  ingredients: state.ingredients,
+  tools: state.tools,
+  steps: state.steps,
+}))(TempStep);
