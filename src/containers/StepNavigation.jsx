@@ -9,8 +9,8 @@ import { addStep, incrementCurrentStepId, updateIngredientState, addMiddleState,
 class StepNavigation extends React.Component {
   render() {
     const {
-      currentIngredientId,
-      currentToolId,
+      currentIngredientIds,
+      currentToolIds,
       currentActionId,
     } = this.props;
 
@@ -18,7 +18,7 @@ class StepNavigation extends React.Component {
       <div className={styles.stepNavigation}>
         <button
           onClick={() => (
-            this.props.onNextStepClick(currentIngredientId, currentToolId, currentActionId)
+            this.props.onNextStepClick(currentIngredientIds, currentToolIds, currentActionId)
           )}
         >
           <FontAwesomeIcon icon={faCheck} /> Next Step
@@ -32,33 +32,35 @@ StepNavigation.propTypes = {
   currentToolId: PropTypes.arrayOf(PropTypes.string).isRequired,
   onNextStepClick: PropTypes.func.isRequired,
   currentActionId: PropTypes.string,
-  currentIngredientId: PropTypes.string,
+  currentIngredientIds: PropTypes.string,
 };
 
 StepNavigation.defaultProps = {
   currentActionId: undefined,
-  currentIngredientId: undefined,
+  currentIngredientIds: undefined,
 }
 
 const mapStateToProps = state => ({
-  currentIngredientId: state.steps[state.currentStep.stepId].ingredientId,
-  currentToolId: state.steps[state.currentStep.stepId].toolIds,
+  currentIngredientIds: state.steps[state.currentStep.stepId].ingredientIds,
+  currentToolIds: state.steps[state.currentStep.stepId].toolIds,
   currentActionId: state.steps[state.currentStep.stepId].actionId,
   actions: state.actions,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onNextStepClick: (currentIngredientId, currentToolId, currentActionId) => {
-    if (currentIngredientId !== undefined && currentActionId !== null) {
-      dispatch(updateIngredientState(currentIngredientId, currentActionId));
+  onNextStepClick: (currentIngredientIds, currentToolIds, currentActionId) => {
+    if (!(currentIngredientIds.length === 0 && currentToolIds.length === 0)) {
+      if (currentIngredientIds !== undefined && currentActionId !== null) {
+        dispatch(updateIngredientState(currentIngredientIds, currentActionId));
+      }
+      const WILL_HAVE_MIDDLE_STATE_ACTION_IDS = ['stew', 'stir_fly', 'put_in', 'measure', 'mix'];
+      if (WILL_HAVE_MIDDLE_STATE_ACTION_IDS.includes(currentActionId)) {
+        dispatch(addMiddleState(currentToolIds));
+        dispatch(updateMergedIngredientState(currentIngredientIds));
+      }
+      dispatch(addStep());
+      dispatch(incrementCurrentStepId());
     }
-    const WILL_HAVE_MIDDLE_STATE_ACTION_IDS = ['stew', 'stir_fly', 'put_in', 'measure', 'mix'];
-    if (WILL_HAVE_MIDDLE_STATE_ACTION_IDS.includes(currentActionId)) {
-      dispatch(addMiddleState(currentToolId));
-      dispatch(updateMergedIngredientState(currentIngredientId));
-    }
-    dispatch(addStep());
-    dispatch(incrementCurrentStepId());
   },
 });
 
