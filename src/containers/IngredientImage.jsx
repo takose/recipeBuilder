@@ -4,10 +4,10 @@ import styles from './Ingredient.scss';
 
 class IngredientImage extends React.Component {
   render() {
-    const { ingredient, actions, showAction } = this.props;
+    const { item, actions, showAction } = this.props;
     let actionImgs;
     if (showAction !== false) {
-      actionImgs = ingredient.addedActionIds.map((actionId) => {
+      actionImgs = item.addedActionIds.map((actionId) => {
         const SHOW_ACTION_IDS = ['cut'];
         if (SHOW_ACTION_IDS.includes(actionId)) {
           const action = actions.find(a => a.id === actionId);
@@ -26,8 +26,8 @@ class IngredientImage extends React.Component {
       <div
         className={styles.ingredientImage}
         style={{
-          backgroundImage: `url(${ingredient.image_url})`,
-          opacity: (ingredient.merged && showAction !== false) ? 0.5 : 1
+          backgroundImage: `url(${item.image_url})`,
+          opacity: (item.merged && showAction !== false) ? 0.5 : 1,
         }}
       >
         {actionImgs}

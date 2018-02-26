@@ -15,13 +15,13 @@ const ToolList = ListFactory(
 
 const mapStateToProps = state => ({
   items: state.tools,
-  actions: state.actions,
+  actions: state.actions.map(action => ({ ...action, itemIds: action.toolIds })),
   currentActionIds: state.currentStep.actionIds,
   currentItemIds: state.steps[state.currentStep.stepId].toolIds,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClick: (toolIds, actionIds) => {
+  onItemClick: (toolIds, actionIds) => {
     dispatch(updateAction(actionIds));
     dispatch(updateTool(toolIds));
   },

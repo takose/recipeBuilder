@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function ListFactory(ItemComponent, { listClassName, imageClassName, imageUrl }) {
-  return ({ currentActionIds, currentItemIds, items, actions, onClick }) => {
+  return ({ currentActionIds, currentItemIds, items, actions, onItemClick }) => {
     const listItems = items.map(item => (
       <ItemComponent
         key={item.id}
@@ -10,7 +10,7 @@ export default function ListFactory(ItemComponent, { listClassName, imageClassNa
           currentActionIds,
           currentItemIds,
           actions,
-          onClick,
+          onItemClick,
         }}
       />
     ));

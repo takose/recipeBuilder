@@ -1,16 +1,4 @@
-.imageBase {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-.tool {
-  composes: imageBase;
-  width: 100%;
-  height: 100%;
-}
-
-.toolButton {
+.itemButton {
   margin-right: 10px;
   border: solid 1px #fff;
   border-radius: 3px;
@@ -26,8 +14,8 @@
   }
 }
 
-.toolButtonInactive {
-  composes: toolButton;
+.itemButtonInactive {
+  composes: itemButton;
   cursor: default;
   opacity: 0.5;
   &:hover {
@@ -35,7 +23,19 @@
   }
 }
 
-.toolButtonUsed {
-  composes: toolButton;
+.itemButtonUsed {
+  composes: itemButton;
   background-color: #ccc;
+}
+
+.imageBase {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.tool {
+  composes: imageBase;
+  width: 100%;
+  height: 100%;
 }

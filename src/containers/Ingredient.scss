@@ -1,4 +1,4 @@
-.ingredientButton {
+.itemButton {
   margin-right: 10px;
   border: solid 1px #fff;
   border-radius: 2px;
@@ -11,14 +11,14 @@
   }
 }
 
-.ingredientButtonInactive {
-  composes: ingredientButton;
+.itemButtonInactive {
+  composes: itemButton;
   opacity: 0.5;
   cursor: pointer;
 }
 
-.ingredientButtonUsed {
-  composes: ingredientButton;
+.itemButtonUsed {
+  composes: itemButton;
   background-color: #ccc;
 }
 

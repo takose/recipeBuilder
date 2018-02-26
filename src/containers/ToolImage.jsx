@@ -3,12 +3,12 @@ import styles from './Tool.scss';
 
 class ToolImage extends React.Component {
   render() {
-    const { tool } = this.props;
+    const { item } = this.props;
     return (
       <div
         className={styles.tool}
         style={{
-          backgroundImage: `url(${tool.image_url})`,
+          backgroundImage: `url(${item.image_url})`,
         }}
       />
     );

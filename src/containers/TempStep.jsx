@@ -32,7 +32,7 @@ class TempStep extends React.Component {
         if (currentStep.ingredientIds.includes(i.id)) {
           return (
             <div className={styles.ingredient} key={i.id}>
-              <IngredientImage ingredient={i} showAction={false} />
+              <IngredientImage item={i} showAction={false} />
             </div>
           );
         }

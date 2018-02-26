@@ -15,13 +15,13 @@ const IngredientList = ListFactory(
 
 const mapStateToProps = state => ({
   items: state.ingredients,
-  actions: state.actions,
+  actions: state.actions.map(action => ({ ...action, itemIds: action.ingredientIds })),
   currentActionIds: state.currentStep.actionIds,
   currentItemIds: state.steps[state.currentStep.stepId].ingredientIds,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClick: (ingredientIds, actionIds) => {
+  onItemClick: (ingredientIds, actionIds) => {
     dispatch(updateAction(actionIds));
     dispatch(updateIngredient(ingredientIds));
   },
