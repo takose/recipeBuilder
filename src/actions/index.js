@@ -34,6 +34,12 @@ export const updateAction = actionIds => ({
   actionIds,
 });
 
+export const updateStepAction = actionId => ({
+  type: 'UPDATE_STEP_ACTION',
+  actionId,
+  currentStepId,
+});
+
 export const updateEquipmentId = equipmentId => ({
   type: 'UPDATE_EQUIPMENT_ID',
   equipmentId,

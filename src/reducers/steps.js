@@ -33,6 +33,14 @@ const steps = (state = initialState, action) => {
           toolIds: action.toolIds,
         },
       };
+    case 'UPDATE_STEP_ACTION':
+      return {
+        ...state,
+        [action.currentStepId]: {
+          ...state[action.currentStepId],
+          actionId: action.actionId,
+        },
+      };
     case 'UPDATE_PUTA_OPTION':
       return {
         ...state,

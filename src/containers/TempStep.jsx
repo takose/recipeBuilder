@@ -1,23 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import _ from 'underscore';
 import IngredientImage from './IngredientImage';
 import styles from './TempStep.scss';
 import Description from './Description';
+import { updateStepAction } from '../actions';
 
 class TempStep extends React.Component {
   static propTypes = {
     ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
     tools: PropTypes.arrayOf(PropTypes.object).isRequired,
+    actions: PropTypes.arrayOf(PropTypes.object).isRequired,
     // eslint-disable-next-line react/forbid-prop-types
     steps: PropTypes.PropTypes.object.isRequired,
     stepId: PropTypes.number.isRequired,
-    currentActionNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+    currentActionIds: PropTypes.arrayOf(PropTypes.string).isRequired,
+    onActionNameClick: PropTypes.func.isRequired,
   }
   render() {
     const {
-      ingredients, tools, stepId, steps, currentActionNames,
+      ingredients, tools, stepId, steps, currentActionIds, actions, onActionNameClick,
     } = this.props;
     const currentStep = steps[stepId];
     const currentTools = currentStep.toolIds.length > 0 ?
@@ -52,10 +54,27 @@ class TempStep extends React.Component {
       (
         <div className={styles.emptyIngredient} />
       );
+    const currentActionNames =
+      (currentStep.ingredientIds.length > 0 && currentStep.toolIds.length > 0) ?
+        currentActionIds.map((id) => {
+          const action = actions.find(a => a.id === id);
+          const isCurrentAction = action.id === currentStep.actionId;
+          return (
+            <button
+              key={action.id}
+              className={
+                isCurrentAction ? styles.actionName : styles.actionNameInactive
+              }
+              onClick={() => onActionNameClick(isCurrentAction, id)}
+            >
+              {action.name_ja}
+            </button>
+          );
+        }) : null;
 
     return (
       <div className={styles.stepWrapper}>
-        <div className={styles.actionName}>
+        <div className={styles.actionNames}>
           {currentActionNames}
         </div>
         <div className={styles.step}>
@@ -72,9 +91,18 @@ class TempStep extends React.Component {
   }
 }
 
-export default connect(state => ({
-  currentActionNames: _.pluck(state.currentStep.actionIds, 'name_ja'),
+const mapStateToProps = state => ({
+  currentActionIds: state.currentStep.actionIds,
   ingredients: state.ingredients,
+  actions: state.actions,
   tools: state.tools,
   steps: state.steps,
-}))(TempStep);
+});
+
+const mapDispatchToProps = dispatch => ({
+  onActionNameClick: (isCurrentAction, id) => (
+    isCurrentAction ? dispatch(updateStepAction(null)) : dispatch(updateStepAction(id))
+  ),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TempStep);

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { updateTool, updateAction } from '../actions';
+import { updateTool, updateAction, updateStepAction } from '../actions';
 import styles from './ToolList.scss';
 import Tool from './Tool';
 import ListFactory from './ListFactory';
@@ -24,6 +24,7 @@ const mapDispatchToProps = dispatch => ({
   onItemClick: (toolIds, actionIds) => {
     dispatch(updateAction(actionIds));
     dispatch(updateTool(toolIds));
+    if (toolIds.length === 0) dispatch(updateStepAction(null));
   },
 });
 
