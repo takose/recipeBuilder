@@ -4,21 +4,22 @@ import { Provider, connect } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import createHistory from 'history/createBrowserHistory';
 // import { Route, Switch } from 'react-router';
-import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux';
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { Switch, Route } from 'react-router';
 
 import recipeBuilder from './reducers';
 import App from './components/App';
+import StepList from './containers/StepList';
 
 const history = createHistory();
-const middleware = routerMiddleware(history);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
 /* eslint-disable no-underscore-dangle */
-const store = createStore(recipeBuilder, composeEnhancers(
-  applyMiddleware(...middleware)
-));
+const store = createStore(
+  recipeBuilder,
+  composeEnhancers(applyMiddleware(routerMiddleware(history))),
+);
 /* eslint-enable */
 
 const ConnectedSwitch = connect(state => ({
@@ -28,7 +29,7 @@ const ConnectedSwitch = connect(state => ({
 const AppContainer = () => (
   <ConnectedSwitch>
     <Route exact path="/" component={App} />
-    <Route path="/about" component={App} />
+    <Route path="/about" component={StepList} />
   </ConnectedSwitch>
 );
 
@@ -39,9 +40,7 @@ const Root = connect(state => ({
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Switch>
-        <Root />
-      </Switch>
+      <Root />
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root'), // eslint-disable-line no-undef
