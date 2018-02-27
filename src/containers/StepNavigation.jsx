@@ -29,16 +29,16 @@ class StepNavigation extends React.Component {
 }
 
 StepNavigation.propTypes = {
-  currentToolId: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currentToolIds: PropTypes.arrayOf(PropTypes.string).isRequired,
   onNextStepClick: PropTypes.func.isRequired,
   currentActionId: PropTypes.string,
-  currentIngredientIds: PropTypes.string,
+  currentIngredientIds: PropTypes.arrayOf(PropTypes.string),
 };
 
 StepNavigation.defaultProps = {
   currentActionId: undefined,
   currentIngredientIds: undefined,
-}
+};
 
 const mapStateToProps = state => ({
   currentIngredientIds: state.steps[state.currentStep.stepId].ingredientIds,

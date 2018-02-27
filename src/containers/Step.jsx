@@ -28,7 +28,11 @@ class Step extends React.Component {
       step.ingredientIds.map((id) => {
         const ingredient = ingredients.find(i => i.id === id);
         return (
-          <IngredientImage item={ingredient} showAction={false} />
+          <IngredientImage
+            item={ingredient}
+            showAction={false}
+            key={id}
+          />
         );
       });
     ingredients.find(i => i.id === step.ingredientId);
