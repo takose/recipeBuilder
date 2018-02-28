@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updatePutaOption } from '../actions';
 import styles from './Option.scss';
 
 class OptionPuta extends React.Component {
@@ -53,7 +52,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
   onSubmit: (e) => {
     e.preventDefault();
-    dispatch(updatePutaOption());
   },
 });
 

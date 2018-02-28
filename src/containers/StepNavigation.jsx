@@ -4,7 +4,14 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faCheck from '@fortawesome/fontawesome-free-solid/faCheck';
 import { connect } from 'react-redux';
 import styles from './StepNavigation.scss';
-import { addStep, incrementCurrentStepId, updateIngredientState, addMiddleState, updateMergedIngredientState } from '../actions';
+import {
+  addStep,
+  incrementCurrentStepId,
+  updateIngredientState,
+  addMiddleState,
+  updateMergedIngredientState,
+  updatePutaOption,
+} from '../actions';
 
 class StepNavigation extends React.Component {
   render() {
@@ -66,6 +73,9 @@ const mapDispatchToProps = dispatch => ({
     }
     dispatch(addStep());
     dispatch(incrementCurrentStepId());
+    if (currentActionId === 'measure' && currentToolIds.includes('puta')) {
+      dispatch(updatePutaOption(currentIngredientIds));
+    }
   },
 });
 

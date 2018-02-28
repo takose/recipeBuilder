@@ -6,6 +6,7 @@ import steps from './steps';
 import currentStep from './currentStep';
 import actions from './actions';
 import middleStates from './middleStates';
+import deviceOptions from './deviceOptions';
 
 const recipeBulder = combineReducers({
   ingredients,
@@ -14,6 +15,7 @@ const recipeBulder = combineReducers({
   currentStep,
   actions,
   middleStates,
+  deviceOptions,
   router: routerReducer,
 });
 

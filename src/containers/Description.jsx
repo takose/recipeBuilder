@@ -7,15 +7,15 @@ import OptionSmoon from './OptionSmoon';
 
 class Description extends React.Component {
   render() {
-    const { currentToolIds } = this.props;
+    const { currentActionId } = this.props;
     const option = () => {
-      if (currentToolIds.includes('pot') && currentToolIds.includes('puta')) {
+      if (currentActionId === 'pour') {
         return (
           <div className={styles.options}>
             <OptionPuta />
           </div>
         );
-      } else if (currentToolIds.includes('smoon')) {
+      } else if (currentActionId === 'measure') {
         return (
           <div className={styles.options}>
             <OptionSmoon />
@@ -34,7 +34,5 @@ class Description extends React.Component {
 }
 
 export default connect(state => ({
-  currentToolIds: _.pluck(state.tools.filter(tool => (
-    state.steps[state.currentStep.stepId].toolIds.includes(tool.id)
-  )), 'id'),
+  currentActionId: state.steps[state.currentStep.stepId].actionId,
 }))(Description);
