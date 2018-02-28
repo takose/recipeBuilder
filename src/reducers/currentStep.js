@@ -1,4 +1,4 @@
-const allActionIds = ['stew', 'put_in', 'cut', 'mix', 'stir_fly', 'measure', 'pour'];
+const allActionIds = ['stew', 'cut', 'mix', 'stir_fly', 'measure', 'pour'];
 const initialState = {
   stepId: 0,
   actionIds: allActionIds,

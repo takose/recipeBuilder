@@ -33,10 +33,8 @@ class Description extends React.Component {
   }
 }
 
-export default connect((state) => {
-  return {
-    currentToolIds: _.pluck(state.tools.filter((tool) => {
-      return state.steps[state.currentStep.stepId].toolIds.includes(tool.id);
-    }), 'id'),
-  };
-})(Description);
+export default connect(state => ({
+  currentToolIds: _.pluck(state.tools.filter(tool => (
+    state.steps[state.currentStep.stepId].toolIds.includes(tool.id)
+  )), 'id'),
+}))(Description);
