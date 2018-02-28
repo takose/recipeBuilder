@@ -55,7 +55,6 @@ class TempStep extends React.Component {
         <div className={styles.emptyIngredient} />
       );
     const currentActionNames =
-      (currentStep.ingredientIds.length > 0 || currentStep.toolIds.length > 0) ?
         currentActionIds.map((id) => {
           const action = actions.find(a => a.id === id);
           const isCurrentAction = action.id === currentStep.actionId;
@@ -70,12 +69,21 @@ class TempStep extends React.Component {
               {action.name_ja}
             </button>
           );
-        }) : null;
+        });
 
     return (
       <div className={styles.stepWrapper}>
-        <div className={styles.actionNames}>
-          {currentActionNames}
+        <div className={styles.actionNamesWrapper}>
+          {
+            currentStep.ingredientIds.length > 0 || currentStep.toolIds.length > 0 ? (
+              <div>
+                <p>Select:</p>
+                <div className={styles.actionNames}>
+                  {currentActionNames}
+                </div>
+              </div>
+            ) : null
+          }
         </div>
         <div className={styles.step}>
           <div className={styles.tools}>
