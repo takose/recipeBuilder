@@ -55,8 +55,13 @@ export const addMiddleState = toolId => ({
   toolId,
 });
 
-export const updatePutaOption = putaOption => ({
-  type: 'UPDATE_PUTA_OPTION',
-  putaOption,
+export const updateOption = option => ({
+  type: 'UPDATE_OPTION',
+  option,
   currentStepId,
+});
+
+export const enableOption = optionName => ({
+  type: 'ENABLE_OPTION',
+  optionName,
 });

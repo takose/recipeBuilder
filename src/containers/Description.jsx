@@ -1,21 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import _ from 'underscore';
 import styles from './Description.scss';
 import OptionPuta from './OptionPuta';
 import OptionSmoon from './OptionSmoon';
 
 class Description extends React.Component {
   render() {
-    const { currentActionId } = this.props;
+    const { optionName } = this.props;
     const option = () => {
-      if (currentActionId === 'pour') {
+      if (optionName === 'puta') {
         return (
           <div className={styles.options}>
             <OptionPuta />
           </div>
         );
-      } else if (currentActionId === 'measure') {
+      } else if (optionName === 'smoon') {
         return (
           <div className={styles.options}>
             <OptionSmoon />
@@ -35,4 +34,5 @@ class Description extends React.Component {
 
 export default connect(state => ({
   currentActionId: state.steps[state.currentStep.stepId].actionId,
+  optionName: state.currentStep.option,
 }))(Description);

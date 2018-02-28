@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import IngredientImage from './IngredientImage';
 import styles from './TempStep.scss';
 import Description from './Description';
-import { updateStepAction } from '../actions';
+import { updateStepAction, enableOption, updateOption } from '../actions';
 
 class TempStep extends React.Component {
   static propTypes = {
@@ -108,9 +108,21 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onActionNameClick: (isCurrentAction, id) => (
-    isCurrentAction ? dispatch(updateStepAction('')) : dispatch(updateStepAction(id))
-  ),
+  onActionNameClick: (isCurrentAction, currentActionId) => {
+    if (isCurrentAction) {
+      dispatch(updateStepAction(''));
+    } else {
+      dispatch(updateStepAction(currentActionId));
+    }
+    if (currentActionId === 'measure') {
+      dispatch(enableOption('smoon'));
+    } else if (currentActionId === 'pour') {
+      dispatch(enableOption('puta'));
+    } else {
+      dispatch(enableOption(null));
+      dispatch(updateOption(null));
+    }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TempStep);

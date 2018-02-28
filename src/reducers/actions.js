@@ -44,6 +44,8 @@ const initialState = [
     id: 'pour',
     name: 'pour',
     name_ja: '注ぐ',
+    toolIds: ['pot', 'ff', 'puta'],
+    ingredientIds: ['water', 'soy_sauce', 'sake', 'chicken', 'potato', 'onion', 'butter'],
     itemIds: ['pot', 'ff', 'puta', 'water', 'soy_sauce', 'sake', 'chicken', 'potato', 'onion', 'butter'],
   },
 ];

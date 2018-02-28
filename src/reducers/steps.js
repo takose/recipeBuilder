@@ -3,6 +3,7 @@ const initialState = {
     toolIds: [],
     ingredientIds: [],
     actionId: '',
+    options: null,
   },
 };
 
@@ -15,6 +16,7 @@ const steps = (state = initialState, action) => {
           toolIds: [],
           ingredientIds: [],
           actionId: '',
+          options: null,
         },
       };
     case 'UPDATE_INGREDIENT':
@@ -41,15 +43,12 @@ const steps = (state = initialState, action) => {
           actionId: action.actionId,
         },
       };
-    case 'UPDATE_PUTA_OPTION':
+    case 'UPDATE_OPTION':
       return {
         ...state,
         [action.currentStepId]: {
           ...state[action.currentStepId],
-          options: {
-            ...state[action.currentStepId].options,
-            puta: action.putaOption,
-          },
+          options: action.option,
         },
       };
     default:

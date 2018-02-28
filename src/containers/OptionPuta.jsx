@@ -1,36 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styles from './Option.scss';
+import IngredientImage from './IngredientImage';
 
 class OptionPuta extends React.Component {
   render() {
-    const { onSubmit } = this.props;
+    const { onSubmit, putaOption, ingredients } = this.props;
+    const putaPods = putaOption.map((pod, idx) => {
+      const ingredient = ingredients.find((i) => pod === i.id)
+      return (
+        <label className={styles.label} id={`pod${idx}`}>
+          <div className={styles.ingredientImage}>
+            <IngredientImage
+              item={ingredient}
+              showAction={false}
+            />
+          </div>
+          <input type="text" name="name" />
+          分後
+        </label>
+      );
+    });
+
     return (
       <div className={styles.option}>
         <form onSubmit={onSubmit}>
-          <label className={styles.label}>
-            1つめ:
-            <input type="text" name="name" />
-            分後
-          </label>
           <br />
-          <label className={styles.label}>
-            2つめ:
-            <input type="text" name="name" />
-            分後
-          </label>
-          <br />
-          <label className={styles.label}>
-            3つめ:
-            <input type="text" name="name" />
-            分後
-          </label>
-          <br />
-          <label className={styles.label}>
-            4つめ:
-            <input type="text" name="name" />
-            分後
-          </label>
+          {putaPods}
           <br />
           <input className={styles.submit} type="submit" value="けってい" />
         </form>
@@ -39,17 +35,12 @@ class OptionPuta extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    ingredients: state.ingredients,
-    tools: state.tools,
-    steps: state.steps,
-    equipments: state.equipments,
-    toolPlace: state.toolPlace,
-  };
-};
+const mapStateToProps = state => ({
+  ingredients: state.ingredients,
+  putaOption: state.deviceOptions.puta.pod,
+});
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = () => ({
   onSubmit: (e) => {
     e.preventDefault();
   },

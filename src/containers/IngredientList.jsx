@@ -2,7 +2,12 @@ import { connect } from 'react-redux';
 import Ingredient from './Ingredient';
 import ListFactory from './ListFactory';
 import styles from './IngredientList.scss';
-import { updateIngredient, updateAction, updateStepAction } from '../actions';
+import {
+  updateIngredient,
+  updateAction,
+  updateStepAction,
+  enableOption,
+} from '../actions';
 
 const IngredientList = ListFactory(
   Ingredient,
@@ -25,7 +30,10 @@ const mapDispatchToProps = dispatch => ({
   onItemClick: (ingredientIds, actionIds, currentActionId) => {
     dispatch(updateAction(actionIds));
     dispatch(updateIngredient(ingredientIds));
-    if (ingredientIds.length === 0 || !(actionIds.includes(currentActionId))) dispatch(updateStepAction(''));
+    if (ingredientIds.length === 0 || !(actionIds.includes(currentActionId))) {
+      dispatch(updateStepAction(''));
+      dispatch(enableOption(null));
+    }
   },
 });
 

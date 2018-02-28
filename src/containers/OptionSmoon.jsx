@@ -2,16 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faCheck from '@fortawesome/fontawesome-free-solid/faCheck';
-import { updatePutaOption } from '../actions';
+import { updateOption } from '../actions';
 import styles from './Option.scss';
 
 class OptionPuta extends React.Component {
   render() {
-    const { onSubmit } = this.props;
+    const { onChange } = this.props;
     return (
       <div className={styles.option}>
-        <form onSubmit={onSubmit} className={styles.form}>
-          <input type="text" name="name" />
+        <form className={styles.form}>
+          <input
+            type="text"
+            name="name"
+            onChange={onChange}
+          />
           CC
         </form>
       </div>
@@ -25,9 +29,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  onSubmit: (e) => {
+  onChange: (e) => {
     e.preventDefault();
-    dispatch(updatePutaOption());
+    dispatch(updateOption(e.target.value));
   },
 });
 

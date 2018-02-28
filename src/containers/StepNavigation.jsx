@@ -10,7 +10,7 @@ import {
   updateIngredientState,
   addMiddleState,
   updateMergedIngredientState,
-  updatePutaOption,
+  enableOption,
 } from '../actions';
 
 class StepNavigation extends React.Component {
@@ -19,9 +19,10 @@ class StepNavigation extends React.Component {
       currentIngredientIds,
       currentToolIds,
       currentActionId,
+      optionCorrect,
     } = this.props;
 
-    const buttonIsActive = currentActionId !== '';
+    const buttonIsActive = currentActionId !== '' && optionCorrect;
     return (
       <div
         className={
@@ -47,6 +48,7 @@ StepNavigation.propTypes = {
   onNextStepClick: PropTypes.func.isRequired,
   currentActionId: PropTypes.string,
   currentIngredientIds: PropTypes.arrayOf(PropTypes.string),
+  optionCorrect: PropTypes.bool.isRequired,
 };
 
 StepNavigation.defaultProps = {
@@ -59,6 +61,11 @@ const mapStateToProps = state => ({
   currentToolIds: state.steps[state.currentStep.stepId].toolIds,
   currentActionId: state.steps[state.currentStep.stepId].actionId,
   actions: state.actions,
+  optionCorrect:
+    (
+      (state.currentStep.option !== null && state.steps[state.currentStep.stepId].options !== null) ||
+      state.currentStep.option === null
+    ),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -73,9 +80,7 @@ const mapDispatchToProps = dispatch => ({
     }
     dispatch(addStep());
     dispatch(incrementCurrentStepId());
-    if (currentActionId === 'measure' && currentToolIds.includes('puta')) {
-      dispatch(updatePutaOption(currentIngredientIds));
-    }
+    dispatch(enableOption(null));
   },
 });
 
