@@ -3,7 +3,7 @@ import _ from 'underscore';
 
 export default function ItemFactory(ItemComponent, styles) {
   return ({
-    currentActionIds, currentItemIds, item, actions, onItemClick, currentActionId,
+    currentActionIds, currentItemIds, item, actions, onItemClick, currentActionId, currentAllItemIds,
   }) => {
     const isUsed = currentItemIds.find(id => id === item.id) !== undefined;
     let newCurrentItemIds;
@@ -12,14 +12,22 @@ export default function ItemFactory(ItemComponent, styles) {
     let onClick;
     if (isUsed) {
       newCurrentItemIds = currentItemIds.filter(id => id !== item.id);
+      const newCurrentAllItemIds = currentAllItemIds.filter(id => id !== item.id);
       newActionIds = _.pluck(actions.filter(action => (
-        _.intersection(action.itemIds, newCurrentItemIds).length === newCurrentItemIds.length
+        _.intersection(action.itemIds, newCurrentItemIds).length === newCurrentItemIds.length &&
+        newCurrentAllItemIds.length !== 0
       )), 'id');
       className = styles.itemButtonUsed;
       onClick = () => onItemClick(newCurrentItemIds, newActionIds, currentActionId);
     } else {
       newCurrentItemIds = [...currentItemIds, item.id];
-      newActionIds = currentActionIds.filter((actionId) => {
+      let ids;
+      if (currentActionIds.length === 0) {
+        ids = ['stew', 'cut', 'mix', 'stir_fly', 'measure', 'pour'];
+      } else {
+        ids = currentActionIds;
+      }
+      newActionIds = ids.filter((actionId) => {
         const action = actions.find(a => actionId === a.id);
         return _.intersection(action.itemIds, newCurrentItemIds).length === newCurrentItemIds.length;
       });

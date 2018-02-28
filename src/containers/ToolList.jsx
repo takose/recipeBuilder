@@ -1,8 +1,14 @@
 import { connect } from 'react-redux';
-import { updateTool, updateAction, updateStepAction } from '../actions';
 import styles from './ToolList.scss';
 import Tool from './Tool';
 import ListFactory from './ListFactory';
+import {
+  updateTool,
+  updateAction,
+  updateStepAction,
+  enableOption,
+  updateOption,
+} from '../actions';
 
 const ToolList = ListFactory(
   Tool,
@@ -19,13 +25,21 @@ const mapStateToProps = state => ({
   currentActionIds: state.currentStep.actionIds,
   currentItemIds: state.steps[state.currentStep.stepId].toolIds,
   currentActionId: state.steps[state.currentStep.stepId].actionId,
+  currentAllItemIds: [
+    ...state.steps[state.currentStep.stepId].ingredientIds,
+    ...state.steps[state.currentStep.stepId].toolIds,
+  ],
 });
 
 const mapDispatchToProps = dispatch => ({
   onItemClick: (toolIds, actionIds, currentActionId) => {
     dispatch(updateAction(actionIds));
     dispatch(updateTool(toolIds));
-    if (toolIds.length === 0 || !(actionIds.includes(currentActionId))) dispatch(updateStepAction(''));
+    if (!(actionIds.includes(currentActionId))) {
+      dispatch(updateStepAction(''));
+      dispatch(enableOption(null));
+      dispatch(updateOption(null));
+    }
   },
 });
 

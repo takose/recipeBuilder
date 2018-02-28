@@ -1,8 +1,7 @@
-const allActionIds = ['stew', 'cut', 'mix', 'stir_fly', 'measure', 'pour'];
 const initialState = {
   option: null,
   stepId: 0,
-  actionIds: allActionIds,
+  actionIds: [],
 };
 
 const currentStepId = (state = initialState, action) => {
@@ -11,7 +10,7 @@ const currentStepId = (state = initialState, action) => {
       return {
         ...state,
         stepId: state.stepId + 1,
-        actionIds: allActionIds,
+        actionIds: [],
         active: false,
       };
     case 'UPDATE_ACTION':

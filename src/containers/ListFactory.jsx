@@ -2,7 +2,7 @@ import React from 'react';
 
 const ListFactory = (ItemComponent, { listClassName, imageClassName, imageUrl }) => (
   ({
-    currentActionIds, currentItemIds, items, actions, onItemClick, currentActionId,
+    currentActionIds, currentItemIds, items, actions, onItemClick, currentActionId, currentAllItemIds,
   }) => {
     const listItems = items.map(item => (
       <ItemComponent
@@ -14,6 +14,7 @@ const ListFactory = (ItemComponent, { listClassName, imageClassName, imageUrl })
           actions,
           onItemClick,
           currentActionId,
+          currentAllItemIds,
         }}
       />
     ));

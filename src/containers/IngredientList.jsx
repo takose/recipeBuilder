@@ -7,6 +7,7 @@ import {
   updateAction,
   updateStepAction,
   enableOption,
+  updateOption,
 } from '../actions';
 
 const IngredientList = ListFactory(
@@ -24,15 +25,20 @@ const mapStateToProps = state => ({
   currentActionIds: state.currentStep.actionIds,
   currentItemIds: state.steps[state.currentStep.stepId].ingredientIds,
   currentActionId: state.steps[state.currentStep.stepId].actionId,
+  currentAllItemIds: [
+    ...state.steps[state.currentStep.stepId].ingredientIds,
+    ...state.steps[state.currentStep.stepId].toolIds,
+  ],
 });
 
 const mapDispatchToProps = dispatch => ({
   onItemClick: (ingredientIds, actionIds, currentActionId) => {
     dispatch(updateAction(actionIds));
     dispatch(updateIngredient(ingredientIds));
-    if (ingredientIds.length === 0 || !(actionIds.includes(currentActionId))) {
+    if (!(actionIds.includes(currentActionId))) {
       dispatch(updateStepAction(''));
       dispatch(enableOption(null));
+      dispatch(updateOption(null));
     }
   },
 });
