@@ -5,6 +5,7 @@ const initialState = [
     name_ja: '煮込む',
     toolIds: ['pot', 'ff', 'puta'],
     ingredientIds: ['water', 'soy_sauce', 'sake'],
+    itemIds: ['pot', 'ff', 'puta', 'water', 'soy_sauce', 'sake'],
   },
   {
     id: 'stir_fly',
@@ -12,6 +13,7 @@ const initialState = [
     name_ja: '炒める',
     toolIds: ['pot', 'ff', 'hashi'],
     ingredientIds: ['water', 'soy_sauce', 'sake', 'chicken', 'potato', 'onion', 'butter'],
+    itemIds: ['pot', 'ff', 'hashi', 'water', 'soy_sauce', 'sake', 'chicken', 'potato', 'onion', 'butter'],
   },
   {
     id: 'measure',
@@ -19,6 +21,7 @@ const initialState = [
     name_ja: 'はかる',
     toolIds: ['ff', 'puta', 'smoon'],
     ingredientIds: ['water', 'soy_sauce', 'sake'],
+    itemIds: ['ff', 'puta', 'smoon', 'water', 'soy_sauce', 'sake'],
   },
   {
     id: 'cut',
@@ -27,6 +30,7 @@ const initialState = [
     name_ja: '切る',
     toolIds: ['knife'],
     ingredientIds: ['chicken', 'potato', 'onion', 'butter'],
+    itemIds: ['chicken', 'potato', 'onion', 'butter', 'knife'],
   },
   {
     id: 'mix',
@@ -34,13 +38,13 @@ const initialState = [
     name_ja: '混ぜる',
     toolIds: ['pot', 'ff', 'hashi'],
     ingredientIds: ['water', 'soy_sauce', 'sake', 'chicken', 'potato', 'onion', 'butter'],
+    itemIds: ['pot', 'ff', 'hashi', 'water', 'soy_sauce', 'sake', 'chicken', 'potato', 'onion', 'butter'],
   },
   {
     id: 'pour',
     name: 'pour',
     name_ja: '注ぐ',
-    toolIds: ['pot', 'ff', 'puta'],
-    ingredientIds: ['water', 'soy_sauce', 'sake', 'chicken', 'potato', 'onion', 'butter'],
+    itemIds: ['pot', 'ff', 'puta', 'water', 'soy_sauce', 'sake', 'chicken', 'potato', 'onion', 'butter'],
   },
 ];
 

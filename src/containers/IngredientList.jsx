@@ -15,7 +15,7 @@ const IngredientList = ListFactory(
 
 const mapStateToProps = state => ({
   items: state.ingredients,
-  actions: state.actions.map(action => ({ ...action, itemIds: action.ingredientIds })),
+  actions: state.actions,
   currentActionIds: state.currentStep.actionIds,
   currentItemIds: state.steps[state.currentStep.stepId].ingredientIds,
   currentActionId: state.steps[state.currentStep.stepId].actionId,
