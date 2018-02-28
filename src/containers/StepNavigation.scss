@@ -1,12 +1,25 @@
 .stepNavigation {
-  padding: 30px 10% 0;
+  padding: 30px 0 0 0;
   width: 100%;
   text-align: right;
   font-size: 15px;
   button {
-    padding: 12px;
+    transition: all 300ms 0s ease;
+    padding: 16px 30px;
     color: #fff;
     background-color: #6D4C41;
-    border-radius: 3px;
+    border-radius: 3px 0 0 3px;
+  }
+}
+
+.stepNavigationInactive {
+  composes: stepNavigation;
+  opacity: 0.3;
+  button {
+    background-color: #fff;
+    color: #6D4C41;
+    border: solid 1px #6D4C41;
+    border-right: none;
+    padding: 16px;
   }
 }

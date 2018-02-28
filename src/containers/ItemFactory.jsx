@@ -3,7 +3,7 @@ import _ from 'underscore';
 
 export default function ItemFactory(ItemComponent, styles) {
   return ({
-    currentActionIds, currentItemIds, item, actions, onItemClick,
+    currentActionIds, currentItemIds, item, actions, onItemClick, currentActionId,
   }) => {
     const isUsed = currentItemIds.find(id => id === item.id) !== undefined;
     let newCurrentItemIds;
@@ -16,7 +16,7 @@ export default function ItemFactory(ItemComponent, styles) {
         _.intersection(action.itemIds, newCurrentItemIds).length === newCurrentItemIds.length
       )), 'id');
       className = styles.itemButtonUsed;
-      onClick = () => onItemClick(newCurrentItemIds, newActionIds);
+      onClick = () => onItemClick(newCurrentItemIds, newActionIds, currentActionId);
     } else {
       newCurrentItemIds = [...currentItemIds, item.id];
       newActionIds = currentActionIds.filter((actionId) => {
@@ -26,7 +26,7 @@ export default function ItemFactory(ItemComponent, styles) {
       if (currentActionIds.length !== 0 && newActionIds.length === 0) {
         className = styles.itemButtonInactive;
       } else {
-        onClick = () => onItemClick(newCurrentItemIds, newActionIds);
+        onClick = () => onItemClick(newCurrentItemIds, newActionIds, currentActionId);
         className = styles.itemButton;
       }
     }

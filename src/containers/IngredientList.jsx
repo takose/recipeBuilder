@@ -18,13 +18,14 @@ const mapStateToProps = state => ({
   actions: state.actions.map(action => ({ ...action, itemIds: action.ingredientIds })),
   currentActionIds: state.currentStep.actionIds,
   currentItemIds: state.steps[state.currentStep.stepId].ingredientIds,
+  currentActionId: state.steps[state.currentStep.stepId].actionId,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onItemClick: (ingredientIds, actionIds) => {
+  onItemClick: (ingredientIds, actionIds, currentActionId) => {
     dispatch(updateAction(actionIds));
     dispatch(updateIngredient(ingredientIds));
-    if (ingredientIds.length === 0) dispatch(updateStepAction(null));
+    if (ingredientIds.length === 0 || !(actionIds.includes(currentActionId))) dispatch(updateStepAction(''));
   },
 });
 

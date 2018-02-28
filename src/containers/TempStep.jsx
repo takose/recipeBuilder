@@ -55,7 +55,7 @@ class TempStep extends React.Component {
         <div className={styles.emptyIngredient} />
       );
     const currentActionNames =
-      (currentStep.ingredientIds.length > 0 && currentStep.toolIds.length > 0) ?
+      (currentStep.ingredientIds.length > 0 || currentStep.toolIds.length > 0) ?
         currentActionIds.map((id) => {
           const action = actions.find(a => a.id === id);
           const isCurrentAction = action.id === currentStep.actionId;
@@ -101,7 +101,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onActionNameClick: (isCurrentAction, id) => (
-    isCurrentAction ? dispatch(updateStepAction(null)) : dispatch(updateStepAction(id))
+    isCurrentAction ? dispatch(updateStepAction('')) : dispatch(updateStepAction(id))
   ),
 });
 

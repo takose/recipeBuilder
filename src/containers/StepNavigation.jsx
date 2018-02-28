@@ -14,12 +14,19 @@ class StepNavigation extends React.Component {
       currentActionId,
     } = this.props;
 
+    const buttonIsActive = currentActionId !== '';
     return (
-      <div className={styles.stepNavigation}>
+      <div
+        className={
+          buttonIsActive ? styles.stepNavigation : styles.stepNavigationInactive
+        }
+      >
         <button
-          onClick={() => (
-            this.props.onNextStepClick(currentIngredientIds, currentToolIds, currentActionId)
-          )}
+          onClick={() => {
+            if (buttonIsActive) {
+              this.props.onNextStepClick(currentIngredientIds, currentToolIds, currentActionId)
+            }
+          }}
         >
           <FontAwesomeIcon icon={faCheck} /> Next Step
         </button>
@@ -49,18 +56,16 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onNextStepClick: (currentIngredientIds, currentToolIds, currentActionId) => {
-    if (!(currentIngredientIds.length === 0 && currentToolIds.length === 0)) {
-      if (currentIngredientIds !== undefined && currentActionId !== null) {
-        dispatch(updateIngredientState(currentIngredientIds, currentActionId));
-      }
-      const WILL_HAVE_MIDDLE_STATE_ACTION_IDS = ['stew', 'stir_fly', 'put_in', 'measure', 'mix'];
-      if (WILL_HAVE_MIDDLE_STATE_ACTION_IDS.includes(currentActionId)) {
-        dispatch(addMiddleState(currentToolIds));
-        dispatch(updateMergedIngredientState(currentIngredientIds));
-      }
-      dispatch(addStep());
-      dispatch(incrementCurrentStepId());
+    if (currentIngredientIds !== undefined && currentActionId !== null) {
+      dispatch(updateIngredientState(currentIngredientIds, currentActionId));
     }
+    const WILL_HAVE_MIDDLE_STATE_ACTION_IDS = ['stew', 'stir_fly', 'put_in', 'measure', 'mix'];
+    if (WILL_HAVE_MIDDLE_STATE_ACTION_IDS.includes(currentActionId)) {
+      dispatch(addMiddleState(currentToolIds));
+      dispatch(updateMergedIngredientState(currentIngredientIds));
+    }
+    dispatch(addStep());
+    dispatch(incrementCurrentStepId());
   },
 });
 

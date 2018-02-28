@@ -25,30 +25,32 @@
   flex-grow: 1;
 }
 .actionNames {
-  width: 80%;
   height: 10%;
   display: flex;
   align-items: flex-end;
-  margin: 0 auto;
+  margin: 0 32px;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 300;
+  transition: all 300ms 0s ease;
 }
 .actionNameBase {
-  margin-right: 8px;
-  border: solid 1px rgb(193, 153, 72);
-  padding: 5px;
+  margin-right: 12px;
+  border: solid 1px #ED7761;
+  border-radius: 3px;
+  padding: 10px;
+  color: #ED7761;
+  transition: all 300ms 0s ease;
   &:hover {
     opacity: 0.8;
   }
 }
 .actionName {
   composes: actionNameBase;
-  opacity: 1.0;
-  font-size: 22px;
+  background-color: #ED7761;
+  color: #fff;
 }
 .actionNameInactive {
   composes: actionNameBase;
-  opacity: 0.6;
 }
 .tools {
   composes: flexBase;
