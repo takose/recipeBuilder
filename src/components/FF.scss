@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Muli', sans-serif;
+}
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+}
+
+.root {
+  width: 80vw;
+  height: 100vh;
+  margin: 100px auto 0;
+  padding: 50px;
+}
+
+.title {
+  border-bottom: solid 1px #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.workspace {
+  display: flex;
+  height: 300px;
+}
+
+.chart {
+  width: 600px;
+  height: 600px;
+  margin-right: 50px;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.steps {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.step {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+.select {
+  background: none;
+  margin: 0 10px;
+  width: 50px;
+  border: none;
+  text-align: center;
+  border-bottom: solid 1px #ccc;
+  &:focus {
+    outline: none;
+    border-bottom: solid 1px #888;
+  }
+}
+
+.addStep {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.addStepButton {
+  text-align: left;
+  display: flex;
+  margin-left: 5px;
+  font-size: 30px;
+}
+
+.addStepInactive {
+  composes: addStep;
+  opacity: 0.5;
+}
+
+.plus {
+  width: 30px;
+  height: 30px;
+  background-color: #A9E85D;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.playButton {
+  background-color: #6D4C41;
+  color: #fff;
+  height: 45px;
+  letter-spacing: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+}
+
+.playButtonInactive {
+  composes: playButton;
+  opacity: 0.5;
+}

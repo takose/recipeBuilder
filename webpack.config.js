@@ -7,7 +7,6 @@ const dist = path.resolve(__dirname, 'dist');
 module.exports = {
   devtool: 'inline-source-map',
   entry: src + '/index.jsx',
-
   output: {
     path: dist,
     filename: 'bundle.js',

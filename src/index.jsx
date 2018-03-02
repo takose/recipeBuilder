@@ -9,7 +9,7 @@ import { Switch, Route } from 'react-router';
 
 import recipeBuilder from './reducers';
 import App from './components/App';
-import StepList from './containers/StepList';
+import FF from './components/FF';
 
 const history = createHistory();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -29,7 +29,7 @@ const ConnectedSwitch = connect(state => ({
 const AppContainer = () => (
   <ConnectedSwitch>
     <Route exact path="/" component={App} />
-    <Route path="/about" component={StepList} />
+    <Route path="/ff" component={FF} />
   </ConnectedSwitch>
 );
 
