@@ -1,9 +1,9 @@
 import 'normalize.css';
 import 'babel-polyfill';
 import React from 'react';
-// import SerialPort from 'serialport';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faPlus from '@fortawesome/fontawesome-free-solid/faPlus';
+import io from 'socket.io-client';
 import DrawChart from '../containers/FF/DrawChart';
 import styles from './FF.scss';
 
@@ -16,6 +16,13 @@ export default class FF extends React.Component {
       },
     ],
     activeStepId: 0,
+    socket: null,
+  }
+
+  componentDidMount = () => {
+    this.setState({
+      socket: this.connectWebSocket(),
+    });
   }
 
   onTimeChange = (e) => {
@@ -24,8 +31,6 @@ export default class FF extends React.Component {
     this.setState({
       steps: newStep,
     });
-    if (this.state.steps[this.state.activeStepId].power !== '') {
-    }
   }
 
   onPowerChange = (e) => {
@@ -34,9 +39,15 @@ export default class FF extends React.Component {
     this.setState({
       steps: newStep,
     });
-    if (this.state.steps[this.state.activeStepId].time !== '') {
-    }
   }
+
+  connectWebSocket = () => (
+    io('http://localhost:3000', {
+      query: {
+        type: 'user',
+      },
+    })
+  );
 
   addStep = () => {
     this.setState({
@@ -58,23 +69,38 @@ export default class FF extends React.Component {
   }
 
   playFF = async () => {
-  //   const port = new SerialPort('/dev/tty-usbserial1', {
-  //     baudRate: 57600,
-  //     autoOpen: false,
-  //   });
+    let idx = 0;
+    for (let step of this.state.steps) {
+      await this.sendCommand(step, idx);
+      idx = idx + 1;
+      console.log('done 1 step');
+    }
+    console.log('done steps');
+    console.log('**done steps**');
+    this.state.socket.emit('users/state:update', {
+      deviceId: 'ff',
+      states: {
+        power: '0',
+        time: '0',
+      },
+    });
+  }
 
-  //   console.log('playFF');
-  //   await setTimeout(() => {
-  //     console.log('enter');
-  //   }, 1000);
-
-  //   port.on('error', (err) => {
-  //     console.log('Error: ', err.message);
-  //   });
-
-  //   port.on('data', (data) => {
-  //     console.log('Data:', data);
-  //   });
+  sendCommand = (step, idx) => {
+    const device = {
+      id: idx,
+      deviceId: 'ff',
+      states: step,
+    };
+    this.state.socket.emit('users/state:update', device);
+    this.state.socket.on('users/state:update/return', () => {
+    });
+    return new Promise((resolve) => {
+      this.state.socket.once('users/ff/done', () => {
+        this.state.socket.emit('users/ff/done/return');
+        resolve();
+      });
+    });
   };
 
   render() {
@@ -130,7 +156,7 @@ export default class FF extends React.Component {
             </div>
             <button
               className={isPlayable ? styles.playButton : styles.playButtonInactive}
-              onClick={isPlayable ? null : this.playFF}
+              onClick={isPlayable ? this.playFF : null}
             >
               PLAY
             </button>

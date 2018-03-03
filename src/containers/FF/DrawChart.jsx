@@ -13,12 +13,15 @@ export default ({ steps }) => {
         labels: [...Array(data.length).keys()],
         datasets: [{
           label: 'FF',
-          borderWidth: 5,
+          pointBackgroundColor: '#FF1200',
+          pointBorderColor: '#FF1200',
+          borderWidth: 3,
           data,
           steppedLine: 'after',
           borderWidth: 1,
+          pointRadius: 3,
           backgroundColor: 'rgba(0, 0, 0, 0.0)',
-          borderColor: '#B8291E',
+          borderColor: '#FF1200',
         }],
       }}
       options={{
