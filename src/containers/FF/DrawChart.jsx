@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
 
-export default ({ steps }) => {
+const DrawChart = ({ steps }) => {
   const data = steps === undefined ?
     [] :
     steps.reduce((result, step) => (
@@ -15,7 +16,6 @@ export default ({ steps }) => {
           label: 'FF',
           pointBackgroundColor: '#FF1200',
           pointBorderColor: '#FF1200',
-          borderWidth: 3,
           data,
           steppedLine: 'after',
           borderWidth: 1,
@@ -50,3 +50,9 @@ export default ({ steps }) => {
     />
   );
 };
+
+DrawChart.propTypes = {
+  steps: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+export default DrawChart;
