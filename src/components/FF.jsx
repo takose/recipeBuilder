@@ -3,6 +3,7 @@ import 'babel-polyfill';
 import React from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faPlus from '@fortawesome/fontawesome-free-solid/faPlus';
+import faTrash from '@fortawesome/fontawesome-free-solid/faTrash';
 import io from 'socket.io-client';
 import DrawChart from '../containers/FF/DrawChart';
 import styles from './FF.scss';
@@ -104,6 +105,12 @@ export default class FF extends React.Component {
     });
   };
 
+  deleteStep = (id) => {
+    const { steps } = this.state;
+    steps.splice(id, 1);
+    this.setState({ steps });
+  }
+
   render() {
     const isButtonActive = this.state.steps[this.state.steps.length - 1].time > 0;
     const forms = this.state.steps.map((step, idx) => (
@@ -129,6 +136,16 @@ export default class FF extends React.Component {
           className={styles.select}
         />
         分
+        {
+          (this.state.steps.length !== 1) ? (
+            <button
+              className={styles.trash}
+              onClick={() => this.deleteStep(idx)}
+            >
+              <FontAwesomeIcon icon={faTrash} />
+            </button>
+          ) : null
+        }
       </button>
     ));
     const isPlayable = !this.state.isPlay && this.state.steps.length > 1;
