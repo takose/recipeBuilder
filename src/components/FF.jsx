@@ -84,6 +84,7 @@ export default class FF extends React.Component {
         time: '0',
       },
     });
+    this.setState({ isPlay: false });
   }
 
   sendCommand = (step, idx) => {
@@ -130,7 +131,7 @@ export default class FF extends React.Component {
         分
       </button>
     ));
-    const isPlayable = this.state.isPlay || this.state.steps.length > 1;
+    const isPlayable = !this.state.isPlay && this.state.steps.length > 1;
 
     return (
       <div className={styles.root}>
@@ -156,7 +157,10 @@ export default class FF extends React.Component {
             </div>
             <button
               className={isPlayable ? styles.playButton : styles.playButtonInactive}
-              onClick={isPlayable ? this.playFF : null}
+              onClick={isPlayable ? () => {
+                this.setState({ isPlay: true });
+                this.playFF();
+              } : null}
             >
               PLAY
             </button>
