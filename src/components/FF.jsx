@@ -63,6 +63,29 @@ export default class FF extends React.Component {
     });
   }
 
+  recipeSetRice = () => {
+    this.setState({
+      steps: [
+        {
+          time: 6,
+          power: 4,
+        },
+        {
+          time: 3,
+          power: 3,
+        },
+        {
+          time: 6,
+          power: 2,
+        },
+        {
+          time: 10,
+          power: 0,
+        },
+      ],
+    });
+  }
+
   changeActiveStep = (id) => {
     this.setState({
       activeStepId: id,
@@ -182,6 +205,15 @@ export default class FF extends React.Component {
               PLAY
             </button>
           </div>
+        </div>
+        <h1 className={styles.title}>Recipes</h1>
+        <div className={styles.recipeList}>
+          <button
+            className={styles.recipeSelect}
+            onClick={this.recipeSetRice}
+          >
+            ご飯
+          </button>
         </div>
       </div>
     );
