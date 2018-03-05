@@ -86,6 +86,26 @@ export default class FF extends React.Component {
     });
   }
 
+  recipeSetUdon = () => {
+    this.setState({
+      steps: [
+        {
+          time: 6,
+          power: 4,
+        },
+        {
+          time: 3,
+          power: 3,
+        },
+        {
+          time: 1,
+          power: 2,
+        },
+      ],
+    });
+  }
+
+
   changeActiveStep = (id) => {
     this.setState({
       activeStepId: id,
@@ -213,6 +233,12 @@ export default class FF extends React.Component {
             onClick={this.recipeSetRice}
           >
             ご飯
+          </button>
+          <button
+            className={styles.recipeSelect}
+            onClick={this.recipeSetUdon}
+          >
+            煮込みうどん
           </button>
         </div>
       </div>
