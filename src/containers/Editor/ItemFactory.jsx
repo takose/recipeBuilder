@@ -14,8 +14,7 @@ export default function ItemFactory(ItemComponent, styles) {
       newCurrentItemIds = currentItemIds.filter(id => id !== item.id);
       const newCurrentAllItemIds = currentAllItemIds.filter(id => id !== item.id);
       newActionIds = _.pluck(actions.filter(action => (
-        _.intersection(action.itemIds, newCurrentItemIds).length === newCurrentItemIds.length &&
-        newCurrentAllItemIds.length !== 0
+        _.intersection(action.itemIds, newCurrentAllItemIds).length === newCurrentAllItemIds.length
       )), 'id');
       className = styles.itemButtonUsed;
       onClick = () => onItemClick(newCurrentItemIds, newActionIds, currentActionId);
