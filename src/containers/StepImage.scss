@@ -1,0 +1,39 @@
+.step {
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  align-content: baseline;
+  justify-content: center;
+}
+.imageBase {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.flexBase {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+}
+.tools {
+  composes: flexBase;
+}
+.tool {
+  composes: imageBase;
+  width: 100%;
+  height: 100%;
+}
+.ingredients {
+  composes: flexBase;
+}
+.ingredient {
+  composes: imageBase;
+  width: 100%;
+  height: 100%;
+}
+.options {
+  composes: flexBase;
+}

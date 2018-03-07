@@ -1,44 +1,24 @@
 .step {
-  width: 140px;
-  height: 140px;
-  padding: 5px;
+  width: 160px;
+  height: 260px;
+  padding: 15px;
   margin: 0 10px 15px 0;
   background-color: #fefefe;
   border-radius: 3px;
   border: solid 1px #ddd;
   display: flex;
-  align-items: center;
-  align-content: baseline;
-  justify-content: center;
-}
-.imageBase {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-.flexBase {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 50%;
-  height: 100%;
+  align-items: center;
+  color: #777;
 }
-.tools {
-  composes: flexBase;
-}
-.tool {
-  composes: imageBase;
+
+.overview {
+  font-size: 16px;
   width: 100%;
-  height: 100%;
 }
-.ingredients {
-  composes: flexBase;
-}
-.ingredient {
-  composes: imageBase;
+
+.description {
   width: 100%;
-  height: 100%;
-}
-.options {
-  composes: flexBase;
+  margin-top: 8px;
+  font-weight: 600;
 }

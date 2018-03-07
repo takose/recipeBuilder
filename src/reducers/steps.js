@@ -1,9 +1,43 @@
 const initialState = {
   0: {
+    toolIds: [
+      'knife',
+    ],
+    ingredientIds: [
+      'chicken',
+    ],
+    actionId: 'cut',
+  },
+  1: {
+    toolIds: [
+      'puta',
+      'smoon',
+    ],
+    ingredientIds: [
+      'soy_sauce',
+    ],
+    actionId: 'measure',
+    options: '10',
+  },
+  2: {
+    toolIds: [
+      'pot',
+      'puta',
+      'ff',
+    ],
+    ingredientIds: [],
+    actionId: 'pour',
+    options: [
+      {
+        ingredientId: 'soy_sauce',
+        time: '3',
+      },
+    ],
+  },
+  3: {
     toolIds: [],
     ingredientIds: [],
     actionId: '',
-    options: null,
   },
 };
 

@@ -5,12 +5,18 @@ import Step from './Step';
 
 class StepList extends React.Component {
   render() {
-    const { steps } = this.props;
+    const { steps, actions } = this.props;
     const stepList = [];
     const stepKeys = Object.keys(steps);
     stepKeys.pop();
     stepKeys.forEach((key) => {
-      stepList.push(<Step key={key} stepId={key} showAction={false} />);
+      stepList.push(<Step
+        id={key}
+        key={key}
+        step={steps[key]}
+        action={actions.find(a => a.id === steps[key].actionId)}
+        showAction={false}
+      />);
     });
     return (
       <div className={styles.stepList}>
@@ -22,4 +28,5 @@ class StepList extends React.Component {
 
 export default connect(state => ({
   steps: state.steps,
+  actions: state.actions,
 }))(StepList);

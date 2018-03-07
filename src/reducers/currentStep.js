@@ -1,6 +1,6 @@
 const initialState = {
   option: null,
-  stepId: 0,
+  stepId: 3,
   actionIds: [],
 };
 
