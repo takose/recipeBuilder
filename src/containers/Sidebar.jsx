@@ -27,7 +27,7 @@ export default class Sidebar extends React.Component {
             </NavLink>
           </div>
           <div className={styles.item}>
-            <NavLink to="/" href="/" activeClassName={styles.selected}>
+            <NavLink to="/player" href="/player" activeClassName={styles.selected}>
               <img className={styles.iconImg} src="https://i.gyazo.com/039386199d8e9838dbab33bb69bbe9f5.png" alt="player" />
               Player
             </NavLink>
