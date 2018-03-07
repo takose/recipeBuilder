@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styles from './Option.scss';
-import IngredientImage from './IngredientImage';
+import IngredientImage from '../IngredientImage';
 
 class OptionPuta extends React.Component {
   render() {

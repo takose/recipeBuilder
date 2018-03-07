@@ -13,11 +13,8 @@ class StepList extends React.Component {
       stepList.push(<Step key={key} stepId={key} showAction={false} />);
     });
     return (
-      <div className={styles.stepListWrapper}>
-        <h1>Directions</h1>
-        <div className={styles.stepList}>
-          {stepList}
-        </div>
+      <div className={styles.stepList}>
+        {stepList}
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import IngredientImage from './IngredientImage';
+import IngredientImage from '../IngredientImage';
 import styles from './TempStep.scss';
 import Description from './Description';
 import StepNavigation from './StepNavigation';

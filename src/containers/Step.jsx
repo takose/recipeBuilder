@@ -1,11 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import IngredientImage from './IngredientImage';
 import styles from './Step.scss';
 
 class Step extends React.Component {
+  static propTypes = {
+    ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
+    tools: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // eslint-disable-next-line react/forbid-prop-types
+    steps: PropTypes.PropTypes.object.isRequired,
+    stepId: PropTypes.number.isRequired,
+  }
+
   render() {
-    const { ingredients, tools, stepId, steps, equipments, toolPlace } = this.props;
+    const {
+      ingredients, tools, stepId, steps,
+    } = this.props;
     const step = steps[stepId];
     const toolList = step.toolIds.length > 0 &&
       tools.map((t) => {
