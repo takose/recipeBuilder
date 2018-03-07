@@ -6,6 +6,7 @@ import faPlus from '@fortawesome/fontawesome-free-solid/faPlus';
 import faTrash from '@fortawesome/fontawesome-free-solid/faTrash';
 import io from 'socket.io-client';
 import DrawChart from '../containers/FF/DrawChart';
+import Sidebar from '../containers/Sidebar';
 import styles from './FF.scss';
 
 export default class FF extends React.Component {
@@ -193,51 +194,54 @@ export default class FF extends React.Component {
 
     return (
       <div className={styles.root}>
-        <h1 className={styles.title}>FF Dashboard</h1>
-        <div className={styles.workspace}>
-          <div className={styles.chart}>
-            <DrawChart steps={this.state.steps} />
-          </div>
-          <div className={styles.rightColumn}>
-            <div className={styles.steps}>
-              {forms}
-              <div className={isButtonActive ? styles.addStep : styles.addStepInactive}>
-                Next
-                <button
-                  className={styles.addStepButton}
-                  onClick={isButtonActive ? this.addStep : null}
-                >
-                  <div className={styles.plus}>
-                    <FontAwesomeIcon icon={faPlus} />
-                  </div>
-                </button>
-              </div>
+        <Sidebar />
+        <div className={styles.container}>
+          <h1 className={styles.title}>FF Dashboard</h1>
+          <div className={styles.workspace}>
+            <div className={styles.chart}>
+              <DrawChart steps={this.state.steps} />
             </div>
+            <div className={styles.rightColumn}>
+              <div className={styles.steps}>
+                {forms}
+                <div className={isButtonActive ? styles.addStep : styles.addStepInactive}>
+                  Next
+                  <button
+                    className={styles.addStepButton}
+                    onClick={isButtonActive ? this.addStep : null}
+                  >
+                    <div className={styles.plus}>
+                      <FontAwesomeIcon icon={faPlus} />
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <button
+                className={isPlayable ? styles.playButton : styles.playButtonInactive}
+                onClick={isPlayable ? () => {
+                  this.setState({ isPlay: true });
+                  this.playFF();
+                } : null}
+              >
+                PLAY
+              </button>
+            </div>
+          </div>
+          <h1 className={styles.title}>Recipes</h1>
+          <div className={styles.recipeList}>
             <button
-              className={isPlayable ? styles.playButton : styles.playButtonInactive}
-              onClick={isPlayable ? () => {
-                this.setState({ isPlay: true });
-                this.playFF();
-              } : null}
+              className={styles.recipeSelect}
+              onClick={this.recipeSetRice}
             >
-              PLAY
+              ご飯
+            </button>
+            <button
+              className={styles.recipeSelect}
+              onClick={this.recipeSetUdon}
+            >
+              煮込みうどん
             </button>
           </div>
-        </div>
-        <h1 className={styles.title}>Recipes</h1>
-        <div className={styles.recipeList}>
-          <button
-            className={styles.recipeSelect}
-            onClick={this.recipeSetRice}
-          >
-            ご飯
-          </button>
-          <button
-            className={styles.recipeSelect}
-            onClick={this.recipeSetUdon}
-          >
-            煮込みうどん
-          </button>
         </div>
       </div>
     );
