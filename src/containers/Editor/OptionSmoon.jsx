@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faCheck from '@fortawesome/fontawesome-free-solid/faCheck';
-import { updateOption } from '../actions';
+import { updateOption } from '../../actions';
 import styles from './Option.scss';
 
 class OptionPuta extends React.Component {

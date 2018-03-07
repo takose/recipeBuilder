@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import IngredientImage from './IngredientImage';
 import styles from './TempStep.scss';
 import Description from './Description';
-import { updateStepAction, enableOption, updateOption } from '../actions';
+import { updateStepAction, enableOption, updateOption } from '../../actions';
 
 class TempStep extends React.Component {
   static propTypes = {

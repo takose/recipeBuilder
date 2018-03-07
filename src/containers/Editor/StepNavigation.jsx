@@ -11,7 +11,7 @@ import {
   addMiddleState,
   updateMergedIngredientState,
   enableOption,
-} from '../actions';
+} from '../../actions';
 
 class StepNavigation extends React.Component {
   render() {

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styles from './Kitchen.scss';
 import StepWrapper from './StepWrapper';
-import StepNavigation from '../containers/StepNavigation';
+import StepNavigation from './StepNavigation';
 
 class Kitchen extends React.Component {
   render() {

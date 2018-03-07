@@ -1,29 +1,29 @@
 import { connect } from 'react-redux';
-import styles from './ToolList.scss';
-import Tool from './Tool';
+import Ingredient from './Ingredient';
 import ListFactory from './ListFactory';
+import styles from './IngredientList.scss';
 import {
-  updateTool,
+  updateIngredient,
   updateAction,
   updateStepAction,
   enableOption,
   updateOption,
-} from '../actions';
+} from '../../actions';
 
-const ToolList = ListFactory(
-  Tool,
+const IngredientList = ListFactory(
+  Ingredient,
   {
-    listClassName: styles.toolList,
-    imageClassName: styles.toolImage,
-    imageUrl: 'https://i.gyazo.com/3ab14d24c3eb95e93518cff1eeac34ef.png',
+    listClassName: styles.ingredientList,
+    imageClassName: styles.ingredientImage,
+    imageUrl: 'https://i.gyazo.com/eb9fe663c24ef82dcf05ebd910ae1b78.png',
   },
 );
 
 const mapStateToProps = state => ({
-  items: state.tools,
+  items: state.ingredients,
   actions: state.actions,
   currentActionIds: state.currentStep.actionIds,
-  currentItemIds: state.steps[state.currentStep.stepId].toolIds,
+  currentItemIds: state.steps[state.currentStep.stepId].ingredientIds,
   currentActionId: state.steps[state.currentStep.stepId].actionId,
   currentAllItemIds: [
     ...state.steps[state.currentStep.stepId].ingredientIds,
@@ -32,9 +32,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onItemClick: (toolIds, actionIds, currentActionId) => {
+  onItemClick: (ingredientIds, actionIds, currentActionId) => {
     dispatch(updateAction(actionIds));
-    dispatch(updateTool(toolIds));
+    dispatch(updateIngredient(ingredientIds));
     if (!(actionIds.includes(currentActionId))) {
       dispatch(updateStepAction(''));
       dispatch(enableOption(null));
@@ -43,4 +43,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ToolList);
+export default connect(mapStateToProps, mapDispatchToProps)(IngredientList);

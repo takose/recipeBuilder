@@ -117,9 +117,7 @@ export default class FF extends React.Component {
     for (let step of this.state.steps) {
       await this.sendCommand(step, idx);
       idx = idx + 1;
-      console.log('done 1 step');
     }
-    console.log('done steps');
     console.log('**done steps**');
     this.state.socket.emit('users/state:update', {
       deviceId: 'ff',
