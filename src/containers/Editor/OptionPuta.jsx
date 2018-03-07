@@ -33,11 +33,6 @@ class OptionPuta extends React.Component {
           <br />
           {putaPods}
           <br />
-          <input
-            className={styles.submit}
-            type="submit"
-            value="けってい"
-          />
         </form>
       </div>
     );
