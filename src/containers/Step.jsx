@@ -14,7 +14,21 @@ class Step extends React.Component {
   }
 
   render() {
-    const { step, id, action } = this.props;
+    const { step, id, action, ingredients } = this.props;
+    let description;
+    switch (step.actionId) {
+      case 'measure':
+        description = `${step.options}cc`;
+        break;
+      case 'pour':
+        description = step.options.map((option) => {
+          const ingredient = ingredients.find(i => i.id === option.ingredientId);
+          return `${ingredient.name_ja}: ${option.time}分後`;
+        });
+        break;
+      default:
+        break;
+    }
     return (
       <div className={styles.step}>
         <div className={styles.overview}>
@@ -22,11 +36,13 @@ class Step extends React.Component {
         </div>
         <StepImage step={step} />
         <div className={styles.description}>
+          {description}
         </div>
       </div>
     );
   }
 }
 
-export default connect((state) => {
-})(Step);
+export default connect(state => ({
+  ingredients: state.ingredients,
+}))(Step);

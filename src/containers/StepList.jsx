@@ -5,7 +5,7 @@ import Step from './Step';
 
 class StepList extends React.Component {
   render() {
-    const { steps, actions } = this.props;
+    const { steps, actions, ingredients } = this.props;
     const stepList = [];
     const stepKeys = Object.keys(steps);
     stepKeys.pop();
