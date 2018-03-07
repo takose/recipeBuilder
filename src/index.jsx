@@ -26,16 +26,12 @@ const ConnectedSwitch = connect(state => ({
   location: state.location,
 }))(Switch);
 
-const AppContainer = () => (
+const Root = () => (
   <ConnectedSwitch>
     <Route exact path="/" component={App} />
     <Route path="/ff" component={FF} />
   </ConnectedSwitch>
 );
-
-const Root = connect(state => ({
-  location: state.location,
-}))(AppContainer);
 
 render(
   <Provider store={store}>
