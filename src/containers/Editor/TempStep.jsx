@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import IngredientImage from './IngredientImage';
 import styles from './TempStep.scss';
 import Description from './Description';
+import StepNavigation from './StepNavigation';
 import { updateStepAction, enableOption, updateOption } from '../../actions';
 
 class TempStep extends React.Component {
@@ -73,17 +74,20 @@ class TempStep extends React.Component {
 
     return (
       <div className={styles.stepWrapper}>
-        <div className={styles.actionNamesWrapper}>
-          {
-            currentStep.ingredientIds.length > 0 || currentStep.toolIds.length > 0 ? (
-              <div>
-                <p>Select:</p>
-                <div className={styles.actionNames}>
-                  {currentActionNames}
+        <div className={styles.controlls}>
+          <div className={styles.actionNamesWrapper}>
+            {
+              currentStep.ingredientIds.length > 0 || currentStep.toolIds.length > 0 ? (
+                <div>
+                  <p>Select:</p>
+                  <div className={styles.actionNames}>
+                    {currentActionNames}
+                  </div>
                 </div>
-              </div>
-            ) : null
-          }
+              ) : null
+            }
+          </div>
+          <StepNavigation />
         </div>
         <div className={styles.step}>
           <div className={styles.tools}>
