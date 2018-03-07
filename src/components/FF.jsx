@@ -138,7 +138,7 @@ export default class FF extends React.Component {
       states: step,
     };
     this.state.socket.emit('users/state:update', device);
-    this.state.socket.on('users/state:update/return', () => {
+    this.state.socket.once('users/state:update/return', () => {
     });
     return new Promise((resolve) => {
       this.state.socket.once('users/ff/done', () => {
