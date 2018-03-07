@@ -5,7 +5,7 @@ import IngredientImage from '../IngredientImage';
 import styles from './TempStep.scss';
 import Description from './Description';
 import StepNavigation from './StepNavigation';
-import { updateStepAction, enableOption, updateOption } from '../../actions';
+import { updateStepAction, enableOption } from '../../actions';
 
 class TempStep extends React.Component {
   static propTypes = {
@@ -20,7 +20,7 @@ class TempStep extends React.Component {
   }
   render() {
     const {
-      ingredients, tools, stepId, steps, currentActionIds, actions, onActionNameClick,
+      ingredients, tools, stepId, steps, currentActionIds, actions, onActionNameClick, deviceOptions,
     } = this.props;
     const currentStep = steps[stepId];
     const currentTools = currentStep.toolIds.length > 0 ?
@@ -65,7 +65,7 @@ class TempStep extends React.Component {
               className={
                 isCurrentAction ? styles.actionName : styles.actionNameInactive
               }
-              onClick={() => onActionNameClick(isCurrentAction, id)}
+              onClick={() => onActionNameClick(isCurrentAction, id, deviceOptions)}
             >
               {action.name_ja}
             </button>
@@ -109,10 +109,11 @@ const mapStateToProps = state => ({
   actions: state.actions,
   tools: state.tools,
   steps: state.steps,
+  deviceOptions: state.deviceOptions,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onActionNameClick: (isCurrentAction, currentActionId) => {
+  onActionNameClick: (isCurrentAction, currentActionId, deviceOptions) => {
     if (isCurrentAction) {
       dispatch(updateStepAction(''));
     } else {
@@ -121,10 +122,15 @@ const mapDispatchToProps = dispatch => ({
     if (currentActionId === 'measure') {
       dispatch(enableOption('smoon'));
     } else if (currentActionId === 'pour') {
-      dispatch(enableOption('puta'));
+      const option = deviceOptions.puta.pod.map(p => (
+        {
+          ingredientId: p,
+          time: 0,
+        }
+      ));
+      dispatch(enableOption('puta', option));
     } else {
       dispatch(enableOption(null));
-      dispatch(updateOption(null));
     }
   },
 });

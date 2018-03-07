@@ -11,6 +11,7 @@ import {
   addMiddleState,
   updateMergedIngredientState,
   enableOption,
+  updatePutaOption,
 } from '../../actions';
 
 class StepNavigation extends React.Component {
@@ -81,6 +82,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(addStep());
     dispatch(incrementCurrentStepId());
     dispatch(enableOption(null));
+    if (currentActionId === 'measure' && currentToolIds.includes('puta')) {
+      dispatch(updatePutaOption(currentIngredientIds));
+    }
   },
 });
 

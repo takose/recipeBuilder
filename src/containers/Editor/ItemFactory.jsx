@@ -8,6 +8,7 @@ export default function ItemFactory(ItemComponent, styles) {
     const isUsed = currentItemIds.find(id => id === item.id) !== undefined;
     let newCurrentItemIds;
     let newActionIds;
+    let newCurrentActionId;
     let className;
     let onClick;
     if (isUsed) {
@@ -17,7 +18,8 @@ export default function ItemFactory(ItemComponent, styles) {
         _.intersection(action.itemIds, newCurrentAllItemIds).length === newCurrentAllItemIds.length
       )), 'id');
       className = styles.itemButtonUsed;
-      onClick = () => onItemClick(newCurrentItemIds, newActionIds, currentActionId);
+      newCurrentActionId = newCurrentAllItemIds.length === 0 ? '' : currentActionId;
+      onClick = () => onItemClick(newCurrentItemIds, newActionIds, newCurrentActionId);
     } else {
       newCurrentItemIds = [...currentItemIds, item.id];
       let ids;

@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styles from './Option.scss';
 import IngredientImage from '../IngredientImage';
+import { updateOption } from '../../actions';
 
 class OptionPuta extends React.Component {
   render() {
-    const { onSubmit, putaOption, ingredients } = this.props;
+    const { onChange, putaOption, ingredients } = this.props;
     const putaPods = putaOption.map((pod, idx) => {
-      const ingredient = ingredients.find((i) => pod === i.id)
+      const ingredient = ingredients.find(i => pod.ingredientId === i.id)
       return (
         <label className={styles.label} id={`pod${idx}`}>
           <div className={styles.ingredientImage}>
@@ -16,7 +17,11 @@ class OptionPuta extends React.Component {
               showAction={false}
             />
           </div>
-          <input type="text" name="name" />
+          <input
+            type="text"
+            name="name"
+            onChange={e => onChange(e, putaOption, idx)}
+          />
           分後
         </label>
       );
@@ -24,11 +29,15 @@ class OptionPuta extends React.Component {
 
     return (
       <div className={styles.option}>
-        <form onSubmit={onSubmit}>
+        <form>
           <br />
           {putaPods}
           <br />
-          <input className={styles.submit} type="submit" value="けってい" />
+          <input
+            className={styles.submit}
+            type="submit"
+            value="けってい"
+          />
         </form>
       </div>
     );
@@ -37,12 +46,14 @@ class OptionPuta extends React.Component {
 
 const mapStateToProps = state => ({
   ingredients: state.ingredients,
-  putaOption: state.deviceOptions.puta.pod,
+  putaOption: state.steps[state.currentStep.stepId].options,
 });
 
-const mapDispatchToProps = () => ({
-  onSubmit: (e) => {
-    e.preventDefault();
+const mapDispatchToProps = dispatch => ({
+  onChange: (e, putaOption, idx) => {
+    const result = putaOption;
+    result[idx].time = e.target.value;
+    dispatch(updateOption(result));
   },
 });
 

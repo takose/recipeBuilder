@@ -61,7 +61,14 @@ export const updateOption = option => ({
   currentStepId,
 });
 
-export const enableOption = optionName => ({
+export const enableOption = (optionName, option) => ({
   type: 'ENABLE_OPTION',
+  currentStepId,
   optionName,
+  option,
+});
+
+export const updatePutaOption = ingredientId => ({
+  type: 'UPDATE_PUTA_OPTION',
+  ingredientId,
 });

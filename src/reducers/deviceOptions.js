@@ -12,7 +12,7 @@ const steps = (state = initialState, action) => {
         puta: {
           pod: [
             ...state.puta.pod,
-            ...action.putaOption,
+            ...action.ingredientId,
           ],
         },
       };
