@@ -1,4 +1,4 @@
-let currentStepId = 0;
+let currentStepId = 3;
 export const addStep = () => {
   currentStepId += 1;
   return ({
