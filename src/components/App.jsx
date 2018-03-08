@@ -21,7 +21,7 @@ export default class App extends React.Component {
         </div>
         <div className={styles.stepListWrapper}>
           <h1>Directions</h1>
-          <StepList />
+          <StepList player={false} />
         </div>
       </div>
     );

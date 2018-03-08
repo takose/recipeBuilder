@@ -10,10 +10,15 @@ class Step extends React.Component {
     // eslint-disable-next-line react/forbid-prop-types
     action: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
+    sendCommand: PropTypes.func,
+  }
+
+  static defaultProps = {
+    sendCommand: null,
   }
 
   render() {
-    const { step, id, action, ingredients } = this.props;
+    const { step, id, action, ingredients, sendCommand, styles } = this.props;
     let description;
     switch (step.actionId) {
       case 'measure':
