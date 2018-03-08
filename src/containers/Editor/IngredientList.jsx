@@ -6,7 +6,6 @@ import {
   updateIngredient,
   updateAction,
   updateStepAction,
-  enableOption,
   updateOption,
 } from '../../actions';
 
@@ -37,7 +36,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(updateIngredient(ingredientIds));
     if (!(actionIds.includes(currentActionId))) {
       dispatch(updateStepAction(''));
-      dispatch(enableOption(null));
       dispatch(updateOption(null));
     }
   },

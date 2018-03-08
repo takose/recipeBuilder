@@ -5,7 +5,7 @@ import IngredientImage from '../IngredientImage';
 import styles from './TempStep.scss';
 import Description from './Description';
 import StepNavigation from './StepNavigation';
-import { updateStepAction, enableOption } from '../../actions';
+import { updateStepAction, updateOption } from '../../actions';
 
 class TempStep extends React.Component {
   static propTypes = {
@@ -130,7 +130,7 @@ const mapDispatchToProps = dispatch => ({
       ));
       dispatch(enableOption('puta', option));
     } else {
-      dispatch(enableOption(null));
+      dispatch(updateOption(null));
     }
   },
 });

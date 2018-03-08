@@ -85,14 +85,6 @@ const steps = (state = initialState, action) => {
           options: action.option,
         },
       };
-    case 'ENABLE_OPTION':
-      return {
-        ...state,
-        [action.currentStepId]: {
-          ...state[action.currentStepId],
-          options: action.option,
-        },
-      };
     default:
       return state;
   }

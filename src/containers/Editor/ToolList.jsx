@@ -6,7 +6,6 @@ import {
   updateTool,
   updateAction,
   updateStepAction,
-  enableOption,
   updateOption,
 } from '../../actions';
 
@@ -37,7 +36,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(updateTool(toolIds));
     if (!(actionIds.includes(currentActionId))) {
       dispatch(updateStepAction(''));
-      dispatch(enableOption(null));
       dispatch(updateOption(null));
     }
   },

@@ -10,7 +10,6 @@ import {
   updateIngredientState,
   addMiddleState,
   updateMergedIngredientState,
-  enableOption,
   updatePutaOption,
 } from '../../actions';
 
@@ -81,7 +80,6 @@ const mapDispatchToProps = dispatch => ({
     }
     dispatch(addStep());
     dispatch(incrementCurrentStepId());
-    dispatch(enableOption(null));
     if (currentActionId === 'measure' && currentToolIds.includes('puta')) {
       dispatch(updatePutaOption(currentIngredientIds));
     }
