@@ -6,15 +6,15 @@ import OptionSmoon from './OptionSmoon';
 
 class Description extends React.Component {
   render() {
-    const { optionName } = this.props;
+    const { device } = this.props;
     const option = () => {
-      if (optionName === 'puta') {
+      if (device === 'puta') {
         return (
           <div className={styles.options}>
             <OptionPuta />
           </div>
         );
-      } else if (optionName === 'smoon') {
+      } else if (device === 'smoon') {
         return (
           <div className={styles.options}>
             <OptionSmoon />
@@ -32,7 +32,11 @@ class Description extends React.Component {
   }
 }
 
-export default connect(state => ({
-  currentActionId: state.steps[state.currentStep.stepId].actionId,
-  optionName: state.currentStep.option,
-}))(Description);
+export default connect((state) => {
+  const step = state.steps[state.currentStep.stepId];
+  const device = step.options !== null ? step.options.name : null;
+  return {
+    currentActionId: step.actionId,
+    device,
+  };
+})(Description);

@@ -25,19 +25,23 @@ class Step extends React.Component {
     let description;
     switch (step.actionId) {
       case 'measure':
-        description = `${step.options}cc`;
+        description = `${step.options.content.amount}cc`;
         break;
       case 'pour':
-        description = step.options.map((option) => {
+        description = step.options.content.map((option) => {
           const ingredient = ingredients.find(i => i.id === option.ingredientId);
-          return `${ingredient.name_ja}: ${option.time}分後`;
+          return (
+            <div>
+              {ingredient.name_ja}: {option.time}分後
+            </div>
+          );
         });
         break;
       default:
         break;
     }
     let deviceSwitch = null;
-    if (step.options !== undefined && sendCommand !== null) {
+    if (sendCommand !== null) {
       const options = step;
       deviceSwitch = (
         <button

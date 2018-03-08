@@ -120,15 +120,26 @@ const mapDispatchToProps = dispatch => ({
       dispatch(updateStepAction(currentActionId));
     }
     if (currentActionId === 'measure') {
-      dispatch(enableOption('smoon'));
+      dispatch(updateOption({
+        name: 'smoon',
+        content: {
+          amount: 0,
+        },
+      }));
     } else if (currentActionId === 'pour') {
-      const option = deviceOptions.puta.pod.map(p => (
+      const optionContent = deviceOptions.puta.pod.map(p => (
         {
           ingredientId: p,
           time: 0,
         }
       ));
-      dispatch(enableOption('puta', option));
+      const option = {
+        name: 'puta',
+        content: [
+          ...optionContent,
+        ],
+      };
+      dispatch(updateOption(option));
     } else {
       dispatch(updateOption(null));
     }

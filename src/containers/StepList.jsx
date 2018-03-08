@@ -18,7 +18,7 @@ class StepList extends React.Component {
         step={steps[key]}
         action={actions.find(a => a.id === steps[key].actionId)}
         showAction={false}
-        sendCommand={player ? sendCommand : null}
+        sendCommand={player && steps[key].options !== null ? sendCommand : null}
         customStyles={player ? PlayerStyles : EditorStyles}
       />);
     });

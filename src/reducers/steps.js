@@ -7,6 +7,7 @@ const initialState = {
       'chicken',
     ],
     actionId: 'cut',
+    options: null,
   },
   1: {
     toolIds: [
@@ -17,7 +18,12 @@ const initialState = {
       'soy_sauce',
     ],
     actionId: 'measure',
-    options: '10',
+    options: {
+      device: 'integlass',
+      content: {
+        amount: '10',
+      },
+    },
   },
   2: {
     toolIds: [
@@ -27,17 +33,21 @@ const initialState = {
     ],
     ingredientIds: [],
     actionId: 'pour',
-    options: [
-      {
-        ingredientId: 'soy_sauce',
-        time: '3',
-      },
-    ],
+    options: {
+      device: 'puta',
+      content: [
+        {
+          ingredientId: 'soy_sauce',
+          time: '3',
+        },
+      ],
+    },
   },
   3: {
     toolIds: [],
     ingredientIds: [],
     actionId: '',
+    options: null,
   },
 };
 
