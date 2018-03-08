@@ -1,0 +1,24 @@
+.step {
+  background-color: #fefefe;
+  border-radius: 3px;
+  border: solid 1px #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #777;
+  font-size: 18px;
+  justify-content: space-between;
+}
+
+.overview {
+  font-size: 18px;
+  width: 100%;
+  font-family: "Rounded Mplus 1c";
+}
+
+.description {
+  font-family: "Rounded Mplus 1c";
+  width: 100%;
+  font-size: 19px;
+  font-weight: 500;
+}

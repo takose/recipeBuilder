@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import StepImage from './StepImage';
+import styles from './Step.scss';
 
 class Step extends React.Component {
   static propTypes = {
@@ -18,7 +19,9 @@ class Step extends React.Component {
   }
 
   render() {
-    const { step, id, action, ingredients, sendCommand, styles } = this.props;
+    const {
+      step, id, action, ingredients, sendCommand, customStyles,
+    } = this.props;
     let description;
     switch (step.actionId) {
       case 'measure':
@@ -38,7 +41,7 @@ class Step extends React.Component {
       const options = step;
       deviceSwitch = (
         <button
-          className={styles.switch}
+          className={customStyles.switch}
           onClick={() => {
             sendCommand(step.options.name, options);
           }}
@@ -49,12 +52,12 @@ class Step extends React.Component {
     }
 
     return (
-      <div className={styles.step}>
-        <div className={styles.overview}>
+      <div className={`${styles.step} ${customStyles.step}`}>
+        <div className={`${styles.overview} ${customStyles.overview}`}>
           {parseInt(id, 10) + 1}. {action.name_ja}
         </div>
         <StepImage step={step} />
-        <div className={styles.description}>
+        <div className={`${styles.description} ${customStyles.description}`}>
           {description}
         </div>
         {deviceSwitch}

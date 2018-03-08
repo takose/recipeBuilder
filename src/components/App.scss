@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Muli');
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600');
+@import url('https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css');
 
 * {
   box-sizing: border-box;
@@ -24,7 +25,7 @@ a {
 
 .workspace {
   width: 50%;
-  border-right: solid 1px #ccc;
+  border-right: solid 1px #4E3822;
   display: flex;
   flex-direction: column;
 }
@@ -34,7 +35,7 @@ a {
 }
 
 .content {
-  padding: 15px;
+  padding: 15px 50px;
 }
 
 .stepListWrapper {
