@@ -33,6 +33,21 @@ class Step extends React.Component {
       default:
         break;
     }
+    let deviceSwitch = null;
+    if (step.options !== undefined && sendCommand !== null) {
+      const options = step;
+      deviceSwitch = (
+        <button
+          className={styles.switch}
+          onClick={() => {
+            sendCommand(step.options.name, options);
+          }}
+        >
+          ON
+        </button>
+      );
+    }
+
     return (
       <div className={styles.step}>
         <div className={styles.overview}>
@@ -42,6 +57,7 @@ class Step extends React.Component {
         <div className={styles.description}>
           {description}
         </div>
+        {deviceSwitch}
       </div>
     );
   }
