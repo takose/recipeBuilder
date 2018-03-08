@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import StepImage from './StepImage';
-import styles from './Step.scss';
 
 class Step extends React.Component {
   static propTypes = {

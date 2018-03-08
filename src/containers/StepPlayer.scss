@@ -1,8 +1,8 @@
 .step {
-  width: 160px;
+  width: 180px;
   height: 260px;
-  padding: 15px;
-  margin: 0 10px 15px 0;
+  padding: 15px 30px 20px;
+  margin: 0 15px 15px 0;
   background-color: #fefefe;
   border-radius: 3px;
   border: solid 1px #ddd;
@@ -21,4 +21,12 @@
   width: 100%;
   margin-top: 16px;
   font-weight: 600;
+}
+
+.switch {
+  width: 100%;
+  color: #fff;
+  background-color: #5D4037;
+  padding: 6px;
+  margin-top: 20px;
 }
