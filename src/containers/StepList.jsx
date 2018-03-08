@@ -7,7 +7,9 @@ import EditorStyles from './StepEditor.scss';
 
 class StepList extends React.Component {
   render() {
-    const { steps, actions, ingredients, player, sendCommand } = this.props;
+    const {
+      steps, actions, player, sendCommand,
+    } = this.props;
     const stepList = [];
     const stepKeys = Object.keys(steps);
     stepKeys.pop();
