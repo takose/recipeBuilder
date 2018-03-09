@@ -5,8 +5,11 @@ $ npm install
 $ npm run start
 ```
 
+## composition
+<a href="https://gyazo.com/d2650bd08b22c2f67c27892c0df03d69"><img src="https://i.gyazo.com/d2650bd08b22c2f67c27892c0df03d69.png" alt="https://gyazo.com/d2650bd08b22c2f67c27892c0df03d69" width="400"/></a>
+
 ## conversations
-### frontend - connectionServer
+### frontend - ConnectionServer
 #### path
 request:
 ```
@@ -29,7 +32,7 @@ e.g.)
 }
 ```
 
-### connectionServer - deviceServer
+### ConnectionServer - deviceServer
 #### path
 request:
 ```
