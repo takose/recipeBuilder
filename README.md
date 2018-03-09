@@ -8,10 +8,12 @@ $ npm run start
 ## conversations
 ### frontend - connectionServer
 #### path
-```
 request:
+```
 users/state:update
+```
 response:
+```
 users/state:update/return
 ```
 
@@ -29,15 +31,17 @@ e.g.)
 
 ### connectionServer - deviceServer
 #### path
-```
 request:
+```
 devices/state:update
+```
 response:
+```
 devices/state:update/return
 ```
 
 #### content
-##### request
+request:
 e.g.)
 ```
 {
@@ -46,7 +50,7 @@ e.g.)
 }
 ```
 
-##### responnse
+response:
 e.g.)
 ```
 {
