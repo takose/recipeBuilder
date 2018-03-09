@@ -5,8 +5,6 @@ import styles from './IngredientList.scss';
 import {
   updateIngredient,
   updateAction,
-  updateStepAction,
-  updateOption,
 } from '../../actions';
 
 const IngredientList = ListFactory(
@@ -31,13 +29,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onItemClick: (ingredientIds, actionIds, currentActionId) => {
+  onItemClick: (ingredientIds, actionIds) => {
     dispatch(updateAction(actionIds));
     dispatch(updateIngredient(ingredientIds));
-    if (!(actionIds.includes(currentActionId))) {
-      dispatch(updateStepAction(''));
-      dispatch(updateOption(null));
-    }
   },
 });
 

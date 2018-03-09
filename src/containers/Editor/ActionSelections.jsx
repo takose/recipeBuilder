@@ -63,32 +63,33 @@ const mapDispatchToProps = dispatch => ({
   onActionNameClick: (isCurrentAction, currentActionId, deviceOptions) => {
     if (isCurrentAction) {
       dispatch(updateStepAction(''));
+      dispatch(updateOption(null));
     } else {
       dispatch(updateStepAction(currentActionId));
-    }
-    if (currentActionId === 'measure') {
-      dispatch(updateOption({
-        name: 'smoon',
-        content: {
-          amount: 0,
-        },
-      }));
-    } else if (currentActionId === 'pour') {
-      const optionContent = deviceOptions.puta.pod.map(p => (
-        {
-          ingredientId: p,
-          time: 0,
-        }
-      ));
-      const option = {
-        name: 'puta',
-        content: [
-          ...optionContent,
-        ],
-      };
-      dispatch(updateOption(option));
-    } else {
-      dispatch(updateOption(null));
+      if (currentActionId === 'measure') {
+        dispatch(updateOption({
+          name: 'smoon',
+          content: {
+            amount: 0,
+          },
+        }));
+      } else if (currentActionId === 'pour') {
+        const optionContent = deviceOptions.puta.pod.map(p => (
+          {
+            ingredientId: p,
+            time: 0,
+          }
+        ));
+        const option = {
+          name: 'puta',
+          content: [
+            ...optionContent,
+          ],
+        };
+        dispatch(updateOption(option));
+      } else {
+        dispatch(updateOption(null));
+      }
     }
   },
 });

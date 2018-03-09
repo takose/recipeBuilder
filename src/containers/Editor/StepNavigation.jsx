@@ -44,6 +44,8 @@ class StepNavigation extends React.Component {
 StepNavigation.propTypes = {
   onNextStepClick: PropTypes.func.isRequired,
   optionCorrect: PropTypes.bool.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  step: PropTypes.PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({

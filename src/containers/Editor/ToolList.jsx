@@ -5,8 +5,6 @@ import ListFactory from './ListFactory';
 import {
   updateTool,
   updateAction,
-  updateStepAction,
-  updateOption,
 } from '../../actions';
 
 const ToolList = ListFactory(
@@ -31,13 +29,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onItemClick: (toolIds, actionIds, currentActionId) => {
+  onItemClick: (toolIds, actionIds) => {
     dispatch(updateAction(actionIds));
     dispatch(updateTool(toolIds));
-    if (!(actionIds.includes(currentActionId))) {
-      dispatch(updateStepAction(''));
-      dispatch(updateOption(null));
-    }
   },
 });
 
