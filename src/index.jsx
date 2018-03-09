@@ -15,11 +15,21 @@ import Player from './components/Player';
 const history = createHistory();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
+let storeEnhancer;
+
+console.log(process.env.NODE_ENV); // FIXME
+if (process.env.NODE_ENV === 'development') {
+  console.log('enter')
+  storeEnhancer = composeEnhancers(applyMiddleware(routerMiddleware(history)));
+} else {
+  storeEnhancer = applyMiddleware(routerMiddleware(history));
+  console.log('prod')
+}
 
 /* eslint-disable no-underscore-dangle */
 const store = createStore(
   recipeBuilder,
-  composeEnhancers(applyMiddleware(routerMiddleware(history))),
+  storeEnhancer,
 );
 /* eslint-enable */
 
