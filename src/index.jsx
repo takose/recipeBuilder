@@ -19,13 +19,12 @@ let storeEnhancer;
 
 console.log(process.env.NODE_ENV); // FIXME
 if (process.env.NODE_ENV === 'development') {
-  console.log('enter')
   storeEnhancer = composeEnhancers(applyMiddleware(routerMiddleware(history)));
 } else {
   storeEnhancer = applyMiddleware(routerMiddleware(history));
-  console.log('prod')
 }
 
+storeEnhancer = composeEnhancers(applyMiddleware(routerMiddleware(history)));
 /* eslint-disable no-underscore-dangle */
 const store = createStore(
   recipeBuilder,

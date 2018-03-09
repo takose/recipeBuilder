@@ -66,7 +66,7 @@ const mapDispatchToProps = dispatch => ({
     }
     dispatch(addStep());
     dispatch(incrementCurrentStepId());
-    if (step.options.device === 'puta') {
+    if (step.options.device === 'smoon') {
       dispatch(updatePutaOption(step.ingredientIds));
     }
   },

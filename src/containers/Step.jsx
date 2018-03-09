@@ -31,23 +31,29 @@ class Step extends React.Component {
         description = step.options.content.map((option) => {
           const ingredient = ingredients.find(i => i.id === option.ingredientId);
           return (
-            <div>
+            <div className={styles.textStyle}>
               {ingredient.name_ja}: {option.time}分後
             </div>
           );
         });
+        break;
+      case 'stew':
+        description = `${step.options.content.power}で${step.options.content.time}分`;
+        break;
+      case 'stir_fly':
+        description = `${step.options.content.power}で${step.options.content.time}分`;
         break;
       default:
         break;
     }
     let deviceSwitch = null;
     if (sendCommand !== null) {
-      const options = step;
+      const { options } = step;
       deviceSwitch = (
         <button
           className={customStyles.switch}
           onClick={() => {
-            sendCommand(step.options.name, options);
+            sendCommand(step.options.device, options.content);
           }}
         >
           ON

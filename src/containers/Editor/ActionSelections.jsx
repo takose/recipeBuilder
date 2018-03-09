@@ -68,7 +68,7 @@ const mapDispatchToProps = dispatch => ({
       dispatch(updateStepAction(currentActionId));
       if (currentActionId === 'measure') {
         dispatch(updateOption({
-          name: 'smoon',
+          device: 'smoon',
           content: {
             amount: 0,
           },
@@ -81,12 +81,20 @@ const mapDispatchToProps = dispatch => ({
           }
         ));
         const option = {
-          name: 'puta',
+          device: 'puta',
           content: [
             ...optionContent,
           ],
         };
         dispatch(updateOption(option));
+      } else if (currentActionId === 'stir_fly' || currentActionId === 'stew') {
+        dispatch(updateOption({
+          device: 'ff',
+          content: {
+            power: 0,
+            time: 0,
+          },
+        }));
       } else {
         dispatch(updateOption(null));
       }

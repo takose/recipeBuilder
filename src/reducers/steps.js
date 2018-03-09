@@ -37,7 +37,7 @@ const initialState = {
       device: 'puta',
       content: [
         {
-          ingredientId: 'soy_sauce',
+          ingredientId: 'sake',
           time: '3',
         },
       ],

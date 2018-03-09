@@ -123,8 +123,8 @@ export default class FF extends React.Component {
     this.state.socket.emit('users/state:update', {
       deviceId: 'ff',
       states: {
-        power: '0',
-        time: '0',
+        power: 0,
+        time: 0,
       },
     });
     this.setState({ isPlay: false });
