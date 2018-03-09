@@ -42,6 +42,7 @@ devices/state:update/return
 
 #### content
 request:
+
 e.g.)
 ```
 {
@@ -51,6 +52,7 @@ e.g.)
 ```
 
 response:
+
 e.g.)
 ```
 {
