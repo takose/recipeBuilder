@@ -13,7 +13,7 @@ import FF from './components/FF';
 import Player from './components/Player';
 
 const history = createHistory();
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
 
 /* eslint-disable no-underscore-dangle */
