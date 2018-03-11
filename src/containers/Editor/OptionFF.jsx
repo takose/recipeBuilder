@@ -23,12 +23,17 @@ class OptionFF extends React.Component {
             name="power"
             onChange={e => onPowerChange(e, options)}
           />
-          <input
-            type="text"
-            name="time"
-            onChange={e => onTimeChange(e, options)}
-          />
-          分
+          {options.content.time === 0 ? (
+            <div>
+              <input
+                type="text"
+                name="time"
+                onChange={e => onTimeChange(e, options)}
+              />
+              分
+            </div>
+            ) : null
+          }
         </div>
       </div>
     );

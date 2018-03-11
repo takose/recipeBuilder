@@ -1,49 +1,49 @@
 const initialState = {
+  // 0: {
+  //   toolIds: [
+  //     'knife',
+  //   ],
+  //   ingredientIds: [
+  //     'chicken',
+  //   ],
+  //   actionId: 'cut',
+  //   options: null,
+  // },
+  // 1: {
+  //   toolIds: [
+  //     'puta',
+  //     'smoon',
+  //   ],
+  //   ingredientIds: [
+  //     'soy_sauce',
+  //   ],
+  //   actionId: 'measure',
+  //   options: {
+  //     device: 'integlass',
+  //     content: {
+  //       amount: '10',
+  //     },
+  //   },
+  // },
+  // 2: {
+  //   toolIds: [
+  //     'pot',
+  //     'puta',
+  //     'ff',
+  //   ],
+  //   ingredientIds: [],
+  //   actionId: 'pour',
+  //   options: {
+  //     device: 'puta',
+  //     content: [
+  //       {
+  //         ingredientId: 'sake',
+  //         time: '3',
+  //       },
+  //     ],
+  //   },
+  // },
   0: {
-    toolIds: [
-      'knife',
-    ],
-    ingredientIds: [
-      'chicken',
-    ],
-    actionId: 'cut',
-    options: null,
-  },
-  1: {
-    toolIds: [
-      'puta',
-      'smoon',
-    ],
-    ingredientIds: [
-      'soy_sauce',
-    ],
-    actionId: 'measure',
-    options: {
-      device: 'integlass',
-      content: {
-        amount: '10',
-      },
-    },
-  },
-  2: {
-    toolIds: [
-      'pot',
-      'puta',
-      'ff',
-    ],
-    ingredientIds: [],
-    actionId: 'pour',
-    options: {
-      device: 'puta',
-      content: [
-        {
-          ingredientId: 'sake',
-          time: '3',
-        },
-      ],
-    },
-  },
-  3: {
     toolIds: [],
     ingredientIds: [],
     actionId: '',

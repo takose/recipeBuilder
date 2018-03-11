@@ -24,7 +24,7 @@ export default function ItemFactory(ItemComponent, styles) {
       newCurrentItemIds = [...currentItemIds, item.id];
       let ids;
       if (currentActionIds.length === 0) {
-        ids = ['stew', 'cut', 'mix', 'stir_fly', 'measure', 'pour'];
+        ids = ['prepare', 'switch_power', 'fry', 'coat', 'stew', 'cut', 'stir_fly', 'measure', 'put_in'];
       } else {
         ids = currentActionIds;
       }

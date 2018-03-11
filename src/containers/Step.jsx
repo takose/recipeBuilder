@@ -37,6 +37,12 @@ class Step extends React.Component {
           );
         });
         break;
+      case 'switch_power':
+        description = `${step.options.content.power}にする`;
+        break;
+      case 'fry':
+        description = `${step.options.content.power}で${step.options.content.time}分`;
+        break;
       case 'stew':
         description = `${step.options.content.power}で${step.options.content.time}分`;
         break;

@@ -87,12 +87,19 @@ const mapDispatchToProps = dispatch => ({
           ],
         };
         dispatch(updateOption(option));
-      } else if (currentActionId === 'stir_fly' || currentActionId === 'stew') {
+      } else if (currentActionId === 'fry' || currentActionId === 'stir_fly' || currentActionId === 'stew') {
         dispatch(updateOption({
           device: 'ff',
           content: {
             power: 0,
             time: 0,
+          },
+        }));
+      } else if (currentActionId === 'switch_power') {
+        dispatch(updateOption({
+          device: 'ff',
+          content: {
+            power: 0,
           },
         }));
       } else {
