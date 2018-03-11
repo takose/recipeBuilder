@@ -23,7 +23,7 @@ class OptionFF extends React.Component {
             name="power"
             onChange={e => onPowerChange(e, options)}
           />
-          {options.content.time === 0 ? (
+          {options.content.time !== undefined ? (
             <div>
               <input
                 type="text"

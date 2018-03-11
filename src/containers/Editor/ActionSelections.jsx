@@ -87,7 +87,7 @@ const mapDispatchToProps = dispatch => ({
           ],
         };
         dispatch(updateOption(option));
-      } else if (currentActionId === 'fry' || currentActionId === 'stir_fly' || currentActionId === 'stew') {
+      } else if (currentActionId === 'fry' || currentActionId === 'stew') {
         dispatch(updateOption({
           device: 'ff',
           content: {

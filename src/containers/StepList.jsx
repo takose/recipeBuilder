@@ -2,13 +2,12 @@ import { connect } from 'react-redux';
 import React from 'react';
 import styles from './StepList.scss';
 import Step from './Step';
-import PlayerStyles from './StepPlayer.scss';
 import EditorStyles from './StepEditor.scss';
 
 class StepList extends React.Component {
   render() {
     const {
-      steps, actions, player, sendCommand,
+      steps, actions, sendCommand,
     } = this.props;
     const stepList = [];
     const stepKeys = Object.keys(steps);
