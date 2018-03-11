@@ -59,6 +59,30 @@ class Step extends React.Component {
       case 'stew':
         description = `${step.options.content.power}で${step.options.content.time}分`;
         break;
+      case 'cut':
+        switch (step.options.content.fineness) {
+          case '1':
+            description = 'みじん切り';
+            break;
+          case '2':
+            description = '粗みじん';
+            break;
+          case '3':
+            description = '薄切り';
+            break;
+          case '4':
+            description = '小さめ';
+            break;
+          case '5':
+            description = '一口大';
+            break;
+          case '6':
+            description = '大きめ';
+            break;
+          default:
+            break;
+        }
+        break;
       default:
         break;
     }

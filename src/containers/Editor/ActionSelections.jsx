@@ -102,6 +102,13 @@ const mapDispatchToProps = dispatch => ({
             power: 0,
           },
         }));
+      } else if (currentActionId === 'cut') {
+        dispatch(updateOption({
+          device: null,
+          content: {
+            fineness: '3',
+          },
+        }));
       } else {
         dispatch(updateOption(null));
       }

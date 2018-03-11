@@ -4,10 +4,11 @@ import styles from './Description.scss';
 import OptionPuta from './OptionPuta';
 import OptionSmoon from './OptionSmoon';
 import OptionFF from './OptionFF';
+import OptionCut from './OptionCut';
 
 class Description extends React.Component {
   render() {
-    const { device } = this.props;
+    const { device, currentActionId } = this.props;
     const option = () => {
       switch (device) {
         case 'puta':
@@ -28,6 +29,15 @@ class Description extends React.Component {
               <OptionFF />
             </div>
           );
+        case null:
+          if (currentActionId === 'cut') {
+            return (
+              <div className={styles.options}>
+                <OptionCut />
+              </div>
+            );
+          }
+          break;
         default:
           break;
       }

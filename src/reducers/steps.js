@@ -7,7 +7,11 @@ const initialState = {
       'mushroom',
     ],
     actionId: 'cut',
-    options: null,
+    options: {
+      content: {
+        fineness: '5',
+      },
+    },
   },
   1: {
     toolIds: [
@@ -17,7 +21,11 @@ const initialState = {
       'cabbage',
     ],
     actionId: 'cut',
-    options: null,
+    options: {
+      content: {
+        fineness: '5',
+      },
+    },
   },
   2: {
     toolIds: [
