@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import StepImage from './StepImage';
 import styles from './Step.scss';
+import { forwardStep } from '../actions';
 
 class Step extends React.Component {
   static propTypes = {
@@ -18,9 +19,21 @@ class Step extends React.Component {
     sendCommand: null,
   }
 
+  componentDidUpdate = () => {
+    const { step, sendCommand, doneClick } = this.props;
+    console.log(sendCommand)
+    if (sendCommand != null) {
+      sendCommand(step.options.device, step.options.content).then(() => {
+        if (step.options.device === 'ff') {
+          doneClick();
+        }
+      });
+    }
+  }
+
   render() {
     const {
-      step, id, action, ingredients, sendCommand, customStyles,
+      step, id, action, ingredients, sendCommand, customStyles, doneClick, player,
     } = this.props;
     let description;
     switch (step.actionId) {
@@ -46,42 +59,44 @@ class Step extends React.Component {
       case 'stew':
         description = `${step.options.content.power}で${step.options.content.time}分`;
         break;
-      case 'stir_fly':
-        description = `${step.options.content.power}で${step.options.content.time}分`;
-        break;
       default:
         break;
     }
-    let deviceSwitch = null;
-    if (sendCommand !== null) {
-      const { options } = step;
-      deviceSwitch = (
-        <button
-          className={customStyles.switch}
-          onClick={() => {
-            sendCommand(step.options.device, options.content);
-          }}
-        >
-          ON
-        </button>
-      );
-    }
+    description = description != undefined ? (
+      <div className={`${styles.description} ${customStyles.description}`}>
+        {description}
+      </div>
+    ) : null;
+    const deviceSwitch = (
+      <button
+        className={customStyles.switch}
+        onClick={doneClick}
+      >
+        完了
+      </button>
+    );
 
     return (
       <div className={`${styles.step} ${customStyles.step}`}>
         <div className={`${styles.overview} ${customStyles.overview}`}>
           {parseInt(id, 10) + 1}. {action.name_ja}
         </div>
-        <StepImage step={step} />
-        <div className={`${styles.description} ${customStyles.description}`}>
-          {description}
-        </div>
-        {deviceSwitch}
+        <StepImage step={step} player={player} />
+        {description}
+        {player ? deviceSwitch : null}
       </div>
     );
   }
 }
 
-export default connect(state => ({
+const mapStateToProps = state => ({
   ingredients: state.ingredients,
-}))(Step);
+});
+
+const mapDispatchToProps = dispatch => ({
+  doneClick: () => {
+    dispatch(forwardStep());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Step);

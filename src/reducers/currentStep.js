@@ -1,6 +1,7 @@
 const initialState = {
   option: null,
-  stepId: 3,
+  stepId: 16,
+  playingId: 0,
   actionIds: [],
 };
 
@@ -18,10 +19,10 @@ const currentStepId = (state = initialState, action) => {
         ...state,
         actionIds: action.actionIds,
       };
-    case 'ENABLE_OPTION':
+    case 'FORWARD_STEP':
       return {
         ...state,
-        option: action.optionName,
+        playingId: state.playingId + 1,
       };
     default:
       return state;

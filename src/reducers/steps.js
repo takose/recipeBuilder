@@ -1,49 +1,185 @@
 const initialState = {
-  // 0: {
-  //   toolIds: [
-  //     'knife',
-  //   ],
-  //   ingredientIds: [
-  //     'chicken',
-  //   ],
-  //   actionId: 'cut',
-  //   options: null,
-  // },
-  // 1: {
-  //   toolIds: [
-  //     'puta',
-  //     'smoon',
-  //   ],
-  //   ingredientIds: [
-  //     'soy_sauce',
-  //   ],
-  //   actionId: 'measure',
-  //   options: {
-  //     device: 'integlass',
-  //     content: {
-  //       amount: '10',
-  //     },
-  //   },
-  // },
-  // 2: {
-  //   toolIds: [
-  //     'pot',
-  //     'puta',
-  //     'ff',
-  //   ],
-  //   ingredientIds: [],
-  //   actionId: 'pour',
-  //   options: {
-  //     device: 'puta',
-  //     content: [
-  //       {
-  //         ingredientId: 'sake',
-  //         time: '3',
-  //       },
-  //     ],
-  //   },
-  // },
   0: {
+    toolIds: [
+      'knife',
+    ],
+    ingredientIds: [
+      'mushroom',
+    ],
+    actionId: 'cut',
+    options: null,
+  },
+  1: {
+    toolIds: [
+      'knife',
+    ],
+    ingredientIds: [
+      'cabbage',
+    ],
+    actionId: 'cut',
+    options: null,
+  },
+  2: {
+    toolIds: [
+      'bat',
+    ],
+    ingredientIds: [],
+    actionId: 'prepare',
+    options: null,
+  },
+  3: {
+    toolIds: [
+      'smoon',
+    ],
+    ingredientIds: [
+      'potato_starch',
+    ],
+    actionId: 'measure',
+    options: {
+      device: 'smoon',
+      content: {
+        amount: '45',
+      },
+    },
+  },
+  4: {
+    toolIds: [
+      'smoon',
+    ],
+    ingredientIds: [
+      'salt',
+    ],
+    actionId: 'measure',
+    options: {
+      device: 'smoon',
+      content: {
+        amount: '5',
+      },
+    },
+  },
+  5: {
+    toolIds: [
+      'bat',
+    ],
+    ingredientIds: [
+      'salmon',
+    ],
+    actionId: 'coat',
+    options: null,
+  },
+  6: {
+    toolIds: [
+      'puta',
+    ],
+    ingredientIds: [],
+    actionId: 'prepare',
+    options: null,
+  },
+  7: {
+    toolIds: [
+      'integlass',
+    ],
+    ingredientIds: [
+      'dashi',
+    ],
+    actionId: 'measure',
+    options: {
+      device: 'smoon',
+      content: {
+        amount: '30',
+      },
+    },
+  },
+  8: {
+    toolIds: [
+      'integlass',
+    ],
+    ingredientIds: [
+      'cream',
+    ],
+    actionId: 'measure',
+    options: {
+      device: 'smoon',
+      content: {
+        amount: '60',
+      },
+    },
+  },
+  9: {
+    toolIds: [
+      'pot',
+      'ff',
+    ],
+    ingredientIds: [],
+    actionId: 'prepare',
+    options: null,
+  },
+  10: {
+    toolIds: [],
+    ingredientIds: [
+      'butter',
+    ],
+    actionId: 'put_in',
+    options: null,
+  },
+  11: {
+    toolIds: [],
+    ingredientIds: [
+      'garlic',
+    ],
+    actionId: 'put_in',
+    options: null,
+  },
+  12: {
+    toolIds: [
+      'ff',
+    ],
+    ingredientIds: [],
+    actionId: 'switch_power',
+    options: {
+      device: 'ff',
+      content: {
+        power: 3,
+      },
+    },
+  },
+  13: {
+    toolIds: [
+      'hera',
+    ],
+    ingredientIds: [],
+    actionId: 'stir_fly',
+    options: {
+      device: 'ff',
+      content: {
+        power: 3,
+        time: 1,
+      },
+    },
+  },
+  14: {
+    toolIds: [],
+    ingredientIds: [
+      'salmon',
+    ],
+    actionId: 'put_in',
+    options: null,
+  },
+  15: {
+    toolIds: [
+      'ff',
+    ],
+    ingredientIds: [],
+    actionId: 'fry',
+    options: {
+      device: 'ff',
+      content: {
+        power: 3,
+        time: 9,
+      },
+    },
+  },
+  16: {
     toolIds: [],
     ingredientIds: [],
     actionId: '',

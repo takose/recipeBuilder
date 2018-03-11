@@ -10,11 +10,12 @@ class StepImage extends React.Component {
     tools: PropTypes.arrayOf(PropTypes.object).isRequired,
     // eslint-disable-next-line react/forbid-prop-types
     step: PropTypes.object.isRequired,
+    player: PropTypes.bool.isRequired,
   }
 
   render() {
     const {
-      ingredients, tools, step,
+      ingredients, tools, step, player,
     } = this.props;
     const toolList = step.toolIds.length > 0 &&
       tools.map((t) => {
@@ -45,8 +46,15 @@ class StepImage extends React.Component {
         );
       });
     ingredients.find(i => i.id === step.ingredientId);
+
+    const style = player ? {
+      width: '100%',
+      height: '100%',
+      order: '1',
+    } : null;
+
     return (
-      <div className={styles.step}>
+      <div className={styles.step} style={style}>
         {
           toolList.length > 0 ?
             <div className={styles.tools}>

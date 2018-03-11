@@ -1,4 +1,4 @@
-let currentStepId = 3;
+let currentStepId = 16;
 export const addStep = () => {
   currentStepId += 1;
   return ({
@@ -64,4 +64,8 @@ export const updateOption = option => ({
 export const updatePutaOption = ingredientId => ({
   type: 'UPDATE_PUTA_OPTION',
   ingredientId,
+});
+
+export const forwardStep = () => ({
+  type: 'FORWARD_STEP',
 });

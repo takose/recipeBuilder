@@ -1,12 +1,14 @@
 import 'normalize.css';
 import 'babel-polyfill';
 import React from 'react';
+import { connect } from 'react-redux';
 import io from 'socket.io-client';
 import Sidebar from '../containers/Sidebar';
-import StepList from '../containers/StepList';
+import PlayerStyles from '../containers/StepPlayer.scss';
+import Step from '../containers/Step';
 import styles from './App.scss';
 
-export default class Player extends React.Component {
+class Player extends React.Component {
   state = {
     socket: null,
   }
@@ -42,15 +44,38 @@ export default class Player extends React.Component {
   };
 
   render() {
+    const { id, currentStep, action } = this.props;
     return (
       <div className={styles.root}>
         <Sidebar />
         <div className={styles.content}>
-          <h1>Directions</h1>
-          <StepList player={true} sendCommand={this.sendCommand} />
+          {action !== undefined ?
+            <Step
+              step={currentStep}
+              id={id}
+              action={action}
+              showAction={false}
+              sendCommand={currentStep.options != null && currentStep.options.device != null ? this.sendCommand : null}
+              customStyles={PlayerStyles}
+              player={true}
+            /> : null
+          }
         </div>
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  const currentStep = state.steps[state.currentStep.playingId];
+  return ({
+    id: state.currentStep.playingId,
+    currentStep,
+    action: state.actions.find(action => action.id === currentStep.actionId),
+  });
+};
+
+const mapDispatchToProps = dispatch => ({
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Player);
