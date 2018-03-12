@@ -76,7 +76,6 @@ const mapDispatchToProps = dispatch => ({
     } else if (step.actionId === 'prepare') {
       dispatch(setActiveTool(null));
     }
-    console.log(currentState.activeTool, step.actionId)
     if (currentState.activeTool === 'puta' && step.actionId === 'measure') {
       dispatch(addToPuta(step.ingredientIds));
     }
