@@ -157,13 +157,7 @@ const initialState = {
     ],
     ingredientIds: [],
     actionId: 'stir_fly',
-    options: {
-      device: 'ff',
-      content: {
-        power: 3,
-        time: 1,
-      },
-    },
+    options: null,
   },
   14: {
     toolIds: [],

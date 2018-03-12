@@ -11,4 +11,7 @@
 .ingredientImage {
   width: 60px;
   margin-right: 20px;
+  &:last-child {
+    margin-right: 0;
+  }
 }

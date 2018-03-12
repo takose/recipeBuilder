@@ -19,13 +19,16 @@ class Step extends React.Component {
     sendCommand: null,
   }
 
-  componentDidUpdate = () => {
-    const { step, sendCommand, doneClick } = this.props;
+  state = {
+    done: false,
+  }
+
+  componentWillReceiveProps = ({ step, sendCommand }) => {
     if (sendCommand != null) {
       sendCommand(step.options.device, step.options.content).then(() => {
-        if (step.options.device === 'ff') {
-          doneClick();
-        }
+        setTimeout(() => {
+          this.setState({ done: true });
+        }, 1000);
       });
     }
   }
@@ -34,6 +37,13 @@ class Step extends React.Component {
     const {
       step, id, action, ingredients, sendCommand, customStyles, doneClick, player,
     } = this.props;
+    if (this.state.done) {
+      if (step.options != null && step.options.device === 'ff') {
+        setTimeout(() => {
+          doneClick();
+        }, 1000);
+      }
+    }
     let description;
     switch (step.actionId) {
       case 'measure':
@@ -90,14 +100,36 @@ class Step extends React.Component {
         {description}
       </div>
     ) : null;
-    const deviceSwitch = (
-      <button
-        className={customStyles.switch}
-        onClick={doneClick}
-      >
-        完了
-      </button>
-    );
+    let deviceSwitch;
+    if (sendCommand != null && this.state.done && step.options.device === 'ff') {
+      deviceSwitch = (
+        <button
+          className={customStyles.autoSwitchDone}
+        >
+          完了
+        </button>
+      );
+    } else if (sendCommand != null && this.state.done === false) {
+      deviceSwitch = (
+        <button
+          className={customStyles.autoSwitch}
+        >
+          処理中...
+        </button>
+      );
+    } else {
+      deviceSwitch = (
+        <button
+          className={customStyles.switch}
+          onClick={() => {
+            doneClick();
+            this.setState({ done: false });
+          }}
+        >
+          完了
+        </button>
+      );
+    }
 
     return (
       <div className={`${styles.step} ${customStyles.step}`}>

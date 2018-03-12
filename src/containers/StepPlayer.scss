@@ -28,3 +28,15 @@
   flex-shrink: 0;
   order: 1;
 }
+
+.autoSwitch {
+  composes: switch;
+  color: #9CE4D8;
+  border: solid 1px #9CE4D8;
+  background-color: #fff;
+}
+
+.autoSwitchDone {
+  composes: switch;
+  background-color: #B9E387;
+}
