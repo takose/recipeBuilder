@@ -61,9 +61,18 @@ export const updateOption = option => ({
   currentStepId,
 });
 
-export const updatePutaOption = ingredientId => ({
-  type: 'UPDATE_PUTA_OPTION',
+export const addToPuta = ingredientId => ({
+  type: 'ADD_TO_PUTA',
   ingredientId,
+});
+
+export const removeFromPuta = () => ({
+  type: 'REMOVE_FROM_PUTA',
+});
+
+export const setActiveTool = toolId => ({
+  type: 'SET_ACTIVE_TOOL',
+  toolId,
 });
 
 export const forwardStep = () => ({

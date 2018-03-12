@@ -27,7 +27,7 @@ class ActionSelections extends React.Component {
           className={
             isCurrentAction ? styles.actionName : styles.actionNameInactive
           }
-          onClick={() => onActionNameClick(isCurrentAction, id, deviceOptions)}
+          onClick={() => onActionNameClick(isCurrentAction, id, deviceOptions, currentStep)}
         >
           {action.name_ja}
         </button>
@@ -60,7 +60,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onActionNameClick: (isCurrentAction, currentActionId, deviceOptions) => {
+  onActionNameClick: (isCurrentAction, currentActionId, deviceOptions, step) => {
     if (isCurrentAction) {
       dispatch(updateStepAction(''));
       dispatch(updateOption(null));
@@ -73,20 +73,6 @@ const mapDispatchToProps = dispatch => ({
             amount: 0,
           },
         }));
-      } else if (currentActionId === 'pour') {
-        const optionContent = deviceOptions.puta.pod.map(p => (
-          {
-            ingredientId: p,
-            time: 0,
-          }
-        ));
-        const option = {
-          device: 'puta',
-          content: [
-            ...optionContent,
-          ],
-        };
-        dispatch(updateOption(option));
       } else if (currentActionId === 'fry' || currentActionId === 'stew') {
         dispatch(updateOption({
           device: 'ff',
@@ -108,6 +94,11 @@ const mapDispatchToProps = dispatch => ({
           content: {
             fineness: '3',
           },
+        }));
+      } else if (currentActionId === 'put_in' && step.toolIds.includes('puta')) {
+        dispatch(updateOption({
+          device: 'puta',
+          content: {},
         }));
       } else {
         dispatch(updateOption(null));

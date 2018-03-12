@@ -21,7 +21,6 @@ class Step extends React.Component {
 
   componentDidUpdate = () => {
     const { step, sendCommand, doneClick } = this.props;
-    console.log(sendCommand)
     if (sendCommand != null) {
       sendCommand(step.options.device, step.options.content).then(() => {
         if (step.options.device === 'ff') {

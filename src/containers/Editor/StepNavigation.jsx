@@ -10,7 +10,8 @@ import {
   updateIngredientState,
   addMiddleState,
   updateMergedIngredientState,
-  updatePutaOption,
+  addToPuta,
+  setActiveTool,
 } from '../../actions';
 
 class StepNavigation extends React.Component {
@@ -18,6 +19,7 @@ class StepNavigation extends React.Component {
     const {
       step,
       optionCorrect,
+      currentStepState,
     } = this.props;
 
     const buttonIsActive = step.actionId !== '' && optionCorrect;
@@ -30,7 +32,7 @@ class StepNavigation extends React.Component {
         <button
           onClick={() => {
             if (buttonIsActive) {
-              this.props.onNextStepClick(step);
+              this.props.onNextStepClick(step, currentStepState);
             }
           }}
         >
@@ -46,16 +48,19 @@ StepNavigation.propTypes = {
   optionCorrect: PropTypes.bool.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   step: PropTypes.PropTypes.object.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  currentStepState: PropTypes.PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
   step: state.steps[state.currentStep.stepId],
   actions: state.actions,
   optionCorrect: true,
+  currentStepState: state.currentStep,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onNextStepClick: (step) => {
+  onNextStepClick: (step, currentState) => {
     if (step.ngredientIds !== undefined && step.actionId !== null) {
       dispatch(updateIngredientState(step.ingredientIds, step.ctionId));
     }
@@ -66,8 +71,14 @@ const mapDispatchToProps = dispatch => ({
     }
     dispatch(addStep());
     dispatch(incrementCurrentStepId());
-    if (step.options.device === 'smoon') {
-      dispatch(updatePutaOption(step.ingredientIds));
+    if (step.actionId === 'prepare' && step.toolIds.includes('puta')) {
+      dispatch(setActiveTool('puta'));
+    } else if (step.actionId === 'prepare') {
+      dispatch(setActiveTool(null));
+    }
+    console.log(currentState.activeTool, step.actionId)
+    if (currentState.activeTool === 'puta' && step.actionId === 'measure') {
+      dispatch(addToPuta(step.ingredientIds));
     }
   },
 });

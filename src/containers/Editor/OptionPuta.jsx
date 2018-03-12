@@ -12,24 +12,18 @@ class OptionPuta extends React.Component {
 
   render() {
     const {
-      onChange, options, ingredients,
+      onChange, podContents, ingredients,
     } = this.props;
-    const putaPods = options.content.map((pod, idx) => {
-      const ingredient = ingredients.find(i => pod.ingredientId === i.id)
+    const putaPods = podContents.map((ingredientId, idx) => {
+      const ingredient = ingredients.find(i => ingredientId === i.id);
       return (
-        <label className={styles.label} id={`pod${idx}`}>
+        <label className={styles.label} id={`ingredientId${idx}`}>
           <div className={styles.ingredientImage}>
             <IngredientImage
               item={ingredient}
               showAction={false}
             />
           </div>
-          <input
-            type="text"
-            name="name"
-            onChange={e => onChange(e, options, idx)}
-          />
-          分後
         </label>
       );
     });
@@ -48,7 +42,7 @@ class OptionPuta extends React.Component {
 
 const mapStateToProps = state => ({
   ingredients: state.ingredients,
-  options: state.steps[state.currentStep.stepId].options,
+  podContents: state.deviceOptions.puta.pod,
 });
 
 const mapDispatchToProps = dispatch => ({

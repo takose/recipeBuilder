@@ -24,6 +24,11 @@ const currentStepId = (state = initialState, action) => {
         ...state,
         playingId: state.playingId + 1,
       };
+    case 'SET_ACTIVE_TOOL':
+      return {
+        ...state,
+        activeTool: action.toolId,
+      };
     default:
       return state;
   }
