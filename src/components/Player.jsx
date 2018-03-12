@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import io from 'socket.io-client';
 import Sidebar from '../containers/Sidebar';
 import PlayerStyles from '../containers/StepPlayer.scss';
+import StepList from '../containers/StepList';
 import Step from '../containers/Step';
 import styles from './App.scss';
 
@@ -60,6 +61,9 @@ class Player extends React.Component {
               player={true}
             /> : null
           }
+        </div>
+        <div className={styles.playerStepListWrapper}>
+          <StepList />
         </div>
       </div>
     );
