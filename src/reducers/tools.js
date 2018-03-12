@@ -2,7 +2,7 @@ const initialState = [
   {
     id: 'smoon',
     name: 'smoon',
-    image_url: 'https://i.gyazo.com/d64e335c472a6fb59842f36f012c1293.png',
+    image_url: 'https://i.gyazo.com/400c0b5144e0b3541963749d108419a7.png',
     priority: 0,
     actionIds: ['measure', 'put_in'],
     actionIdsToCombine: ['heat', 'stew', 'stir_fly', 'mix', 'put_in'],
@@ -50,7 +50,7 @@ const initialState = [
   {
     id: 'bat',
     name: 'bat',
-    image_url: 'https://i.gyazo.com/b5f762421502eda0b08823ef947e6c9f.png',
+    image_url: 'https://i.gyazo.com/82dab84f35e96084a924d95b873da9e5.png',
     priority: 3,
     actionIds: ['heat'],
     actionIdsToCombine: ['put_in', 'mix', 'stew', 'stir_fly'],
@@ -58,7 +58,7 @@ const initialState = [
   {
     id: 'integlass',
     name: 'integlass',
-    image_url: 'https://3.bp.blogspot.com/-EmDnY-pQagk/WKFi9higpfI/AAAAAAABBq0/7HHrpDKSc7k1KS1dKNLNqizLXrwwEgNggCLcB/s400/cooking_keiryou_cup.png',
+    image_url: 'https://i.gyazo.com/2629d4359cda779962acb28acb9ae6bb.png',
     priority: 3,
     actionIds: ['heat'],
     actionIdsToCombine: ['put_in', 'mix', 'stew', 'stir_fly'],

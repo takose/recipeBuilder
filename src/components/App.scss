@@ -5,6 +5,10 @@
   box-sizing: border-box;
   font-family: 'Muli', sans-serif;
 }
+
+html {
+  overflow: hidden;
+}
 button {
   background-color: transparent;
   border: none;
@@ -53,7 +57,7 @@ a {
 }
 
 .playerStepListWrapper {
-  width: 260px;
+  width: 300px;
   background-color: #EBEBE8;
   border-left: solid 1px #4E3822;
   padding: 25px;
