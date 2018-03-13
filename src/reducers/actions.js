@@ -72,6 +72,14 @@ const initialState = [
     ingredientIds: ['cabbage', 'mushroom', 'butter', 'garlic', 'salmon'],
     itemIds: ['cabbage', 'mushroom', 'butter', 'garlic', 'puta', 'salmon'],
   },
+  {
+    id: 'flake',
+    name: 'flake',
+    name_ja: 'ほぐす',
+    toolIds: [],
+    ingredientIds: ['mushroom'],
+    itemIds: ['mushroom'],
+  },
 ];
 
 const actions = (state = initialState, action) => {
