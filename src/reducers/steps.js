@@ -1,17 +1,11 @@
 const initialState = {
   0: {
-    toolIds: [
-      'knife',
-    ],
+    toolIds: [],
     ingredientIds: [
       'mushroom',
     ],
-    actionId: 'cut',
-    options: {
-      content: {
-        fineness: '5',
-      },
-    },
+    actionId: 'flake',
+    options: null,
   },
   1: {
     toolIds: [
@@ -23,11 +17,25 @@ const initialState = {
     actionId: 'cut',
     options: {
       content: {
-        fineness: '5',
+        fineness: '4',
       },
     },
   },
   2: {
+    toolIds: [
+      'knife',
+    ],
+    ingredientIds: [
+      'salmon',
+    ],
+    actionId: 'cut',
+    options: {
+      content: {
+        fineness: '5',
+      },
+    },
+  },
+  3: {
     toolIds: [
       'bat',
     ],
@@ -35,7 +43,7 @@ const initialState = {
     actionId: 'prepare',
     options: null,
   },
-  3: {
+  4: {
     toolIds: [
       'smoon',
     ],
@@ -46,11 +54,11 @@ const initialState = {
     options: {
       device: 'smoon',
       content: {
-        amount: '45',
+        amount: '30',
       },
     },
   },
-  4: {
+  5: {
     toolIds: [
       'smoon',
     ],
@@ -65,7 +73,7 @@ const initialState = {
       },
     },
   },
-  5: {
+  6: {
     toolIds: [
       'bat',
     ],
@@ -75,7 +83,7 @@ const initialState = {
     actionId: 'coat',
     options: null,
   },
-  6: {
+  7: {
     toolIds: [
       'puta',
     ],
@@ -83,7 +91,7 @@ const initialState = {
     actionId: 'prepare',
     options: null,
   },
-  7: {
+  8: {
     toolIds: [
       'integlass',
     ],
@@ -94,11 +102,11 @@ const initialState = {
     options: {
       device: 'integlass',
       content: {
-        amount: '30',
+        amount: '80',
       },
     },
   },
-  8: {
+  9: {
     toolIds: [
       'integlass',
     ],
@@ -109,11 +117,11 @@ const initialState = {
     options: {
       device: 'integlass',
       content: {
-        amount: '60',
+        amount: '200',
       },
     },
   },
-  9: {
+  10: {
     toolIds: [
       'pot',
       'ff',
@@ -122,15 +130,15 @@ const initialState = {
     actionId: 'prepare',
     options: null,
   },
-  10: {
+  11: {
     toolIds: [],
     ingredientIds: [
-      'butter',
+      'olieve_oil',
     ],
     actionId: 'put_in',
     options: null,
   },
-  11: {
+  12: {
     toolIds: [],
     ingredientIds: [
       'garlic',
@@ -138,7 +146,7 @@ const initialState = {
     actionId: 'put_in',
     options: null,
   },
-  12: {
+  13: {
     toolIds: [
       'ff',
     ],
@@ -151,7 +159,7 @@ const initialState = {
       },
     },
   },
-  13: {
+  14: {
     toolIds: [
       'hera',
     ],
@@ -159,7 +167,7 @@ const initialState = {
     actionId: 'stir_fly',
     options: null,
   },
-  14: {
+  15: {
     toolIds: [],
     ingredientIds: [
       'salmon',
@@ -167,7 +175,7 @@ const initialState = {
     actionId: 'put_in',
     options: null,
   },
-  15: {
+  16: {
     toolIds: [
       'ff',
     ],
@@ -177,16 +185,94 @@ const initialState = {
       device: 'ff',
       content: {
         power: 3,
-        time: 9,
+        time: 4,
       },
     },
   },
-  16: {
+  17: {
+    toolIds: [],
+    ingredientIds: [
+      'cabbage'
+    ],
+    actionId: 'put_in',
+    options: null
+  },
+  18: {
+    toolIds: [],
+    ingredientIds: [
+      'mushroom'
+    ],
+    actionId: 'put_in',
+    options: null
+  },
+  19: {
+    toolIds: [
+      'hera'
+    ],
+    ingredientIds: [],
+    actionId: 'stir_fly',
+    options: null
+  },
+  20: {
+    toolIds: [
+      'integlass'
+    ],
+    ingredientIds: [
+      'water'
+    ],
+    actionId: 'measure',
+    options: {
+      device: 'integlass',
+      content: {
+        amount: '500'
+      }
+    }
+  },
+  21: {
+    toolIds: [
+      'ff'
+    ],
+    ingredientIds: [],
+    actionId: 'stew',
+    options: {
+      device: 'ff',
+      content: {
+        power: 5,
+        time: 8
+      }
+    }
+  },
+  22: {
+    toolIds: [
+      'puta'
+    ],
+    ingredientIds: [],
+    actionId: 'put_in',
+    options: {
+      device: 'puta',
+      content: {}
+    }
+  },
+  23: {
+    toolIds: [
+      'ff'
+    ],
+    ingredientIds: [],
+    actionId: 'stew',
+    options: {
+      device: 'ff',
+      content: {
+        power: 3,
+        time: 5
+      }
+    }
+  },
+  24: {
     toolIds: [],
     ingredientIds: [],
     actionId: '',
-    options: null,
-  },
+    options: null
+  }
 };
 
 const steps = (state = initialState, action) => {
