@@ -66,9 +66,16 @@ const mapDispatchToProps = dispatch => ({
       dispatch(updateOption(null));
     } else {
       dispatch(updateStepAction(currentActionId));
-      if (currentActionId === 'measure') {
+      if (currentActionId === 'measure' && step.toolIds.includes('smoon')) {
         dispatch(updateOption({
           device: 'smoon',
+          content: {
+            amount: 0,
+          },
+        }));
+      } else if (currentActionId === 'measure' && step.toolIds.includes('integlass')) {
+        dispatch(updateOption({
+          device: 'integlass',
           content: {
             amount: 0,
           },

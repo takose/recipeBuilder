@@ -92,7 +92,7 @@ const initialState = {
     ],
     actionId: 'measure',
     options: {
-      device: 'smoon',
+      device: 'integlass',
       content: {
         amount: '30',
       },
@@ -107,7 +107,7 @@ const initialState = {
     ],
     actionId: 'measure',
     options: {
-      device: 'smoon',
+      device: 'integlass',
       content: {
         amount: '60',
       },
