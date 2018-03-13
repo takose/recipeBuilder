@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styles from './Description.scss';
 import OptionPuta from './OptionPuta';
-import OptionSmoon from './OptionSmoon';
+import OptionMeasure from './OptionMeasure';
 import OptionFF from './OptionFF';
 import OptionCut from './OptionCut';
 
@@ -17,10 +17,16 @@ class Description extends React.Component {
               <OptionPuta />
             </div>
           );
+        case 'integlass':
+          return (
+            <div className={styles.options}>
+              <OptionMeasure device="integlass" />
+            </div>
+          );
         case 'smoon':
           return (
             <div className={styles.options}>
-              <OptionSmoon />
+              <OptionMeasure device="smoon" />
             </div>
           );
         case 'ff':

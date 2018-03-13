@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { updateOption } from '../../actions';
 import styles from './Option.scss';
 
-class OptionPuta extends React.Component {
+class OptionMeasure extends React.Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
@@ -45,4 +45,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(OptionPuta);
+export default connect(mapStateToProps, mapDispatchToProps)(OptionMeasure);
