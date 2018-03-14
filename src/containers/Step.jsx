@@ -35,10 +35,11 @@ class Step extends React.Component {
 
   render() {
     const {
-      step, id, action, ingredients, sendCommand, customStyles, doneClick, player,
+      step, id, action, ingredients, sendCommand, customStyles, doneClick, player, currentStepId,
     } = this.props;
+
     if (this.state.done) {
-      if (step.options != null && step.options.device === 'ff') {
+      if (step.options != null && (step.options.device === 'ff' || step.options.device === 'puta')) {
         setTimeout(() => {
           doneClick();
         }, 1000);
@@ -101,7 +102,7 @@ class Step extends React.Component {
       </div>
     ) : null;
     let deviceSwitch;
-    if (sendCommand != null && this.state.done && step.options.device === 'ff') {
+    if (sendCommand != null && this.state.done && (step.options.device === 'ff' || step.options.device === 'puta')) {
       deviceSwitch = (
         <button
           className={customStyles.autoSwitchDone}
@@ -146,6 +147,7 @@ class Step extends React.Component {
 
 const mapStateToProps = state => ({
   ingredients: state.ingredients,
+  currentStepId: state.currentStep.stepId,
 });
 
 const mapDispatchToProps = dispatch => ({

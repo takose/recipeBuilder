@@ -12,12 +12,20 @@ class OptionPuta extends React.Component {
 
   render() {
     const {
-      onChange, podContents, ingredients,
+      onChange, podContents, ingredients, step,
     } = this.props;
     const putaPods = podContents.map((ingredientId, idx) => {
       const ingredient = ingredients.find(i => ingredientId === i.id);
+      const podId = ['A', 'B', 'C', 'D'];
       return (
         <label className={styles.label} id={`ingredientId${idx}`}>
+          <input
+            type="radio"
+            name="radio"
+            onChange={e => onChange(e, step.options)}
+            value={podId[idx]}
+            checked={step.options.content.pod === podId[idx]}
+          />
           <div className={styles.ingredientImage}>
             <IngredientImage
               item={ingredient}
@@ -30,25 +38,22 @@ class OptionPuta extends React.Component {
 
     return (
       <div className={styles.option}>
-        <form>
-          <br />
-          {putaPods}
-          <br />
-        </form>
+        {putaPods}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
+  step: state.steps[state.currentStep.stepId],
   ingredients: state.ingredients,
   podContents: state.deviceOptions.puta.pod,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onChange: (e, options, idx) => {
+  onChange: (e, options) => {
     const result = options;
-    result.content[idx].time = e.target.value;
+    result.content.pod = e.target.value;
     dispatch(updateOption(result));
   },
 });

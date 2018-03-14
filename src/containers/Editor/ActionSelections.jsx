@@ -105,7 +105,9 @@ const mapDispatchToProps = dispatch => ({
       } else if (currentActionId === 'put_in' && step.toolIds.includes('puta')) {
         dispatch(updateOption({
           device: 'puta',
-          content: {},
+          content: {
+            pod: 'A',
+          },
         }));
       } else {
         dispatch(updateOption(null));
