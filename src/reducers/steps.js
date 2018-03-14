@@ -117,7 +117,7 @@ const initialState = {
     options: {
       device: 'integlass',
       content: {
-        amount: '200',
+        amount: '180',
       },
     },
   },
@@ -224,7 +224,7 @@ const initialState = {
     options: {
       device: 'integlass',
       content: {
-        amount: '500'
+        amount: '350'
       }
     }
   },
