@@ -63,7 +63,10 @@ class Player extends React.Component {
               sendCommand={currentStep.options != null && currentStep.options.device != null ? this.sendCommand : null}
               customStyles={PlayerStyles}
               player={true}
-            /> : null
+              isFake={this.state.isFake}
+            /> : (
+              <div className={styles.completed}>かんせい🎉</div>
+            )
           }
         </div>
         <div className={styles.playerStepListWrapper}>
@@ -79,7 +82,7 @@ const mapStateToProps = (state) => {
   return ({
     id: state.currentStep.playingId,
     currentStep,
-    action: state.actions.find(action => action.id === currentStep.actionId),
+    action: state.actions.find(action => (currentStep != null && action.id === currentStep.actionId)),
   });
 };
 
