@@ -250,10 +250,25 @@ const initialState = {
     actionId: 'put_in',
     options: {
       device: 'puta',
-      content: {}
+      content: {
+        pod: 'A'
+      }
     }
   },
   23: {
+    toolIds: [
+      'puta',
+    ],
+    ingredientIds: [],
+    actionId: 'put_in',
+    options: {
+      device: 'puta',
+      content: {
+        pod: 'B',
+      },
+    },
+  },
+  24: {
     toolIds: [
       'ff'
     ],
@@ -267,7 +282,7 @@ const initialState = {
       }
     }
   },
-  24: {
+  25: {
     toolIds: [],
     ingredientIds: [],
     actionId: '',
