@@ -29,9 +29,11 @@ class Settings extends React.Component {
       smoon: {
         amount: 200,
       },
-      puta: podId,
+      puta: {
+        podId,
+      },
     };
-    this.sendcommand(deviceId, states[deviceId]);
+    this.sendCommand(deviceId, states[deviceId]);
   }
 
   connectWebSocket = () => (
