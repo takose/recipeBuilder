@@ -78,3 +78,7 @@ export const setActiveTool = toolId => ({
 export const forwardStep = () => ({
   type: 'FORWARD_STEP',
 });
+
+export const toggleFake = () => ({
+  type: 'TOGGLE_FAKE',
+});
