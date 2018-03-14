@@ -12,6 +12,7 @@ import styles from './App.scss';
 class Player extends React.Component {
   state = {
     socket: null,
+    isFake: true,
   }
 
   componentDidMount = () => {
@@ -29,6 +30,9 @@ class Player extends React.Component {
   );
 
   sendCommand = (deviceId, states) => {
+    if (this.state.isFake) {
+      return Promise.resolve(null);
+    }
     const device = {
       deviceId,
       states,
