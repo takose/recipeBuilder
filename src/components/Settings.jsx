@@ -33,7 +33,9 @@ class Settings extends React.Component {
         pod: podId,
       },
     };
-    this.sendCommand(deviceId, states[deviceId]);
+    this.sendCommand(deviceId, states[deviceId]).then(() => {
+      console.log(`send done to ${deviceId}`);
+    })
   }
 
   connectWebSocket = () => (
