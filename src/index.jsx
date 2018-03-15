@@ -25,6 +25,7 @@ if (process.env.NODE_ENV === 'development') {
   storeEnhancer = applyMiddleware(routerMiddleware(history));
 }
 
+storeEnhancer = composeEnhancers(applyMiddleware(routerMiddleware(history)));
 /* eslint-disable no-underscore-dangle */
 const store = createStore(
   recipeBuilder,
