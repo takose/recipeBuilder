@@ -44,7 +44,7 @@ export default class FF extends React.Component {
   }
 
   connectWebSocket = () => (
-    io('http://localhost:3000', {
+    io('http://192.168.1.105:3000', {
       query: {
         type: 'user',
       },
