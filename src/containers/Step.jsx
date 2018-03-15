@@ -40,10 +40,11 @@ class Step extends React.Component {
     } = this.props;
 
     if (this.state.done) {
+      const weitTime = step.options.device === 'puta' ? 4000 : 1000;
       if (step.options != null && (step.options.device === 'ff' || step.options.device === 'puta')) {
         setTimeout(() => {
           doneClick();
-        }, 1000);
+        }, weitTime);
       }
     }
     let description;
