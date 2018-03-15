@@ -22,7 +22,7 @@ class Player extends React.Component {
   }
 
   connectWebSocket = () => (
-    io('http://192.168.100.72:3000', {
+    io('http://192.168.1.105:3000', {
       query: {
         type: 'user',
       },
