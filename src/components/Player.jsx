@@ -8,7 +8,7 @@ import PlayerStyles from '../containers/StepPlayer.scss';
 import StepList from '../containers/StepList';
 import Step from '../containers/Step';
 import styles from './App.scss';
-import { toggleFake } from '../actions';
+import { toggleFake, resetPlayingStep } from '../actions';
 
 class Player extends React.Component {
   state = {
@@ -19,6 +19,14 @@ class Player extends React.Component {
     this.setState({
       socket: this.connectWebSocket(),
     });
+  }
+
+  componentWillReceiveProps = ({ action, onFinish }) => {
+    if (action !== undefined) {
+      setTimeout(() => {
+        onFinish();
+      }, 6000);
+    }
   }
 
   connectWebSocket = () => (
@@ -91,6 +99,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
   onClick: () => {
     dispatch(toggleFake());
+  },
+  onFinish: () => {
+    console.log('enter')
+    dispatch(resetPlayingStep());
   },
 });
 

@@ -82,3 +82,7 @@ export const forwardStep = () => ({
 export const toggleFake = () => ({
   type: 'TOGGLE_FAKE',
 });
+
+export const resetPlayingStep = () => ({
+  type: 'RESET_PLAYING_STEP',
+});

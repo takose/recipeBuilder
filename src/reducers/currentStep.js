@@ -35,6 +35,11 @@ const currentStepId = (state = initialState, action) => {
         ...state,
         activeTool: action.toolId,
       };
+    case 'RESET_PLAYING_STEP':
+      return {
+        ...state,
+        playingId: 0,
+      };
     default:
       return state;
   }
