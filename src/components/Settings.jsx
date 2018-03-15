@@ -30,7 +30,7 @@ class Settings extends React.Component {
         amount: 200,
       },
       puta: {
-        podId,
+        pod: podId,
       },
     };
     this.sendCommand(deviceId, states[deviceId]);
