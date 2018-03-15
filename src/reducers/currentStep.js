@@ -1,6 +1,6 @@
 const initialState = {
   option: null,
-  stepId: 25,
+  stepId: 21,
   playingId: 0,
   actionIds: [],
   isFake: true,
