@@ -29,7 +29,7 @@ class Player extends React.Component {
   );
 
   sendCommand = (deviceId, states) => {
-    if (this.prpos.isFake) {
+    if (this.props.isFake) {
       return Promise.resolve(null);
     }
     const device = {
