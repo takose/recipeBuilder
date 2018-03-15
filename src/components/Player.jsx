@@ -12,7 +12,6 @@ import styles from './App.scss';
 class Player extends React.Component {
   state = {
     socket: null,
-    isFake: true,
   }
 
   componentDidMount = () => {
@@ -30,7 +29,7 @@ class Player extends React.Component {
   );
 
   sendCommand = (deviceId, states) => {
-    if (this.state.isFake) {
+    if (this.prpos.isFake) {
       return Promise.resolve(null);
     }
     const device = {
@@ -49,7 +48,7 @@ class Player extends React.Component {
   };
 
   render() {
-    const { id, currentStep, action } = this.props;
+    const { id, currentStep, action, isFake } = this.props;
     return (
       <div className={styles.root}>
         <Sidebar />
@@ -63,7 +62,7 @@ class Player extends React.Component {
               sendCommand={currentStep.options != null && currentStep.options.device != null ? this.sendCommand : null}
               customStyles={PlayerStyles}
               player={true}
-              isFake={this.state.isFake}
+              isFake={isFake}
             /> : (
               <div className={styles.completed}>かんせい🎉</div>
             )
@@ -80,6 +79,7 @@ class Player extends React.Component {
 const mapStateToProps = (state) => {
   const currentStep = state.steps[state.currentStep.playingId];
   return ({
+    isFake: state.currentStep.isFake,
     id: state.currentStep.playingId,
     currentStep,
     action: state.actions.find(action => (currentStep != null && action.id === currentStep.actionId)),

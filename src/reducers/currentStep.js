@@ -3,6 +3,7 @@ const initialState = {
   stepId: 25,
   playingId: 0,
   actionIds: [],
+  isFake: true,
 };
 
 const currentStepId = (state = initialState, action) => {
@@ -23,6 +24,11 @@ const currentStepId = (state = initialState, action) => {
       return {
         ...state,
         playingId: state.playingId + 1,
+      };
+    case 'TOGGLE_FAKE':
+      return {
+        ...state,
+        isFake: !state.isFake,
       };
     case 'SET_ACTIVE_TOOL':
       return {

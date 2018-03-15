@@ -11,6 +11,7 @@ import recipeBuilder from './reducers';
 import App from './components/App';
 import FF from './components/FF';
 import Player from './components/Player';
+import Settings from './components/Settings';
 
 const history = createHistory();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
@@ -40,6 +41,7 @@ const Root = () => (
     <Route exact path="/" component={App} />
     <Route path="/ff" component={FF} />
     <Route path="/player" component={Player} />
+    <Route path="/settings" component={Settings} />
   </ConnectedSwitch>
 );
 
