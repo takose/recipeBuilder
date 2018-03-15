@@ -70,27 +70,6 @@ class Settings extends React.Component {
           <button className={styles.deviceInit} onClick={() => this.onClick('ff')}>FF</button>
           <button className={styles.deviceInit} onClick={() => this.onClick('smoon')}>Smoon</button>
           <button className={styles.deviceInit} onClick={() => this.onClick('integlass')}>integlass</button>
-          <div className={styles.toggleIsFake}>
-            {`isFake: ${isFake}`} <br />
-            <label className={styles.label}>
-              <input
-                type="radio"
-                name="radio"
-                onChange={onChange}
-                checked={isFake}
-              />
-              True
-            </label>
-            <label className={styles.label}>
-              <input
-                type="radio"
-                name="radio"
-                onChange={onChange}
-                checked={!isFake}
-              />
-              False
-            </label>
-          </div>
           <button className={styles.deviceInit} onClick={() => this.onClick('puta', 'A')}>A</button>
           <button className={styles.deviceInit} onClick={() => this.onClick('puta', 'B')}>B</button>
           <button className={styles.deviceInit} onClick={() => this.onClick('puta', 'C')}>C</button>

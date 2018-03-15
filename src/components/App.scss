@@ -96,3 +96,14 @@ a {
   border: solid 1px #6D4C41;
   padding: 16px;
 }
+
+.toggleFake {
+  width: 30px;
+  height: 30px;
+  background-color: #EBEBE8;
+}
+
+.toggleFakeInactive {
+  composes: toggleFake;
+  background-color: #fff;
+}

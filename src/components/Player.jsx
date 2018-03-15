@@ -8,6 +8,7 @@ import PlayerStyles from '../containers/StepPlayer.scss';
 import StepList from '../containers/StepList';
 import Step from '../containers/Step';
 import styles from './App.scss';
+import { toggleFake } from '../actions';
 
 class Player extends React.Component {
   state = {
@@ -48,7 +49,7 @@ class Player extends React.Component {
   };
 
   render() {
-    const { id, currentStep, action, isFake } = this.props;
+    const { id, currentStep, action, isFake, onClick } = this.props;
     return (
       <div className={styles.root}>
         <Sidebar />
@@ -68,6 +69,7 @@ class Player extends React.Component {
             )
           }
         </div>
+        <button onClick={onClick} className={isFake ? styles.toggleFake : styles.toggleFakeInactive}></button>
         <div className={styles.playerStepListWrapper}>
           <StepList />
         </div>
@@ -87,6 +89,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  onClick: () => {
+    dispatch(toggleFake());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player);
