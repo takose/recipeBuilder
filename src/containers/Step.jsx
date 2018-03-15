@@ -24,6 +24,7 @@ class Step extends React.Component {
   }
 
   componentWillReceiveProps = ({ step, sendCommand }) => {
+    this.setState({ done: false });
     if (sendCommand != null) {
       sendCommand(step.options.device, step.options.content).then(() => {
         setTimeout(() => {
