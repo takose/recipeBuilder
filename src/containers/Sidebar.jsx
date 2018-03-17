@@ -33,6 +33,12 @@ export default class Sidebar extends React.Component {
             </NavLink>
           </div>
           <div className={styles.item}>
+            <NavLink to="/webChoco" href="/webChoco" activeClassName={styles.selected}>
+              <FontAwesomeIcon icon={faFire} className={styles.icon} /><br />
+              FF
+            </NavLink>
+          </div>
+          <div className={styles.item}>
             <NavLink to="/settings" href="/settings" activeClassName={styles.selected}>
               <div className={styles.empty} ></div>
             </NavLink>
