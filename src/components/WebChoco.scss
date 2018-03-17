@@ -1,0 +1,30 @@
+.root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.content {
+  padding: 150px;
+  font-size: 18px;
+}
+
+input[type=number] {
+  width: 50px;
+  margin: 0 10px 10px;
+  border: none;
+  text-align: center;
+  border-bottom: solid 1px #ccc;
+  &:focus {
+    outline: none;
+    border-bottom: solid 1px #888;
+  }
+}
+
+input[type=submit] {
+  width: 70px;
+  margin: 10px 0;
+  border: none;
+  text-align: center;
+  border: solid 1px #ccc;
+}
