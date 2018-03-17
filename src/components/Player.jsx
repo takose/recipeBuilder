@@ -22,7 +22,7 @@ class Player extends React.Component {
   }
 
   componentWillReceiveProps = ({ action, onFinish }) => {
-    if (action !== undefined) {
+    if (action == undefined) {
       setTimeout(() => {
         onFinish();
       }, 6000);
