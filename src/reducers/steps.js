@@ -46,6 +46,21 @@ const initialState = {
   },
   4: {
     toolIds: [
+      'smoon',
+    ],
+    ingredientIds: [
+      'salt',
+    ],
+    actionId: 'measure',
+    options: {
+      device: 'smoon',
+      content: {
+        amount: '5',
+      },
+    },
+  },
+  5: {
+    toolIds: [
       'bat',
     ],
     ingredientIds: [
@@ -54,7 +69,7 @@ const initialState = {
     actionId: 'coat',
     options: null,
   },
-  5: {
+  6: {
     toolIds: [
       'puta',
     ],
@@ -62,7 +77,7 @@ const initialState = {
     actionId: 'prepare',
     options: null,
   },
-  6: {
+  7: {
     toolIds: [
       'integlass',
     ],
@@ -77,7 +92,7 @@ const initialState = {
       },
     },
   },
-  7: {
+  8: {
     toolIds: [
       'integlass',
     ],
@@ -92,7 +107,7 @@ const initialState = {
       },
     },
   },
-  8: {
+  9: {
     toolIds: [
       'pot',
       'ff',
@@ -101,7 +116,7 @@ const initialState = {
     actionId: 'prepare',
     options: null,
   },
-  9: {
+  10: {
     toolIds: [],
     ingredientIds: [
       'olieve_oil',
@@ -109,7 +124,7 @@ const initialState = {
     actionId: 'put_in',
     options: null,
   },
-  10: {
+  11: {
     toolIds: [
       'ff',
     ],
@@ -122,7 +137,7 @@ const initialState = {
       },
     },
   },
-  11: {
+  12: {
     toolIds: [],
     ingredientIds: [
       'salmon',
@@ -130,7 +145,7 @@ const initialState = {
     actionId: 'put_in',
     options: null,
   },
-  12: {
+  13: {
     toolIds: [
       'ff',
     ],
@@ -144,7 +159,7 @@ const initialState = {
       },
     },
   },
-  13: {
+  14: {
     toolIds: [],
     ingredientIds: [
       'mushroom'
@@ -152,7 +167,7 @@ const initialState = {
     actionId: 'put_in',
     options: null
   },
-  14: {
+  15: {
     toolIds: [
       'hera'
     ],
@@ -160,7 +175,7 @@ const initialState = {
     actionId: 'stir_fly',
     options: null
   },
-  15: {
+  16: {
     toolIds: [
       'integlass'
     ],
@@ -175,7 +190,7 @@ const initialState = {
       }
     }
   },
-  16: {
+  17: {
     toolIds: [
       'ff'
     ],
@@ -189,7 +204,7 @@ const initialState = {
       }
     }
   },
-  17: {
+  18: {
     toolIds: [
       'puta'
     ],
@@ -202,7 +217,7 @@ const initialState = {
       }
     }
   },
-  18: {
+  19: {
     toolIds: [
       'puta',
     ],
@@ -215,7 +230,7 @@ const initialState = {
       },
     },
   },
-  19: {
+  20: {
     toolIds: [
       'ff'
     ],
@@ -229,7 +244,7 @@ const initialState = {
       }
     }
   },
-  20: {
+  21: {
     toolIds: [
       'ff',
     ],
@@ -242,7 +257,7 @@ const initialState = {
       },
     },
   },
-  21: {
+  22: {
     toolIds: [],
     ingredientIds: [],
     actionId: '',

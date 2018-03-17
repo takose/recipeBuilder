@@ -34,8 +34,7 @@ export default class Sidebar extends React.Component {
           </div>
           <div className={styles.item}>
             <NavLink to="/webChoco" href="/webChoco" activeClassName={styles.selected}>
-              <FontAwesomeIcon icon={faFire} className={styles.icon} /><br />
-              FF
+              Choco
             </NavLink>
           </div>
           <div className={styles.item}>
