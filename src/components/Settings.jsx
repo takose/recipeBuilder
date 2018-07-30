@@ -40,7 +40,7 @@ class Settings extends React.Component {
   }
 
   connectWebSocket = () => (
-    io('http://192.168.1.105:3000', {
+    io('pi@keitalab-pi01.local:3000', {
       query: {
         type: 'user',
       },
